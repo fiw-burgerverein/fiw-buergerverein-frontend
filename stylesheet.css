@@ -1,0 +1,34 @@
+*
+{
+	font-family: Source Sans Pro, sans-serif;
+	background-color:F0F0F0;
+	
+}
+
+.button
+{
+  width: 140px;
+  height: 30px;
+  border-radius: 12px;
+  background-color:#D8D8D8;
+  color: black;
+  font-weight: bold;
+  border: none;
+  float: right;
+}
+
+/* 
+Farb-Codes
+
+#4d4a6f 				Dunkel-Lila
+#c6c2db 				Hell-Lila
+
+C=65 M=5 Y=100 K=17		Dunkel-Gruen
+C=35 M=0 Y=100 K=0 		Mittleres-Gruen
+C=35 M=0 Y=100 K=0 60%	Hell-Gruen
+
+C=100 M=98 Y=0 K=0		Dunkel-Dunkel-Lila
+C=100 M=98 Y=0 K=0 90%	Dunkel-Lila
+C=100 M=98 Y=0 K=0 60%	Mittleres-Lila
+C=100 M=98 Y=0 K=0 40%	Hell-Lila
+*/
