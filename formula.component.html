@@ -47,7 +47,8 @@
 
   <mat-form-field>
     <mat-label>E-Mail</mat-label>
-    <input matInput placeholder="Geben Sie Ihre E-Mail Adresse an" required>
+    <input [formControl]="email" matInput placeholder="Geben Sie Ihre E-Mail Adresse an" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
