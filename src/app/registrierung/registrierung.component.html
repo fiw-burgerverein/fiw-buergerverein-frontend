@@ -1,0 +1,45 @@
+<mat-toolbar>
+  <h1>Registrierung</h1>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <form class="my-form">
+      <!--FORM FIELDS HERE-->
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input  matInput  placeholder="Email" name="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <label>
+          <input matInput placeholder="Email bestätigen" [formControl]="email" required>
+        </label>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <!--REGISTER BUTTON HERE-->
+    <p>haben Sie schon ein Account? <a href="#">Einlogen</a>.</p>
+    <button class="registrierungbtn"mat-raised-button color="primary">Registrieren</button>
+
+  </mat-card-actions>
+  <div class="einlogen">
+
+  </div>
+</mat-card>
+

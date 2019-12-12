@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>PERSÖNLICHE DATEN</h1>
+  <mat-form-field>
+    <mat-label>Anrede</mat-label>
+    <mat-select placeholder="Anrede" required>
+      <mat-option value="option">Frau</mat-option>
+      <mat-option value="option">Herr</mat-option>
+      <mat-option value="option">Divers</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Vorname</mat-label>
+    <input matInput placeholder="Vorname" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nachname</mat-label>
+    <input matInput placeholder="Nachname" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Träger/Einrichtung</mat-label>
+    <input matInput placeholder="Träger/Einrichtung" >
+  </mat-form-field>
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Straße</mat-label>
+      <input matInput placeholder="Straße"required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label >Hausnummer</mat-label>
+      <input matInput placeholder="Hausnummer" required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Postleitzahl</mat-label>
+      <input matInput #postalCode maxlength="5" placeholder="Postleitzahl" required>
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field></td>
+  </tr></table>
+  <mat-form-field>
+    <mat-label>E-Mail</mat-label>
+    <input [formControl]="email" matInput placeholder="Geben Sie Ihre E-Mail Adresse an" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Telefon</mat-label>
+    <input matInput placeholder="Geben Sie Ihre Telefonnummer an">
+  </mat-form-field>
+  <div>
+    <mat-checkbox color="primary">
+      <mat-label>Hiermit bestätige ich, dass alle Angaben richtig sind.</mat-label>
+    </mat-checkbox>
+    <mat-checkbox color="primary">
+      <mat-label>Hiermit widerrufe ich, meine Einwilligung zur Verwendung meiner persönlichen Daten im Rahmen des Kiezfonds Lichtenberg.</mat-label>
+    </mat-checkbox>
+    <mat-checkbox color="primary">
+      <mat-label>Ich habe die Datenschutzrichtlinien gelesen und akzeptiere diese. (Hyperlink zum Merkblatt zum Datenschutz)</mat-label>
+    </mat-checkbox>
+    <mat-checkbox color="primary">
+      <mat-label>Ich habe das Infoblatt gelesen und nehme es  zur Kenntnis. (Hyperlink zum Vereinbarung im Rahmen des Kiezfonds 2019)</mat-label>
+    </mat-checkbox>
+  </div>
+</div>
+<div class="example-button-row">
+  <a mat-raised-button color="primary" >Zur Übersicht Ihrer Daten</a>
+</div>

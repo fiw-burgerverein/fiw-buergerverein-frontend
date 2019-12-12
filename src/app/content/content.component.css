@@ -1,0 +1,142 @@
+.content{
+  padding-right: 10%;
+  padding-left: 10%;
+}
+.introcard {
+  display: flex;
+}
+mat-card {
+  padding: 0;
+}
+
+.image-container, .content-container{
+  flex: 1;
+  overflow: hidden;
+}
+.content-container2, .image-container2{
+  flex: 1;
+  overflow: hidden;
+}
+.content-container2 {
+  padding: 1rem;
+}
+.content-container {
+  padding: 1rem;
+}
+
+.image-container img {
+  height: 100%;
+  margin: 0;
+}
+.slogan{
+  text-align: center;
+  padding-top: 2%;
+}
+.bereich1{
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+.bild{
+  align: "right";
+}
+.grid{
+  background-color: white;
+  max-height: 500px;
+}
+
+.money{
+  padding-top: 1%;
+  padding-bottom: 5%;
+}
+.HSH {
+  position: absolute;
+  left: 10px;
+  /* text-decoration: underline;
+   text-decoration-style:10px;*/
+  /* width: 50%;
+   height: 1px;
+   background: #4d4a6f;*/
+  font-size: 22px;
+}
+.wrapper4 >div >hr
+{
+  width: 95%;
+  height: 1px;
+  background-color: #4d4a6f;
+}
+
+.wrapper4
+{
+  display:grid;
+  grid-template-columns: 32% 32% 32%;
+  grid-column-gap:1em;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+
+}
+
+.wrapper4 > div > h3
+{
+  font-size: 18px;
+  margin-top:-5px;
+}
+
+.wrapper4 > div> p
+{
+  font-size: 16px;
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+div > date,tag
+{
+  font-size:12px;
+}
+
+.wrapper4 > div
+{
+  background:white;
+  padding:1em;
+}
+
+
+
+.infogrid2{
+  background-color: white;
+}
+
+.infotext{
+  text-align: justify;
+  padding-right: 30px;
+}
+
+.money1{
+  color: chartreuse;
+  font-size: 24px;
+}
+.money2{
+  color: crimson;
+  font-size: 24px;
+}
+
+/*.infogrid1 > img
+{
+  width: 100px;
+  height:100px;
+}*/
+
+div >h4
+{
+  margin-bottom: 30px;
+}
+
+.bereich12{
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+
