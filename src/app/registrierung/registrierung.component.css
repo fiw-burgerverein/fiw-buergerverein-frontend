@@ -1,0 +1,24 @@
+.my-form{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+}
+.my-card{
+  padding: 0px 450px 0px 450px ;
+  height: 590px;
+}
+.full-width {
+  width: 100%;
+}
+h1{
+  padding: 600px;
+}
+.registrierungbtn{
+  left: 400px;
+}
+
+mat-toolbar>h1
+{
+  text-align: center;
+}

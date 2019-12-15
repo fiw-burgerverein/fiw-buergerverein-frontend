@@ -1,0 +1,66 @@
+
+#email {color:white; text-align: right;}
+
+header {
+  background-color: #4d4a6f;
+  text-align: left;
+ /* padding: 5px 5px 5px 5px;*/
+
+}
+header > label {
+  width: 140px;
+  height: 30px;
+  border-radius: 12px;
+  background-color:#D8D8D8;
+  color: black;
+  font-weight: bold;
+  border: none;
+  float: right;
+  font-family: Source Sans Pro, sans-serif;
+  text-align: center;
+
+
+}
+header>a {
+  float:right;
+
+}
+header > button{
+
+  width: 140px;
+  height: 30px;
+  border-radius: 12px;
+  background-color:#D8D8D8;
+  color: black;
+  font-weight: bold;
+  border: none;
+  float: right;
+
+}
+nav {
+  text-align: center;
+
+}
+nav a {
+
+
+  float: left;
+  font-size: 16px;
+  margin-left: 50px;
+  background-color: #4d4a6f;
+  color: white;
+  font-weight: lighter;
+  text-underline: none;
+  text-decoration: none;
+  padding: 5px 5px 5px 5px;
+
+}
+nav a:hover {
+  color: white;
+}
+
+table {
+  margin-left:80px;
+  text-align: center;
+  margin-top: 20px;
+}

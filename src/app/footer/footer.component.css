@@ -1,0 +1,51 @@
+
+footer
+{
+  background-color: #23204d;
+  padding-left: 50px;
+  margin-bottom:-100px;
+  position:relative;
+  height:0;
+}
+table
+{
+  margin-left: 700px;
+  color: white;
+  font-weight: 100;
+  margin-bottom:-100px;
+}
+table th
+{
+  padding-left:20px;
+  padding-right: 20px;
+  font-size: medium;
+}
+table a:hover
+{
+  text-decoration: none;
+}
+table a
+{
+  font-weight: lighter;
+  text-decoration: none;
+}
+.footer-part {
+  background-color: #c6c2db; /* hell-lila  */
+  margin-top:-145px;
+  min-height:175px;
+  padding-top:10px;
+  font-weight: normal;
+  margin-right: 900px;
+}
+.footer-part-title {
+  font-size:18px;
+}
+.ng-scope
+{
+  color:black;
+  background-color:#4d4a6f ; /* dunkel-lila */
+  margin-top: 150px;
+  min-height: 200px;
+  padding: 38px;
+  border-radius: 0 5px 5px 0;
+}
