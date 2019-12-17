@@ -1,0 +1,7 @@
+.app-container{
+  display: flex;
+  flex-direction: column;
+}
+.router-container{
+  flex-grow: 2;
+}
