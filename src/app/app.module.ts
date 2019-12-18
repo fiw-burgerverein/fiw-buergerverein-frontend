@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule} from '@angular/material/slider';
 import { ContentComponent } from './content/content.component';
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
@@ -32,6 +32,8 @@ import { FormulaProjektComponent } from './formula-projekt/formula-projekt.compo
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ import { RegistrierungComponent } from './registrierung/registrierung.component'
     HeaderComponent,
     FormulaComponent,
     FormulaProjektComponent,
-    RegistrierungComponent
+    RegistrierungComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   imports: [
