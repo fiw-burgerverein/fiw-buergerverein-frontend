@@ -30,6 +30,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { FormulaProjektComponent } from './formula-projekt/formula-projekt.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -43,6 +44,7 @@ import { RegistrierungComponent } from './registrierung/registrierung.component'
     FormulaComponent,
     FormulaProjektComponent,
     RegistrierungComponent,
+    LoginComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   imports: [

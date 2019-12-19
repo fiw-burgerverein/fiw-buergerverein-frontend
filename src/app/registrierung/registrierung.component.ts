@@ -1,40 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import {SignUpInfo} from '../auth/signup-info';
 import {AuthService} from '../auth/auth.service';
 
 @Component({
-  selector: 'app-registrierung',
+  selector: 'app-register',
   templateUrl: './registrierung.component.html',
   styleUrls: ['./registrierung.component.css']
 })
 export class RegistrierungComponent implements OnInit {
-
-
-  constructor(private authService: AuthService) { }
-
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-
   form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  hide: boolean;
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'Geben Sie eine gültige E-Mail ein' :
-      this.email.hasError('email') ? 'Ungültiges Format' : '';
-  }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
-
   onSubmit() {
     console.log(this.form);
 
     this.signupInfo = new SignUpInfo(
-      this.form.username,
       this.form.email,
       this.form.password);
 
@@ -52,5 +40,7 @@ export class RegistrierungComponent implements OnInit {
     );
   }
 
-
+  getErrorMessage() {
+    return 'Error'; // TODO
+  }
 }
