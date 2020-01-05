@@ -4,3 +4,6 @@
 .homeIcon{
   padding-right: 10px;
 }
+.mat-sidenav-content{
+  position: absolute;
+}
