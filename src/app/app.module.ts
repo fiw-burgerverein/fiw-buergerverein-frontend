@@ -31,6 +31,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { FormulaProjektComponent } from './formula-projekt/formula-projekt.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 import { LoginComponent } from './login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -50,6 +51,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
     MatSliderModule,
     LayoutModule,
