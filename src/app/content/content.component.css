@@ -8,7 +8,13 @@
 mat-card {
   padding: 0;
 }
+.example-card {
+  max-width: 400px;
+}
 
+.text{
+  text-align: center;
+}
 .image-container, .content-container{
   flex: 1;
   overflow: hidden;

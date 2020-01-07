@@ -4,8 +4,11 @@
   margin-top:20px;
   margin:6em;
 }
-.container > * {
+.mat-sidenav-content{
   width: 100%;
+}
+.container > * {
+  /*width: 100%;*/
 }
 .container .mat-radio-button {
   margin: 0 12px;
