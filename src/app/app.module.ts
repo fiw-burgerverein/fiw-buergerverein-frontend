@@ -45,6 +45,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FormulaProjektComponent,
     RegistrierungComponent,
     LoginComponent,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
