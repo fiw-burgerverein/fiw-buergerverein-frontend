@@ -1,0 +1,9 @@
+Dokumentation Frontend
+--> auth.service.ts, signup-info.ts, registrierung.component.html, registrierung.component.ts: Felder und url angepasst,
+                                                                   sodass sie mit Backend übereinstimmen
+--> form-info.ts: Variablen für die 1. Formularseite auskommentiert
+--> form.service.ts: überflüssigen Code gelöscht
+--> formula-projekt.component.html: allen Feldern Namen gegeben, sodass es mit form-info.ts und Backend übereinstimmt;
+                                    alle Optionen-Values umbenannt, sodass man auf sie zugreifen kann;
+                                    form-Tag und Validierung für Felder hinzugefügt (daohne wird ein leeres JSON-Objekt
+                                    geschickt) => Formular sieht jetzt scheiß aus...

@@ -1,11 +1,18 @@
 <div class="container">
   <h1>ANGABEN ZU IHREM PROJEKT</h1>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
   <mat-form-field>
     <mat-label>Projektname</mat-label>
-    <input matInput placeholder="Projektname" maxLength="200" required>
+    <input matInput placeholder="Projektname" name="projektname" maxLength="200" required [(ngModel)]="form.projektname" #projektname="ngModel">
+    <div *ngIf="f.submitted && projektname.invalid">
+      <div *ngIf="projektname.errors.required">This field is required</div>
+    </div>
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Beschreibung" required></textarea>
+    <textarea matInput placeholder="Beschreibung" name="beschreibung" required [(ngModel)]="form.beschreibung" #beschreibung="ngModel"></textarea>
+    <div *ngIf="f.submitted && beschreibung.invalid">
+      <div *ngIf="beschreibung.errors.required">This field is required</div>
+    </div>
   </mat-form-field>
   <!--<mat-form-field>
     <mat-label>Datum</mat-label>
@@ -16,32 +23,44 @@
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field>
       <mat-label>Gewünchtes Startdatum</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="Geplantes Startdatum">
+      <input matInput [matDatepicker]="picker" placeholder="Geplantes Startdatum" name="startdatum" required [(ngModel)]="form.startdatum" #startdatum="ngModel">
+      <div *ngIf="f.submitted && startdatum.invalid">
+        <div *ngIf="startdatum.errors.required">This field is required</div>
+      </div>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field></td>
     <td><mat-form-field>
       <mat-label>Gewünchtes Enddatum</mat-label>
-      <input matInput [matDatepicker]="pickers" placeholder="Geplantes Enddatum">
+      <input matInput [matDatepicker]="pickers" placeholder="Geplantes Enddatum" name="enddatum" required [(ngModel)]="form.enddatum" #enddatum="ngModel">
+      <div *ngIf="f.submitted && enddatum.invalid">
+        <div *ngIf="enddatum.errors.required">This field is required</div>
+      </div>
       <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
       <mat-datepicker #pickers></mat-datepicker>
     </mat-form-field></td>
   </tr></table>
   <mat-form-field>
     <mat-label>Ort</mat-label>
-    <mat-select placeholder="Anrede" required>
-      <mat-option value="option">Neu-Hohenschönhausen Nord</mat-option>
-      <mat-option value="option">Neu-Hohenschönhausen Süd</mat-option>
-      <mat-option value="option">Wartenberg, Falkenberg und Malchow</mat-option>
+    <mat-select placeholder="Geplantes Ort" name="ort" required [(ngModel)]="form.ort" #ort="ngModel">
+      <mat-option value="Neu-Hohenschönhausen Nord">Neu-Hohenschönhausen Nord</mat-option>
+      <mat-option value="Neu-Hohenschönhausen Süd">Neu-Hohenschönhausen Süd</mat-option>
+      <mat-option value=">Wartenberg, Falkenberg und Malchow">Wartenberg, Falkenberg und Malchow</mat-option>
     </mat-select>
   </mat-form-field>
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
       <mat-label>Zielgruppe</mat-label>
-      <input matInput placeholder="Zeilgruppe">
+      <input matInput placeholder="Zielgruppe" name="zielgruppe" [(ngModel)]="form.zielgruppe" #zielgruppe="ngModel">
+<!--      <div *ngIf="f.submitted && zielgruppe.invalid">-->
+<!--        <div *ngIf="zielgruppe.errors.required">This field is required</div>-->
+<!--      </div>-->
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
-      <input matInput type="number" min="1" placeholder="Anzahl der Teilnehmer" required>
+      <input matInput type="number" min="1" placeholder="Anzahl der Teilnehmer" name="anzteiln" required [(ngModel)]="form.anzteiln" #anzteiln="ngModel">
+      <div *ngIf="f.submitted && anzteiln.invalid">
+        <div *ngIf="anzteiln.errors.required">This field is required</div>
+      </div>
     </mat-form-field></td>
   </tr></table>
   <!-- <div>
@@ -61,15 +80,16 @@
  -->
   <mat-form-field>
     <mat-label>Sind öffentlichkeitswirksame Arbeiten geplant?</mat-label>
-    <mat-select placeholder="Sind öffentlichkeitswirksame Arbeiten geplant?" >
-      <mat-option value="option">Ja</mat-option>
-      <mat-option value="option">Nein</mat-option>
+    <mat-select placeholder="Sind öffentlichkeitswirksame Arbeiten geplant?" name="oeffarb" required [(ngModel)]="form.oeffarb" #oeffarb="ngModel">
+      <mat-option value="Ja">Ja</mat-option>
+      <mat-option value="Nein">Nein</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Beschreiben Sie diese:" ></textarea>
+    <textarea matInput placeholder="Beschreiben Sie diese:" name="oeffarbbeschr" [(ngModel)]="form.oeffarbbeschr" #oeffarbbeschr="ngModel"></textarea>
   </mat-form-field>
   <div class="example-button-row" >
     <a mat-raised-button color="primary" type="submit" (click)="onSubmit()">Zur Übersicht Ihrer Daten</a>
   </div>
+  </form>
 </div>

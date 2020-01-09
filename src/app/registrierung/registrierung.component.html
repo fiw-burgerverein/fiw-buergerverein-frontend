@@ -19,12 +19,27 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="emailConfirm">Email Confirmation</label>
+            <input type="text" class="form-control" name="emailConfirm" [(ngModel)]="form.emailConfirm" #emailConfirm="ngModel" confirm your email />
+            <div *ngIf="f.submitted && emailConfirm.invalid">
+              <div *ngIf="emailConfirm.errors.required">Email confirmation is required</div>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-                   required minlength="6" />
+                   required minlength="8" />
             <div *ngIf="f.submitted && password.invalid">
               <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="passwordConfirm">Password Confirmation</label>
+            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="form.passwordConfirm" #passwordConfirm="ngModel"
+                   required minlength="8" />
+            <div *ngIf="f.submitted && passwordConfirm.invalid">
+              <div *ngIf="passwordConfirm.errors.required">Password is required</div>
             </div>
           </div>
           <div class="form-group">

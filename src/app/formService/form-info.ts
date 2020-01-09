@@ -23,7 +23,7 @@ export class FormInfo {
 
   constructor(/*anrede: string, vorname: string, nachname: string, traeger: string, strasse: string, hausnr: number, plz: number,
               email: string, tel: number,*/ projektname: string, beschreibung: string, startdatum: string, enddatum: string,
-              ort: string, zielgruppe: string, anzteiln: number, oeffarb: string, oeffarbbeschr: string) {
+                                            ort: string, zielgruppe: string, anzteiln: number, oeffarb: string, oeffarbbeschr: string) {
     // this.anrede = anrede;
     // this.vorname = vorname;
     // this.nachname = nachname;
