@@ -33,6 +33,9 @@ import { RegistrierungComponent } from './registrierung/registrierung.component'
 import { LoginComponent } from './login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 
 //I keep the new line
 @NgModule({
@@ -45,6 +48,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FormulaProjektComponent,
     RegistrierungComponent,
     LoginComponent,
+    DatenschutzComponent,
+    ImpressumComponent,
+    DatenschutzFooterComponent,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
