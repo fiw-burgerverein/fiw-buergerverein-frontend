@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import {AuthLoginInfo} from '../auth/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
@@ -10,7 +9,6 @@ import {TokenStorageService} from '../auth/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
@@ -36,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveEmail(data.email);
+        this.tokenStorage.saveUsername(data.email);
         this.tokenStorage.saveAuthorities(data.authorities);
 
         this.isLoginFailed = false;
@@ -55,10 +53,5 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
-
-  /*logout() {
-    this.token.signOut();
-    window.location.reload();
-  }*/
 
 }
