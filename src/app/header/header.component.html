@@ -1,24 +1,22 @@
-<div style="height: 100vh;">
+<div>
   <mat-toolbar color="primary">
-    <mat-icon class="homeIcon">home</mat-icon>
-    <span class="header">Kiezfonds HSH</span>
+    <mat-icon class="homeIcon" routerLink="router-outlet">home</mat-icon>
+    <span class="header" routerLink="router-outlet" >Kiezfonds HSH</span>
 
     <span class="spacer"></span>
 
-    <div fxShow="true" fxHide.lt-md="true" >
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+    <div fxShow="true" fxHide.lt-md="true"  >
       <a href="#" mat-button>Infos zum Kiezfonds</a>
-      <a href="#" mat-button>Alle entschiedenen Anträge</a>
-      <a href="#" mat-button>Alle Termine</a>
       <a href="#" mat-button>Meine Anträge</a>
-      <a href="#" mat-button>Antrag stellen</a>
+      <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
     </div>
 
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item disabled> User@gmail.com</button>
-      <button mat-menu-item>Profil</button>
-      <button mat-menu-item>Ausloggen</button>
+      <button mat-menu-item disabled>Profil </button>
+      <button mat-menu-item routerLink="login">Einloggen</button>
+      <button mat-menu-item routerLink="registrieren">Registrieren</button>
     </mat-menu>
+    <span class="example-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon class="personIcon">person</mat-icon>
     </button>
@@ -33,14 +31,14 @@
     <mat-sidenav #sidenav fxLayout="column">
       <div fxLayout="column">
         <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
-        <a href="#" mat-button>Infos zum Kiezfonds</a>
-        <a href="#" mat-button>Alle entschiedenen Anträge</a>
-        <a href="#" mat-button>Alle Termine</a>
-        <a href="#" mat-button>Meine Anträge</a>
-        <a href="#" mat-button>Antrag stellen</a>
+        <button mat-button>Infos zum Kiezfonds</button>
+        <button mat-button>Meine Anträge</button>
+        <button mat-button routerLink="formula">Antrag stellen</button>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content></mat-sidenav-content>
+ <mat-sidenav-content>
+   <router-outlet name ="side"></router-outlet>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 
 </div>

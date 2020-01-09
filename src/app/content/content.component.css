@@ -1,3 +1,20 @@
+/*Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }*/
+@media screen and (max-width:720px)
+{
+.content{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+}
 .content{
   padding-right: 10%;
   padding-left: 10%;
@@ -5,10 +22,22 @@
 .introcard {
   display: flex;
 }
+
+/*.image-container2 > img*/
+/*{*/
+/*  width: 600px;*/
+/*  height: auto;*/
+/*}*/
 mat-card {
   padding: 0;
 }
+.example-card {
+  max-width: 400px;
+}
 
+.text{
+  text-align: center;
+}
 .image-container, .content-container{
   flex: 1;
   overflow: hidden;
