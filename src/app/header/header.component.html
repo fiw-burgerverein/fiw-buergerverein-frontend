@@ -1,41 +1,45 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-icon class="homeIcon" routerLink="router-outlet">home</mat-icon>
+    <span class="header" routerLink="router-outlet" >Kiezfonds HSH</span>
 
+    <span class="spacer"></span>
 
-<header>
+    <div fxShow="true" fxHide.lt-md="true"  >
+      <a href="#" mat-button>Infos zum Kiezfonds</a>
+      <a href="#" mat-button>Meine Anträge</a>
+      <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
+    </div>
 
-  <!--<button type="button">Ausloggen</button>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item disabled>Profil </button>
+      <button mat-menu-item routerLink="login">Einloggen</button>
+      <button mat-menu-item routerLink="registrieren">Registrieren</button>
+    </mat-menu>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon class="personIcon">person</mat-icon>
+    </button>
 
-  <label id="text" name="text" cols="3" rows="1">123@hotmail.de </label> -->
-  <br>
-  <br>
-  <a href="" routerLink="registrieren" style="text-decoration: underline; color:white">Noch nicht registriert?</a>
-  <br>
-  <a href="" routerLink="login" style="text-decoration: underline; color:white">Login</a>
-  <nav>
-    <a href="https://www.vav-hhausen.de/">
-      <img src="https://www.vav-hhausen.de/Stadtteilarbeit/Logos/stadtteilkoord_logo-190717.png"
-           width="160px" height="80px"></a>
-    <table>
-      <thead>
-      <tr>
-        <th>
-          <a href="" style=color:white>Infos zum Kiezfonds</a></th>
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="container">
+    <mat-sidenav #sidenav fxLayout="column">
+      <div fxLayout="column">
+        <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
+        <button mat-button>Infos zum Kiezfonds</button>
+        <button mat-button>Meine Anträge</button>
+        <button mat-button routerLink="formula">Antrag stellen</button>
+      </div>
+    </mat-sidenav>
+ <mat-sidenav-content>
+   <router-outlet name ="side"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
-        <th>
-          <a href="" style=color:white>Alle entschiedenen Anträge</a></th>
+</div>
 
-        <th>
-          <a href="" style=color:white>Alle Termine</a></th>
-
-        <th>
-          <a href="" style=color:white>Meine Anträge</a></th>
-
-        <th>
-          <a href="" routerLink="formula" style=color:white>Antrag stellen</a></th>
-
-
-      </tr>
-      </thead>
-    </table>
-
-  </nav>
-</header>

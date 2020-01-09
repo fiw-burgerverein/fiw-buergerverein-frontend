@@ -1,3 +1,9 @@
+<mat-toolbar>
+  <h1>Einloggen</h1>
+</mat-toolbar>
+
+<mat-card class="my-card">
+
 <div *ngIf="isLoggedIn; else loggedOut">
   Logged in as {{roles}}.
 </div>
@@ -34,3 +40,30 @@
     <a href="signup" class="btn btn-success">Sign Up</a>
   </div>
 </ng-template>
+
+</mat-card >
+
+<!--
+<mat-toolbar>
+  <h1>Einloggen</h1>
+</mat-toolbar>
+<div class="example-container">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="E-Mail" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  ​
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Passwort" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  ​
+  <div>
+    <p><a href="#">Passwort vergessen?</a></p>
+    <button class="example-button-row" mat-raised-button color="primary">Einloggen</button>
+  </div>
+</div>
+
+-->

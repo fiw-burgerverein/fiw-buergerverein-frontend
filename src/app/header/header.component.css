@@ -1,66 +1,35 @@
+/*Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
 
-#email {color:white; text-align: right;}
+Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
 
-header {
-  background-color: #4d4a6f;
-  text-align: left;
- padding: 5px 5px 5px 5px;
+Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
 
-}
-header > label {
-  width: 140px;
-  height: 30px;
-  border-radius: 12px;
-  background-color:#D8D8D8;
-  color: black;
-  font-weight: bold;
-  border: none;
-  float: right;
-  font-family: Source Sans Pro, sans-serif;
-  text-align: center;
+Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }*/
 
+/* Responsive */
+@media (max-width: 768px)
+{
+  .container {
 
-}
-header>a {
-  float:right;
-
-}
-header > button{
-
-  width: 140px;
-  height: 30px;
-  border-radius: 12px;
-  background-color:#D8D8D8;
-  color: black;
-  font-weight: bold;
-  border: none;
-  float: right;
-
-}
-nav {
-  text-align: center;
-
-}
-nav a {
-
-
-  float: left;
-  font-size: 16px;
-  margin-left: 50px;
-  background-color: #4d4a6f;
-  color: white;
-  font-weight: lighter;
-  text-underline: none;
-  text-decoration: none;
-  padding: 5px 5px 5px 5px;
-
-}
-nav a:hover {
-  color: white;
+  }
 }
 
-table {
-  margin-left:80px;
-  text-align: center;
-  margin-top: 20px;
+.header {
+  padding-right: 30px;
+}
+.homeIcon{
+  padding-right: 10px;
+}
+.mat-sidenav-content{
+  position: absolute;
+}
+.personIcon{
+  padding: 0 14px;
+}
+.example-spacer {
+  flex: 1 1 auto;
 }

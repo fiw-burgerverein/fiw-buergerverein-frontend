@@ -1,29 +1,23 @@
-<footer class="ng-scope">
-  <div class="footer_container">
-    <div class="col-sm-5 footer-part">
-      <div class="footer-part-item">
-        <div class="footer-part-title ff anim-hide ng-binding">Wichtige Links:</div>
-      </div>
-    </div>
+<mat-toolbar color="primary" >
+  <div id="links">
+    <h3 class="schrift">Wichtige Links</h3>
+    <!--<hr>-->
+    <a href="https://www.berlin.de/ba-lichtenberg/" >Bezirksamt Lichtenberg</a><br>
+    <a href="https://www.buergerhaushalt-lichtenberg.de/">Bürgerhaushalt Lichtenberg</a><br>
+    <a href="http://www.stk-lichtenbergmitte.de/" >Stadtteilkoordination Lichtenberg</a><br>
   </div>
-  <section>
-    <table >
-      <thead>
-      <tr>
-        <th width="100" height="50">
-          <a routerLink="hyperlink" routerLinkActive="active" style= color:white >Downloads</a></th>
-        <th width="100" height="50">
-          <a href="" style=color:white>Datenschutz</a></th>
-        <th width="200" height="50">
-          <a href="" style=color:white>Recht & Impressum</a></th>
-        <th width="100" height="50">
-          <a href="" style=color:white>Kontakt</a></th>
-      </tr>
-      </thead>
-    </table>
-  </section>
-</footer>
-
+  <div id="mitte">
+    <a routerLink="/datenschutz-footer">Datenschutz</a><br>
+    <a routerLink="/impressum" >Impressum</a>
+  </div>
+  <div id="rechts" >
+    <h3 class="schrift">Kontakt</h3>
+    <!-- <hr>-->
+    <div><img src="https://image.flaticon.com/icons/png/512/263/263115.png" style="height:20px; width:20px;">&nbsp;  Möllendorffstr. 6, 10367 Berlin</div>
+    <div><img src="https://image.flaticon.com/icons/png/512/1034/1034146.png" style="height:20px; width:20px;">&nbsp; poststelle@lichtenberg.berlin.de</div>
+    <div><img src="https://image.flaticon.com/icons/png/512/1034/1034131.png" style="height:20px; width:20px;">&nbsp; (030) 90296 – 0</div>
+  </div>
+</mat-toolbar>
 
 
 

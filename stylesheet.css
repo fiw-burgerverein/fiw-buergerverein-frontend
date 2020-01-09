@@ -1,8 +1,9 @@
+@import '~@angular/cdk/overlay-prebuilt.css';
 *
 {
 	font-family: Source Sans Pro, sans-serif;
 	background-color:F0F0F0;
-	
+
 }
 
 .button
@@ -17,7 +18,7 @@
   float: right;
 }
 
-/* 
+/*
 Farb-Codes
 
 #4d4a6f 				Dunkel-Lila
