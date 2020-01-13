@@ -32,7 +32,7 @@ table {
 {
   font-family: Source Sans Pro, sans-serif;
 }
-.example-button-row > a
+.example-button-row > button
 {
   margin-right: 8px;
   /*  background-color: #4d4a6f;*/
