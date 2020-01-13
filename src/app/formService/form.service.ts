@@ -12,6 +12,7 @@ const httpOptions = {
 export class FormService {
 
   private formUrl = 'http://localhost:8080/user/1/formular';
+  // fuer userId-Auslesen: http://localhost:8080/user/:userId/formular
 
   constructor(private http: HttpClient) { }
 
