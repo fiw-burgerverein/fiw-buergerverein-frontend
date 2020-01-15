@@ -1,115 +1,105 @@
 <mat-toolbar>
   <h1>Registrierung</h1>
 </mat-toolbar>
+
 <mat-card class="my-card">
+  <mat-card-header>
+    <mat-card-title>Registrierung</mat-card-title>
+  </mat-card-header>
+
   <mat-card-content>
-    <div *ngIf="isSignedUp; else signupForm">
-      Your registration is successful. Please login!
-    </div>
-
-    <ng-template #signupForm>
-      <div class="row col-sm-6" style="max-width:350px;">
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
-            <div *ngIf="f.submitted && email.invalid">
-              <div *ngIf="email.errors.required">Email is required</div>
-              <div *ngIf="email.errors.email">Email must be a valid email address</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="emailConfirm">Email Confirmation</label>
-            <input type="text" class="form-control" name="emailConfirm" [(ngModel)]="form.emailConfirm" #emailConfirm="ngModel" confirm your email />
-            <div *ngIf="f.submitted && emailConfirm.invalid">
-              <div *ngIf="emailConfirm.errors.required">Email confirmation is required</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-                   required minlength="8" />
-            <div *ngIf="f.submitted && password.invalid">
-              <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="passwordConfirm">Password Confirmation</label>
-            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="form.passwordConfirm" #passwordConfirm="ngModel"
-                   required minlength="8" />
-            <div *ngIf="f.submitted && passwordConfirm.invalid">
-              <div *ngIf="passwordConfirm.errors.required">Password is required</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary">Register</button>
-            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-              Signup failed!<br/>{{errorMessage}}
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-  </mat-card-content>
-  <mat-card-actions>
-    <!--REGISTER BUTTON HERE-->
-    <p>Sie sind bei uns schon angemeldet? Dann können sie sich direkt einloggen: <a routerLink="login">Login</a>.</p>
-   <!-- <button class="registrierungbtn" mat-raised-button color="primary">Registrieren</button>-->
-
-  </mat-card-actions>
-  <div  class="einloggen">
-
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" #signupForm novalidate>
+            <mat-form-field class="full-width">
+              <mat-label>E-Mail</mat-label>
+              <input matInput placeholder="E-Mail" [(ngModel)]="form.email" name="email" required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>E-Mail bestätigen</mat-label>
+              <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" name="emailConfirm" required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+            <mat-label>Passwort</mat-label>
+            <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password" required>
+          </mat-form-field>
+            <mat-form-field class="full-width">
+            <mat-label>Passwort bestätigen</mat-label>
+            <input matInput placeholder="Passwort bestätigen" [(ngModel)]="form.passwordConfirm" type="password"
+                   name="passwordConfirm" required>
+          </mat-form-field>
+    </form>
+    <div *ngIf="isSignedUp">
+    <p>Sie haben sich erfolgreich registriert! Folgen Sie den an den von Ihnen eingegebenen E-Mail-Adresse zugeschickten
+      Link, im die Registration abzuschliessen.</p>
   </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Registrieren</button>
+    <p>Sie sind bei uns schon registriert? Dann können Sie sich direkt <a routerLink="../login">einloggen</a>.</p>
+  </mat-card-actions>
 </mat-card>
 
-<!--
-<mat-toolbar>
-  <h1>Registrierung</h1>
-</mat-toolbar>
-<mat-card class="my-card">
-  <mat-card-content>
-    <form class="my-form">
-      FORM FIELDS HERE-->
+<!--<mat-toolbar>-->
+<!--  <h1>Registrierung</h1>-->
+<!--</mat-toolbar>-->
+<!--<mat-card class="my-card">-->
+<!--  <mat-card-content>-->
+<!--    <div *ngIf="isSignedUp; else signupForm">-->
+<!--      Your registration is successful. Please login!-->
+<!--    </div>-->
 
-<!--
-<mat-form-field class="full-width">
-  <mat-label>Email</mat-label>
-  <input  matInput  placeholder="Email" name="email" required>
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
-<mat-form-field class="full-width">
-  <label>
-    <input matInput placeholder="Email bestätigen" [formControl]="email" required>
-  </label>
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </button>
-</mat-form-field>
-<mat-form-field class="full-width">
+<!--    <ng-template #signupForm>-->
+<!--      <div class="row col-sm-6" style="max-width:350px;">-->
+<!--        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+<!--          <div class="form-group">-->
+<!--            <label for="email">Email</label>-->
+<!--            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />-->
+<!--            <div *ngIf="f.submitted && email.invalid">-->
+<!--              <div *ngIf="email.errors.required">Email is required</div>-->
+<!--              <div *ngIf="email.errors.email">Email must be a valid email address</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="emailConfirm">Email Confirmation</label>-->
+<!--            <input type="text" class="form-control" name="emailConfirm" [(ngModel)]="form.emailConfirm" #emailConfirm="ngModel" confirm your email />-->
+<!--            <div *ngIf="f.submitted && emailConfirm.invalid">-->
+<!--              <div *ngIf="emailConfirm.errors.required">Email confirmation is required</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="password">Password</label>-->
+<!--            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"-->
+<!--                   required minlength="8" />-->
+<!--            <div *ngIf="f.submitted && password.invalid">-->
+<!--              <div *ngIf="password.errors.required">Password is required</div>-->
+<!--              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="passwordConfirm">Password Confirmation</label>-->
+<!--            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="form.passwordConfirm" #passwordConfirm="ngModel"-->
+<!--                   required minlength="8" />-->
+<!--            <div *ngIf="f.submitted && passwordConfirm.invalid">-->
+<!--              <div *ngIf="passwordConfirm.errors.required">Password is required</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <button class="btn btn-primary">Register</button>-->
+<!--            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">-->
+<!--              Signup failed!<br/>{{errorMessage}}-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </ng-template>-->
+<!--  </mat-card-content>-->
+<!--  <mat-card-actions>-->
+<!--    &lt;!&ndash;REGISTER BUTTON HERE&ndash;&gt;-->
+<!--    <p>Sie sind bei uns schon angemeldet? Dann können sie sich direkt einloggen: <a routerLink="login">Login</a>.</p>-->
+<!--   &lt;!&ndash; <button class="registrierungbtn" mat-raised-button color="primary">Registrieren</button>&ndash;&gt;-->
 
-  <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </button>
+<!--  </mat-card-actions>-->
+<!--  <div  class="einloggen">-->
 
-</mat-form-field>
-</form>
-</mat-card-content>
-<mat-card-actions>
-  REGISTER BUTTON HERE-->
-<!--
-  <p>haben Sie schon ein Account? <a href="#">Einlogen</a>.</p>
-  <button class="registrierungbtn"mat-raised-button color="primary">Registrieren</button>
-
-</mat-card-actions>
-<div class="einlogen">
-
-</div>
-</mat-card>
--->
-
+<!--  </div>-->
+<!--</mat-card>-->
