@@ -1,6 +1,6 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
   margin-top:20px;
   margin:6em;
 }
@@ -41,7 +41,7 @@ table {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.example-button-row>a:hover
+.example-button-row>button:hover
 {
   text-decoration: none;
   color: white;

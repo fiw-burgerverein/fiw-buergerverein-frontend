@@ -33,10 +33,13 @@ import { RegistrierungComponent } from './registrierung/registrierung.component'
 import { LoginComponent } from './login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatStepperModule} from '@angular/material';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 
 
-
-
+// I keep the new line
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +50,9 @@ import {MatStepperModule} from '@angular/material';
     FormulaProjektComponent,
     RegistrierungComponent,
     LoginComponent,
+    DatenschutzComponent,
+    ImpressumComponent,
+    DatenschutzFooterComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -75,8 +81,8 @@ import {MatStepperModule} from '@angular/material';
         MatChipsModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatStepperModule
-
+        MatStepperModule,
+        OverlayModule
     ],
   providers: [],
   bootstrap: [AppComponent]
@@ -84,6 +90,6 @@ import {MatStepperModule} from '@angular/material';
 
 // Test ob Angular Material funktioniert
 @NgModule({
-  imports: [MatSliderModule],
+  imports: [MatSliderModule, BrowserAnimationsModule],
 })
 export class AppModule { }

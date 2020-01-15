@@ -13,14 +13,17 @@
 .full-width {
   width: 100%;
 }
-h1{
+h2{
   padding: 600px;
 }
 .registrierungbtn{
-  /*left: 350px;*/
+  left: 350px;
 }
-
-mat-toolbar>h1
+mat-toolbar>h2
 {
   text-align: center;
 }
+
+/*form {*/
+/*  text-align: left;*/
+/*}*/
