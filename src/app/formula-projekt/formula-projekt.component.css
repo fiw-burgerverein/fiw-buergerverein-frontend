@@ -1,6 +1,8 @@
 .container {
-  /*display: flex;
-  flex-direction: column;*/
+
+  /*display: flex;*/
+  /*flex-direction: column;*/
+
   margin-top:20px;
   margin:6em;
 }
@@ -20,8 +22,12 @@ h1
 }
 mat-form-field
 {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 15px;
+}
+table {
+  width: 100%;
 }
 .container > div{
   font-size: 14px;
@@ -31,7 +37,7 @@ mat-form-field
 {
   font-family: Source Sans Pro, sans-serif;
 }
-.example-button-row > a
+.example-button-row > button
 {
   margin-right: 8px;
   /*  background-color: #4d4a6f;*/
@@ -40,7 +46,7 @@ mat-form-field
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.example-button-row>a:hover
+.example-button-row>button:hover
 {
   text-decoration: none;
   color: white;

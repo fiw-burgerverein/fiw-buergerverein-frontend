@@ -24,7 +24,9 @@ export class RegistrierungComponent implements OnInit {
 
     this.signupInfo = new SignUpInfo(
       this.form.email,
-      this.form.password);
+      this.form.emailConfirm,
+      this.form.password,
+      this.form.passwordConfirm);
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
