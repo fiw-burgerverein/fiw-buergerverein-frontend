@@ -8,10 +8,12 @@ Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }*/
 @media screen and (max-width:720px)
 {
+
   .content{
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
 
 
 }

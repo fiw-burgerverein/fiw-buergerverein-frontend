@@ -20,16 +20,20 @@
 .full-width {
   width: 100%;
 }
+
 /*h2{*/
 /*  padding: 600px;*/
 /*}*/
+
 .registrierungbtn{
   left: 350px;
 }
+
 mat-toolbar>h2
 {
   text-align: center;
 }
+
 p {
 
 }
@@ -37,3 +41,4 @@ p {
 /*form {*/
 /*  text-align: left;*/
 /*}*/
+
