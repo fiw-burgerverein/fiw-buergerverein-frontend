@@ -8,34 +8,36 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" #signupForm novalidate>
-            <mat-form-field class="full-width">
-              <mat-label>E-Mail</mat-label>
-              <input matInput placeholder="E-Mail" [(ngModel)]="form.email" name="email" required>
-            </mat-form-field>
-            <mat-form-field class="full-width">
-              <mat-label>E-Mail bestätigen</mat-label>
-              <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" name="emailConfirm" required>
-            </mat-form-field>
-            <mat-form-field class="full-width">
-            <mat-label>Passwort</mat-label>
-            <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password" required>
+    <div *ngIf="isSignedUp; else signupForm">
+      <p>Sie haben sich erfolgreich registriert! Folgen Sie den an den von Ihnen eingegebenen E-Mail-Adresse zugeschickten
+        Link, im die Registration abzuschliessen.</p>
+    </div>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <ng-template #signupForm>
+          <mat-form-field class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input matInput placeholder="E-Mail" [(ngModel)]="form.email" name="email" required>
           </mat-form-field>
-            <mat-form-field class="full-width">
-            <mat-label>Passwort bestätigen</mat-label>
-            <input matInput placeholder="Passwort bestätigen" [(ngModel)]="form.passwordConfirm" type="password"
-                   name="passwordConfirm" required>
+          <mat-form-field class="full-width">
+            <mat-label>E-Mail bestätigen</mat-label>
+            <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" name="emailConfirm" required>
           </mat-form-field>
+          <mat-form-field class="full-width">
+          <mat-label>Passwort</mat-label>
+          <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password" required>
+        </mat-form-field>
+          <mat-form-field class="full-width">
+          <mat-label>Passwort bestätigen</mat-label>
+          <input matInput placeholder="Passwort bestätigen" [(ngModel)]="form.passwordConfirm" type="password"
+                 name="passwordConfirm" required>
+        </mat-form-field>
+      </ng-template>
     </form>
-    <div *ngIf="isSignedUp">
-    <p>Sie haben sich erfolgreich registriert! Folgen Sie den an den von Ihnen eingegebenen E-Mail-Adresse zugeschickten
-      Link, im die Registration abzuschliessen.</p>
-  </div>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Registrieren</button>
-    <p>Sie sind bei uns schon registriert? Dann können Sie sich direkt <a routerLink="../login">einloggen</a>.</p>
+    <button mat-raised-button  *ngIf="!isSignedUp" color="primary" type="submit" (click)="onSubmit()">Registrieren</button>
+    <p *ngIf="!isSignedUp">Sie sind bei uns schon registriert? Dann können Sie sich direkt <a routerLink="../login">einloggen</a>.</p>
   </mat-card-actions>
 </mat-card>
 

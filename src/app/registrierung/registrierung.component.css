@@ -9,19 +9,29 @@
     padding: 0px 450px 0px 450px ;
     height: 590px;
   }
+  h2{
+    padding: 600px;
+  }
+  mat-toolbar>h2
+  {
+    text-align: center;
+  }
 }
 .full-width {
   width: 100%;
 }
-h2{
-  padding: 600px;
-}
+/*h2{*/
+/*  padding: 600px;*/
+/*}*/
 .registrierungbtn{
   left: 350px;
 }
 mat-toolbar>h2
 {
   text-align: center;
+}
+p {
+
 }
 
 /*form {*/
