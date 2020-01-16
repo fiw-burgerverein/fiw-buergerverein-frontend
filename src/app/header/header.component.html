@@ -7,8 +7,14 @@
 
     <div fxShow="true" fxHide.lt-md="true"  >
       <a href="#" mat-button>Infos zum Kiezfonds</a>
-      <a href="#" mat-button>Meine Anträge</a>
-      <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
+      <a href="#" mat-button *ngIf="isLoggedIn">Meine Anträge</a>
+      <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
+      <ng-template #routeDatenschutz>
+        <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
+      </ng-template>
+      <ng-template #routeLogin>
+        <a href="#" mat-button routerLink="login">Antrag stellen</a>
+      </ng-template>
     </div>
 
     <mat-menu #appMenu="matMenu">
@@ -33,9 +39,18 @@
         <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
         <button mat-button>Infos zum Kiezfonds</button>
         <button mat-button>Meine Anträge</button>
-        <button mat-button routerLink="formula">Antrag stellen</button>
+        <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
+        <ng-template #routeDatenschutz>
+          <button mat-button routerLink="datenschutz">Antrag stellen</button>
+        </ng-template>
+        <ng-template #routeLogin>
+          <button mat-button routerLink="login">Antrag stellen</button>
+        </ng-template>
+<!--        <button mat-button routerLink="formula">Antrag stellen</button>-->
       </div>
     </mat-sidenav>
+
+
     <mat-sidenav-content>
       <router-outlet name ="side"></router-outlet>
     </mat-sidenav-content>
