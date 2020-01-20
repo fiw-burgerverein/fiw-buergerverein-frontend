@@ -9,6 +9,8 @@ import {LoginComponent} from './login/login.component';
 import {DatenschutzComponent} from './datenschutz/datenschutz.component';
 import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
+import {ConfirmAccountInfo} from './auth/confirm-account-info';
+import {ConfirmAccountComponent} from './confirm-account/confirm-account.component';
 
 
 const routes: Routes = [
@@ -19,8 +21,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'datenschutz', component: DatenschutzComponent},
   {path: 'impressum', component: ImpressumComponent},
-  {path: 'datenschutz-footer', component: DatenschutzFooterComponent}
-
+  {path: 'datenschutz-footer', component: DatenschutzFooterComponent},
+  {path: 'accountbestaetigung', component: ConfirmAccountComponent}
 
 
 ];

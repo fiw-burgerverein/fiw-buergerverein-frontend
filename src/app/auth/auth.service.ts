@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {Observable, pipe} from 'rxjs';
 import {JwtResponse} from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
+import {ConfirmAccountInfo} from './confirm-account-info';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  observe: 'response' as 'body'
 };
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
+  // private loginUrl = 'http://localhost:8080/api/auth/signin';
   // private signupUrl = 'http://localhost:8080/api/auth/signup';
   private signupUrl = 'http://localhost:8080/registrieren';
+  private loginUrl = 'http://localhost:8080/login';
+  private confirmUrl = 'http://localhost:8080/accountbestaetigung/?token=';
 
 
   constructor(private http: HttpClient) { }
@@ -26,6 +30,10 @@ export class AuthService {
 
   signUp(info: SignUpInfo): Observable<string> {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
+  }
+
+  confirmAccount(info: ConfirmAccountInfo): Observable<string> {
+    return this.http.post<string>(this.confirmUrl + info.verificationToken, null, httpOptions);
   }
 }
 

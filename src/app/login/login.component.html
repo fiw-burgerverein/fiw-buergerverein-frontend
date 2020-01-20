@@ -13,7 +13,7 @@
       Logged in as {{roles}}.
       <button class="btn btn-secondary">Logout</button>
     </div>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <form name="my-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <ng-template #loginForm>
         <mat-form-field class="full-width">
           <mat-label>E-Mail</mat-label>
