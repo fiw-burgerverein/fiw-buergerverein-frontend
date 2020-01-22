@@ -45,3 +45,23 @@ mat-form-field
   text-decoration: none;
   color: white;
 }
+.example-button-row>a:hover
+{
+  text-decoration: none;
+  color: white;
+}
+/* CSS für dieBeträge*/
+.table, th, td {
+  border: 1px solid grey;
+}
+.mat-label{
+  margin: 100%;
+}
+.mat-table{
+  width: 100%;
+}
+
+.table-responsive, mat-elevation-z8 {
+
+}
+button{ width: 100%}
