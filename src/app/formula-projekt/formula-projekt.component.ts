@@ -10,6 +10,8 @@ export class FormulaProjektComponent {
   // @ts-ignore
   @ViewChild('content') content: ElementRef;
   // @ts-ignore
+  @ViewChild('test') test: ElementRef;
+  // @ts-ignore
   @ViewChild('betrag') keywordsInput;
   // @ts-ignore
   @ViewChild('zweck') keywordsInput;

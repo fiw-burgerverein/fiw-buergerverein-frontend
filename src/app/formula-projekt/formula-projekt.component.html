@@ -8,12 +8,7 @@
   <mat-form-field>
     <textarea matInput placeholder="Beschreibung" required></textarea>
   </mat-form-field>
-  <!--<mat-form-field>
-    <mat-label>Datum</mat-label>
-    <input matInput [matDatepicker]="picker" placeholder="Datum" required>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>-->
+
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field>
       <mat-label>Gewünchtes Startdatum</mat-label>
@@ -45,21 +40,7 @@
       <input matInput type="number" min="1" placeholder="Anzahl der Teilnehmer" required>
     </mat-form-field></td>
   </tr></table>
-  <!-- <div>
-     <mat-checkbox color="primary">
-       <mat-label>Hiermit bestätige ich dass alle Angaben richtig sind.</mat-label>
-     </mat-checkbox>
-     <mat-checkbox color="primary">
-       <mat-label>Hiermit widerrufe ich, meine Einwilligung zur Verwendung meiner persönlichen Daten im Rahmen des Kiezfonds Lichtenberg.</mat-label>
-     </mat-checkbox>
-     <mat-checkbox color="primary">
-       <mat-label>Ich habe die Datenschutzrichtlinien gelesen und akzeptiere diese. (Hyperlink zum Merkblatt zum Datenschutz)</mat-label>
-     </mat-checkbox>
-     <mat-checkbox color="primary">
-       <mat-label>Ich habe die Vereinbarung im Rahmen des Kiezfonds 2019 gelesen, und akzeptiere diese (Hyperlink zum Vereinbarung im Rahmen des Kiezfonds 2019)</mat-label>
-     </mat-checkbox>
-   </div>
- -->
+
   <mat-form-field>
     <mat-label>Sind öffentlichkeitswirksame Arbeiten geplant?</mat-label>
     <mat-select placeholder="Sind öffentlichkeitswirksame Arbeiten geplant?" >
@@ -70,14 +51,17 @@
   <mat-form-field>
     <textarea matInput placeholder="Beschreiben Sie diese:" ></textarea>
   </mat-form-field>
+
   <mat-label>Aufwandsentschädigungen</mat-label>
-  <div class='table-responsive mat-elevation-z8'  #content>
+  <div class='table-responsive mat-elevation-z8'  id="test">
 
     <table mat-table [dataSource]="myDataSource" class="mat-table">
       <!-- Posten Column -->
       <ng-container matColumnDef="posten">
         <th mat-header-cell *matHeaderCellDef col width="800" > Posten </th>
-        <td mat-cell *matCellDef="let element"><textarea ></textarea></td>
+        <td mat-cell *matCellDef="let element">
+          <input matInput >
+        </td>
         <td mat-footer-cell *matFooterCellDef > Gesamt </td>
       </ng-container>
 
@@ -85,24 +69,34 @@
 
       <ng-container matColumnDef="Betrag">
         <th mat-header-cell *matHeaderCellDef > Betrag </th>
-        <td mat-cell *matCellDef="let element"> <input type="number"  #betrag (keyup.enter)="addElement($event)"></td>
+        <td mat-cell *matCellDef="let element"> <input type="number" min="1"  #betrag (keyup.enter)="addElement($event)"></td>
         <td mat-footer-cell *matFooterCellDef >{{sum|currency}} <br> <mat-error *ngIf="sum > 1000 ">{{getError()}}</mat-error></td>
 
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ><input></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+        <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput placeholder="Beschreibung">
+        </mat-form-field>
+        </td>
+      </tr>
       <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
     </table>
   </div>
   <mat-label>Sachkosten</mat-label>
-  <div class='table-responsive mat-elevation-z8' id="content" #content>
+  <div class='table-responsive mat-elevation-z8' id="content">
 
     <table mat-table [dataSource]="myDataSource" class="mat-table">
       <!-- Posten Column -->
       <ng-container matColumnDef="posten">
         <th mat-header-cell *matHeaderCellDef col width="800" > posten </th>
-        <td mat-cell *matCellDef="let element"><textarea ></textarea></td>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field>
+            <input matInput placeholder="Beschreibung">
+          </mat-form-field>
+        </td>
         <td mat-footer-cell *matFooterCellDef > Gesamt </td>
       </ng-container>
 
@@ -110,7 +104,7 @@
 
       <ng-container matColumnDef="Betrag">
         <th mat-header-cell *matHeaderCellDef > Betrag </th>
-        <td mat-cell *matCellDef="let element"> <input type="number" id="betrag" #betrag (keyup.enter)="addElement($event)"></td>
+        <td mat-cell *matCellDef="let element"> <input type="number" min="1" id="betrag" #betrag (keyup.enter)="addElement($event)"></td>
         <td mat-footer-cell *matFooterCellDef >{{sum|currency}} <br> <mat-error *ngIf="sum > 1000 ">{{getError()}}</mat-error></td>
 
       </ng-container>
