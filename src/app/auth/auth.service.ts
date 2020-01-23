@@ -5,6 +5,9 @@ import {JwtResponse} from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import {ConfirmAccountInfo} from './confirm-account-info';
+import {ResetPasswordInfo} from './reset-password-info';
+import {ForgotPasswordInfo} from './forgot-password-info';
+import {CheckTokenInfo} from './check-token-info';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -20,6 +23,8 @@ export class AuthService {
   private signupUrl = 'http://localhost:8080/registrieren';
   private loginUrl = 'http://localhost:8080/login';
   private confirmUrl = 'http://localhost:8080/accountbestaetigung/?token=';
+  private resetUrl = 'http://localhost:8080/login/reset-password';
+  private forgotUrl = 'http://localhost:8080/login/forgot-password';
 
 
   constructor(private http: HttpClient) { }
@@ -33,7 +38,21 @@ export class AuthService {
   }
 
   confirmAccount(info: ConfirmAccountInfo): Observable<string> {
-    return this.http.post<string>(this.confirmUrl + info.verificationToken, null, httpOptions);
+    return this.http.get<string>(this.confirmUrl + info.verificationToken, httpOptions);
   }
+
+  forgotPassword(info: ForgotPasswordInfo): Observable<string> {
+    return this.http.post<string>(this.forgotUrl, info, httpOptions);
+  }
+
+  checkToken(info: CheckTokenInfo): Observable<string> {
+    return this.http.get<string>(this.resetUrl + '/?token=' + info.resetToken, httpOptions);
+  }
+
+  resetPassword(info: ResetPasswordInfo, resetToken: string): Observable<string> {
+    return this.http.post<string>(this.resetUrl + '/ok/?token=' + resetToken, info, httpOptions);
+  }
+
 }
+
 

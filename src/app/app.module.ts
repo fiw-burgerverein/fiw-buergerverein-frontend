@@ -38,6 +38,8 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 // I keep the new line
@@ -55,6 +57,8 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
     ImpressumComponent,
     DatenschutzFooterComponent,
     ConfirmAccountComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
