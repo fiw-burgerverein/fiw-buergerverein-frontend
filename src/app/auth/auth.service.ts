@@ -22,7 +22,7 @@ export class AuthService {
   // private signupUrl = 'http://localhost:8080/api/auth/signup';
   private signupUrl = 'http://localhost:8080/registrieren';
   private loginUrl = 'http://localhost:8080/login';
-  private confirmUrl = 'http://localhost:8080/accountbestaetigung/?token=';
+  private confirmUrl = 'http://localhost:8080/registrieren/accountbestaetigung/?token=';
   private resetUrl = 'http://localhost:8080/login/reset-password';
   private forgotUrl = 'http://localhost:8080/login/forgot-password';
 

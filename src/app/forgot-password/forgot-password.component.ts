@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SignUpInfo} from '../auth/signup-info';
 import {AuthService} from '../auth/auth.service';
 import {ForgotPasswordInfo} from '../auth/forgot-password-info';
 

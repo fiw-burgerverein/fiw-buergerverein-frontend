@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {ResetPasswordInfo} from '../auth/reset-password-info';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CheckTokenInfo} from '../auth/check-token-info';
+import {ForgotPasswordInfo} from '../auth/forgot-password-info';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,10 +21,15 @@ export class ResetPasswordComponent implements OnInit {
   isReset = false;
   isResetFailed = false;
   errorMessage = '';
+  // forgot password
+  // forgotPasswordInfo: ForgotPasswordInfo;
+  // isSubmitted = false;
+  // isSubmitFailed = false;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.router.url);
     this.route.queryParams.subscribe(params => {
       this.resetToken = params.token;
 
@@ -43,6 +49,7 @@ export class ResetPasswordComponent implements OnInit {
         this.isTokenNotOk = true;
       }
     );
+    // if (this.router.url.startsWith('/passwort-vergessen/passwort-zuruecksetzen')) {}
   }
 
   onSubmit() {
@@ -65,6 +72,25 @@ export class ResetPasswordComponent implements OnInit {
       }
     );
   }
+  // onSubmitForgot() {
+  //   console.log(this.form);
+  //
+  //   this.forgotPasswordInfo = new ForgotPasswordInfo(
+  //     this.form.email);
+  //
+  //   this.authService.forgotPassword(this.forgotPasswordInfo).subscribe(
+  //     data => {
+  //       console.log(data);
+  //       this.isSubmitted = true;
+  //       this.isSubmitFailed = false;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //       this.errorMessage = error.error.message;
+  //       this.isSubmitFailed = true;
+  //     }
+  //   );
+  // }
 
   getErrorMessage() {
     return 'Error'; // TODO
