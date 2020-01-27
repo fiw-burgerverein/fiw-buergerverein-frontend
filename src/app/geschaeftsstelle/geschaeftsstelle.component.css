@@ -1,0 +1,17 @@
+.inhalt_gs
+{
+  padding-right: 10%;
+  padding-left: 10%;
+}
+.bearbeitung >h4
+ {
+   font-weight: bold;
+ }
+.angenommen >h4
+{
+  font-weight: bold;
+}
+.abgelehnt >h4
+{
+  font-weight: bold;
+}

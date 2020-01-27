@@ -37,6 +37,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
+import { GeschaeftsstelleComponent } from './geschaeftsstelle/geschaeftsstelle.component';
 
 
 // I keep the new line
@@ -53,6 +54,7 @@ import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-foo
     DatenschutzComponent,
     ImpressumComponent,
     DatenschutzFooterComponent,
+    GeschaeftsstelleComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
