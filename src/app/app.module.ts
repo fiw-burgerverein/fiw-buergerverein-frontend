@@ -38,6 +38,7 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 import { UebersichtsseiteComponent } from './uebersichtsseite/uebersichtsseite.component';
+import { ApplicationComponent } from './application/application.component';
 
 
 // I keep the new line
@@ -55,6 +56,7 @@ import { UebersichtsseiteComponent } from './uebersichtsseite/uebersichtsseite.c
     ImpressumComponent,
     DatenschutzFooterComponent,
     UebersichtsseiteComponent,
+    ApplicationComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
