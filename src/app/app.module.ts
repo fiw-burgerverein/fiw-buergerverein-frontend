@@ -37,7 +37,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
-import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
@@ -56,7 +55,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     DatenschutzComponent,
     ImpressumComponent,
     DatenschutzFooterComponent,
-    ConfirmAccountComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
   ],
