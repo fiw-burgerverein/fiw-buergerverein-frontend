@@ -1,0 +1,57 @@
+<div *ngIf="applications">
+  <div *ngFor="let application of applications?.applications">
+    <h2>{{application.projectName}}</h2>
+
+    <table>
+      <tr>
+        <td>formId</td><td>{{application.formId}}</td>
+      </tr>
+      <tr>
+        <td>createdAt</td><td>{{application.createdAt}}</td>
+      </tr>
+      <tr>
+        <td>status</td><td>{{application.status}}</td>
+      </tr>
+      <tr>
+        <td>projectName</td><td>{{application.projectName}}</td>
+      </tr>
+      <tr>
+        <td>startDate</td><td>{{application.startDate}}</td>
+      </tr>
+      <tr>
+        <td>endDate</td><td>{{application.endDate}}</td>
+      </tr>
+      <tr>
+        <td>ort</td><td>{{application.ort}}</td>
+      </tr>
+      <tr>
+        <td>sachkostenSum</td><td>{{application.sachkostenSum}}</td>
+      </tr>
+      <tr>
+        <td>aufwandSum</td><td>{{application.aufwandSum}}</td>
+      </tr>
+      <tr>
+        <td>anrede</td><td>{{application.anrede}}</td>
+      </tr>
+      <tr>
+        <td>vorname</td><td>{{application.vorname}}</td>
+      </tr>
+      <tr>
+        <td>nachname</td><td>{{application.nachname}}</td>
+      </tr>
+      <tr>
+        <td>strasse</td><td>{{application.strasse}}</td>
+      </tr>
+      <tr>
+        <td>hausNr</td><td>{{application.hausNr}}</td>
+      </tr>
+      <tr>
+        <td>plz</td><td>{{application.plz}}</td>
+      </tr>
+      <tr>
+        <td>email</td><td>{{application.email}}</td>
+      </tr>
+    </table>
+
+  </div>
+</div>

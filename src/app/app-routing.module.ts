@@ -10,6 +10,9 @@ import {DatenschutzComponent} from './datenschutz/datenschutz.component';
 import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
 import {DetailseiteAntragComponent} from "./detailseite-antrag/detailseite-antrag.component";
+import {Application} from "./models/application.model";
+import {ApplicationComponent} from "./application/application.component";
+import {AllapplicationsComponent} from "./allapplications/allapplications.component";
 
 
 const routes: Routes = [
@@ -21,7 +24,9 @@ const routes: Routes = [
   {path: 'datenschutz', component: DatenschutzComponent},
   {path: 'impressum', component: ImpressumComponent},
   {path: 'datenschutz-footer', component: DatenschutzFooterComponent},
-  {path: 'detailseite', component: DetailseiteAntragComponent}
+  {path: 'detailseite', component: DetailseiteAntragComponent},
+  {path: 'application', component: ApplicationComponent},
+  {path: 'allapplications', component: AllapplicationsComponent}
 
 
 
