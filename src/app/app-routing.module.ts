@@ -13,6 +13,7 @@ import {DetailseiteAntragComponent} from "./detailseite-antrag/detailseite-antra
 import {Application} from "./models/application.model";
 import {ApplicationComponent} from "./application/application.component";
 import {AllapplicationsComponent} from "./allapplications/allapplications.component";
+import {GeschaeftsstelleComponent} from "./geschaeftsstelle/geschaeftsstelle.component";
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'datenschutz-footer', component: DatenschutzFooterComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent},
   {path: 'application', component: ApplicationComponent},
-  {path: 'allapplications', component: AllapplicationsComponent}
+  {path: 'allapplications', component: AllapplicationsComponent},
+  {path: 'geschaeftsstelle', component: GeschaeftsstelleComponent}
 
 
 
