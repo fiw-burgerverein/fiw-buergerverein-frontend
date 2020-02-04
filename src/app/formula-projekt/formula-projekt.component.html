@@ -2,7 +2,7 @@
 <div class="container">
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step>
-      <form name="formPers" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form name="formPers" #f="ngForm" novalidate> <!-- (ngSubmit)="f.form.valid&& onSubmit()"  -->
         <ng-template matStepLabel>Persönliche Angaben</ng-template>
         <mat-form-field>
           <mat-label>Anrede</mat-label>
@@ -30,7 +30,7 @@
           <mat-label>Träger/Einrichtung</mat-label>
           <input matInput placeholder="Träger/Einrichtung" name="einrichtung" [(ngModel)]="form.einrichtung">
         </mat-form-field>
-        <table class="example-full-width" cellspacing="0"><tr>
+        <table class="form-table" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
             <mat-label>Straße</mat-label>
             <input matInput placeholder="Straße" name="strasse" [(ngModel)]="form.strasse" #strasse="ngModel" required>
@@ -38,14 +38,14 @@
               <div *ngIf="strasse.errors.required">This field is required</div>
             </div>
           </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
+          <td><mat-form-field class="form-table">
             <mat-label>Hausnummer</mat-label>
             <input matInput placeholder="Hausnummer" name="hausnr" [(ngModel)]="form.hausnr" #hausnr="ngModel" required>
             <div *ngIf="f.submitted && hausnr.invalid">
               <div *ngIf="hausnr.errors.required">This field is required</div>
             </div>
           </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
+          <td><mat-form-field class="form-table">
             <mat-label>Postleitzahl</mat-label>
             <input matInput #postalCode maxlength="5" placeholder="Postleitzahl" name="plz" [(ngModel)]="form.plz"
                    #plz="ngModel" required>
@@ -86,12 +86,12 @@
           </mat-checkbox>
         </div>
         <div class="example-button-row" >
-          <button mat-raised-button color="primary" matStepperNext>Weiter</button>
+          <button mat-raised-button color="primary" matStepperNext type="button">Weiter</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <form name="formProj" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form name="formProj" #f="ngForm" novalidate>
         <ng-template matStepLabel>Angaben zu Ihren Projekt</ng-template>
         <mat-form-field>
           <mat-label>Projektname</mat-label>
@@ -108,7 +108,7 @@
             <div *ngIf="beschreibung.errors.required">This field is required</div>
           </div>
         </mat-form-field>
-        <table class="example-full-width" cellspacing="0"><tr>
+        <table class="form-table" cellspacing="0"><tr>
           <td><mat-form-field>
             <mat-label>Gewünschtes Startdatum</mat-label>
             <input matInput [matDatepicker]="picker" placeholder="Geplantes Startdatum" name="startdatum" required
@@ -138,12 +138,13 @@
             <mat-option value=">Wartenberg, Falkenberg und Malchow">Wartenberg, Falkenberg und Malchow</mat-option>
           </mat-select>
         </mat-form-field>
-        <table class="example-full-width" cellspacing="0"><tr>
+        <table class="form-table" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
             <mat-label>Zielgruppe</mat-label>
             <input matInput placeholder="Zielgruppe" name="zielgruppe" [(ngModel)]="form.zielgruppe" #zielgruppe="ngModel">
           </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
+          <td><mat-form-field class="form-table">
+            <mat-label>Anzahl Teilnehmer</mat-label>
             <input matInput type="number" min="1" placeholder="Anzahl der Teilnehmer" name="anzteiln" required
                    [(ngModel)]="form.anzteiln" #anzteiln="ngModel">
             <div *ngIf="f.submitted && anzteiln.invalid">
@@ -164,20 +165,116 @@
                     [(ngModel)]="form.oeffarbbeschr" #oeffarbbeschr="ngModel"></textarea>
         </mat-form-field>
 
+        <div class="kosten">
+          <mat-label>Aufwandsentschädigungen</mat-label>
+          <div class='table-responsive mat-elevation-z8' id="aufwand">
+            <table mat-table [dataSource]="dataSourceAufwand" name="aufwand" class="mat-table">
+              <!-- Posten Column -->
+              <ng-container matColumnDef="Posten">
+                <th mat-header-cell *matHeaderCellDef col width="800" > Posten: </th>
+                <td mat-cell *matCellDef="let element">
+                  <input matInput name="zweck" placeholder="Beschreibung:">
+                </td>
+                <td mat-footer-cell *matFooterCellDef > Summe: </td>
+              </ng-container>
+              <!-- Betrag Column -->
+              <ng-container matColumnDef="Betrag">
+                <th mat-header-cell *matHeaderCellDef > Betrag: </th>
+                <td mat-cell *matCellDef="let element"> <input matInput type="number" min="1" name="kosten" id="betragAufwand"
+                    #betragAufwand (keyup.enter)="addElementAufwand($event)" placeholder="€ 0,00"></td>
+                <td mat-footer-cell *matFooterCellDef >{{aufwandSumme| currency : "€"}} <br>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" ><input></tr>
+              <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+            </table>
+          </div>
+          <br>
+          <mat-label>Sachkosten</mat-label>
+          <div class='table-responsive mat-elevation-z8' id="sachkosten">
+            <table mat-table [dataSource]="dataSourceSachkosten" name="sachkosten" class="mat-table">
+              <!-- Posten Column -->
+              <ng-container matColumnDef="Posten">
+                <th mat-header-cell *matHeaderCellDef col width="800" > Posten: </th>
+                <td mat-cell *matCellDef="let element">
+                    <input matInput name="zweck" placeholder="Beschreibung:">
+                </td>
+                <td mat-footer-cell *matFooterCellDef > Summe: </td>
+              </ng-container>
+              <!-- Betrag Column -->
+              <ng-container matColumnDef="Betrag">
+                <th mat-header-cell *matHeaderCellDef > Betrag: </th>
+                <td mat-cell *matCellDef="let element"> <input matInput type="number" min="1" name="kosten" id="betrag"
+                    #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
+                <td mat-footer-cell *matFooterCellDef >{{sachkostenSumme| currency : "€"}} <br>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" ><input></tr>
+              <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+            </table>
+          </div>
+          <br>
+          <h5>Gesamtbetrag: {{gesamtSumme| currency : "€"}}</h5>
+          <mat-error *ngIf="gesamtSumme > 1000 ">{{getError()}}</mat-error>
+        </div>
         <div class="example-button-row" >
-          <button mat-raised-button color="primary" matStepperPrevious>Zurück</button>
-          <button mat-raised-button color="primary" matStepperNext>Weiter</button>
+          <button mat-raised-button color="primary" matStepperPrevious type="button">Zurück</button>
+          <button mat-raised-button color="primary" matStepperNext type="button">Weiter</button>
         </div>
       </form>
     </mat-step>
+
     <mat-step>
       <ng-template matStepLabel>Angaben überprüfen</ng-template>
-      <h2>Sie sind jetzt fertig!</h2>
-<!--        <form name="preview">-->
-<!--        </form>-->
-      <div class="example-button-row">
-        <button mat-raised-button color="primary" matStepperPrevious>Zurück</button>
-        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Antrag senden</button>
+      <div *ngIf="isSubmitted; else preview">
+        <h2>Sie sind jetzt fertig!</h2>
+        <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken und zu unterschreiben.</p>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" type="submit" (click)="generatePdf()">
+            <i class="material-icons">cloud_download</i>
+            <span> PDF herunterladen</span>
+          </button>
+        </div>
+      </div>
+      <div id="preview" style="overflow-x:auto;">
+        <ng-template #preview>
+          <h3>Überprüfen Sie Ihre Angaben:</h3>
+          <h5>Persönliche Angaben</h5>
+          <table class="preview-table">
+            <tr><td>Anrede: </td><td>{{form.anrede}}</td></tr>
+            <tr><td>Vorname: </td><td> {{form.vorname}} </td></tr>
+            <tr><td>Nachname: </td><td>{{form.nachname}}</td></tr>
+            <tr><td>Träger/Einrichtung: </td><td>{{form.einrichtung}}</td></tr>
+            <tr><td>Straße: </td><td>{{form.strasse}}</td></tr>
+            <tr><td>Hausnummer: </td><td>{{form.hausnr}}</td></tr>
+            <tr><td>Postleitzahl: </td><td>{{form.plz}}</td></tr>
+            <tr><td>E-Mail: </td><td>{{form.email}}</td></tr>
+            <tr><td>Telefon: </td><td>{{form.telnr}}</td></tr>
+          </table>
+          <h5>Angaben zum Projekt</h5>
+          <table class="preview-table">
+            <tr><td>Projektname: </td><td>{{form.projektname}}</td></tr>
+            <tr><td>Beschreibung: </td><td>{{form.beschreibung}}</td></tr>
+            <tr><td>Gewünschtes Startdatum: </td><td>{{form.startdatum}}</td></tr>
+            <tr><td>Gewünschtes Enddatum: </td><td>{{form.enddatum}}</td></tr>
+            <tr><td>Geplantes Ort: </td><td>{{form.ort}}</td></tr>
+            <tr><td>Zielgruppe: </td><td>{{form.zielgruppe}}</td></tr>
+            <tr><td>Anzahl Teilnehmer: </td><td>{{form.anzteiln}}</td></tr>
+            <tr><td>öffentlichkeitswirksame Arbeiten: </td><td>{{form.oeffarb}}</td></tr>
+            <tr><td>Deren Beschreibung: </td><td>{{form.oeffarbbeschr}}</td></tr>
+            <tr><td>Kosten: </td><td>{{gesamtSumme}}</td></tr>
+          </table>
+          <h5>Kosten</h5>
+          <table class="preview-table">
+            <tr><td>{{aufwandForm[0].zweck}}: </td><td>{{aufwandForm[0].kosten}}</td></tr>
+          </table>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" matStepperPrevious type="button">Zurück</button>
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Antrag senden</button>
+          </div>
+        </ng-template>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

@@ -39,6 +39,12 @@ import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
 
 
 // I keep the new line
@@ -86,7 +92,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
         MatDatepickerModule,
         MatNativeDateModule,
         MatStepperModule,
-        OverlayModule
+        OverlayModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule,
+        MatExpansionModule
     ],
 
   providers: [],
