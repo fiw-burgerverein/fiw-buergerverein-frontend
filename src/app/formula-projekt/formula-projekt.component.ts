@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material';
   templateUrl: './formula-projekt.component.html',
   styleUrls: ['./formula-projekt.component.css']
 })
+
 export class FormulaProjektComponent implements OnInit {
 
   // @ts-ignore
@@ -29,15 +30,12 @@ export class FormulaProjektComponent implements OnInit {
   dataSourceSachkosten = new MatTableDataSource(this.SACHKOSTEN_ELEMENT_DATA);
   private aufwandSumme = 0;
   private sachkostenSumme = 0;
-  // gesamtSumme = this.aufwandSumme + this.sachkostenSumme;
   gesamtSumme = 0;
 
   form: any = {};
-  aufwandForm: any = {};
-  sachkostenForm: any = {};
+  aufwandKostenArray: AufwandInfo[] = [];
+  sachKostenArray: SachkostenInfo[] = [];
   formInfo: FormInfo;
-  aufwandInfo: AufwandInfo;
-  sachkostenInfo: SachkostenInfo;
   emailCtrl = new FormControl('', [Validators.required, Validators.email]);
   isLinear = false;
   isSubmitted = false;
@@ -47,47 +45,48 @@ export class FormulaProjektComponent implements OnInit {
   // projAngaben: FormGroup;
 
   addElementAufwand(z: Event) {
-    // console.log(this.dataSourceAufwand.data.length);
-    const textareaArray = document.getElementsByTagName('textarea');
-    const zweck = textareaArray[textareaArray.length - 1].value;
+    const textareaArray = document.getElementsByClassName('zweck-aufwand');
+    const zweck = (textareaArray.item(textareaArray.length - 1) as HTMLInputElement).value;
     const betrag = Number(+(z.currentTarget as HTMLInputElement).value);
     this.dataSourceAufwand.data.push({Posten: zweck, Betrag: betrag});
     this.dataSourceAufwand = new MatTableDataSource(this.AUFWAND_ELEMENT_DATA);
-    this.aufwandSumme = 0;
-    for (let i = 0; i < this.AUFWAND_ELEMENT_DATA.length; i++) {
-      this.aufwandSumme = this.aufwandSumme + this.AUFWAND_ELEMENT_DATA[i].Betrag;
+    // this.aufwandSumme = 0;
+    // tslint:disable-next-line:prefer-for-of
+    for (const aufwand of this.AUFWAND_ELEMENT_DATA) {
+      this.aufwandSumme = this.aufwandSumme + aufwand.Betrag;
     }
     this.gesamtSumme = this.aufwandSumme + this.sachkostenSumme;
-    console.log(this.gesamtSumme);
+    this.aufwandKostenArray.push(new AufwandInfo(zweck, betrag));
+    console.log(this.aufwandKostenArray[0].cost);
     return this.aufwandSumme;
   }
   addElementSachkosten(z: Event) {
-    // console.log(this.dataSourceSachkosten.data.length);
-    const textareaArray = document.getElementsByTagName('textarea');
-    const zweck = textareaArray[textareaArray.length - 1].value;
+    const textareaArray = document.getElementsByClassName('zweck-sachkosten');
+    const zweck = (textareaArray.item(textareaArray.length - 1) as HTMLInputElement).value;
     const betrag = Number(+(z.currentTarget as HTMLInputElement).value);
     this.dataSourceSachkosten.data.push({Posten: zweck, Betrag: betrag});
     this.dataSourceSachkosten = new MatTableDataSource(this.SACHKOSTEN_ELEMENT_DATA);
-    this.sachkostenSumme = 0;
-    for (let i = 0; i < this.SACHKOSTEN_ELEMENT_DATA.length; i++) {
-      this.sachkostenSumme = this.sachkostenSumme + this.SACHKOSTEN_ELEMENT_DATA[i].Betrag;
+    // this.sachkostenSumme = 0;
+    for (const sachkosten of this.SACHKOSTEN_ELEMENT_DATA) {
+      this.sachkostenSumme = this.sachkostenSumme + sachkosten.Betrag;
     }
     this.gesamtSumme = this.aufwandSumme + this.sachkostenSumme;
-    console.log(this.gesamtSumme);
+    this.sachKostenArray.push(new SachkostenInfo(zweck, betrag));
+    console.log(this.sachKostenArray);
     return this.sachkostenSumme;
   }
   getError() {
     {return'der Betrag darf nicht mehr als €1000 sein.'; }
   }
 
-
   constructor(private formService: FormService) { }
+
 
   ngOnInit() {
   }
+
   onSubmit() {
     console.log(this.form);
-
     this.formInfo = new FormInfo(
       this.form.anrede,
       this.form.vorname,
@@ -107,16 +106,8 @@ export class FormulaProjektComponent implements OnInit {
       this.form.anzteiln,
       this.form.oeffarb,
       this.form.oeffarbbeschr,
-      this.form.aufwand.push(new AufwandInfo(this.aufwandInfo.zweck, this.aufwandInfo.kosten)),
-      this.form.sachkosten.push(new SachkostenInfo(this.sachkostenInfo.zweck, this.sachkostenInfo.kosten))
-     );
-    this.aufwandInfo = new AufwandInfo(
-      this.aufwandForm.zweck,
-      this.aufwandForm.kosten
-    );
-    this.sachkostenInfo = new SachkostenInfo(
-      this.sachkostenForm.zweck,
-      this.sachkostenForm.kosten
+      this.aufwandKostenArray,
+      this.sachKostenArray,
     );
 
     this.formService.saveForm(this.formInfo).subscribe(
@@ -133,56 +124,14 @@ export class FormulaProjektComponent implements OnInit {
     );
   }
   getErrorMessage() {
-  return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
-    this.emailCtrl.hasError('email') ? 'Keine gültige E-Mail-Adresse' :
-    '';
-
+    return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
+      this.emailCtrl.hasError('email') ? 'Keine gültige E-Mail-Adresse' :
+        '';
   }
-
-
-  generatePdf(action = 'download') {
-    const documentDefinition = this.getDocumentDefinition();
-    // pdfMake.createPdf(documentDefinition).download();
-  }
-  getDocumentDefinition() {
-    sessionStorage.setItem('form', JSON.stringify(this.form));
-    return {
-      content: [
-        {
-          text: 'Antrag',
-          bold: true,
-          fontSize: 20,
-          alignment: 'center',
-          margin: [0, 0, 0, 20]
-        },
-        {
-          columns: [
-            [{
-                text: this.form.anrede,
-              },
-              {
-                text: this.form.vorname,
-              },
-              {
-                text: 'E-Mail: ' + this.form.email,
-              },
-              {
-                text: 'Telefonnummer : ' + this.form.telnr,
-              }
-            ],
-            [
-              {},
-              {
-                text: this.form.nachname,
-              },
-            ]
-          ]
-        }],
-    };
-  }
-
 }
+
 export interface Element {
   Posten: string;
   Betrag: number;
 }
+

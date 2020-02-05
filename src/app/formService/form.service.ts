@@ -6,6 +6,7 @@ import { FormInfo } from './form-info';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+// httpOptions.headers.append('Authorization', 'Bearer')
 @Injectable({
   providedIn: 'root'
 })

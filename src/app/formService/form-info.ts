@@ -18,8 +18,8 @@ export class FormInfo {
   anzteiln: number;
   oeffarb: string;
   oeffarbbeschr: string;
-  aufwand: AufwandInfo[] = [];
-  sachkosten: SachkostenInfo[] = [];
+  aufwandArray: AufwandInfo[] = [];
+  sachkostenArray: SachkostenInfo[] = [];
 
 
 
@@ -27,7 +27,7 @@ export class FormInfo {
               email: string, telnr: number,
               // tslint:disable-next-line:max-line-length
               projektname: string, beschreibung: string, startdatum: string, enddatum: string, ort: string, zielgruppe: string, anzteiln: number, oeffarb: string, oeffarbbeschr: string,
-              aufwand: AufwandInfo[], sachkosten: SachkostenInfo[]) {
+              aufwandArray: AufwandInfo[], sachkostenArray: SachkostenInfo[]) {
     this.anrede = anrede;
     this.vorname = vorname;
     this.nachname = nachname;
@@ -46,9 +46,8 @@ export class FormInfo {
     this.anzteiln = anzteiln;
     this.oeffarb = oeffarb;
     this.oeffarbbeschr = oeffarbbeschr;
-    this.aufwand = aufwand;
-    // aufwand: Array<AufwandInfo> = [];
-    this.sachkosten = sachkosten;
+    this.aufwandArray = aufwandArray;
+    this.sachkostenArray = sachkostenArray;
     // this.aufwand.push(new AufwandInfo(this.zweck, AufwandInfo.kosten));
     // this.sachkosten.push(new SachkostenInfo(SachkostenInfo.zweck, SachkostenInfo.kosten));
   }
@@ -56,10 +55,10 @@ export class FormInfo {
 
 export class AufwandInfo {
   zweck: string;
-  kosten: number;
-  constructor(zweck: string, kosten: number) {
+  cost: number;
+  constructor(zweck: string, cost: number) {
     this.zweck = zweck;
-    this.kosten = kosten;
+    this.cost = cost;
   }
 
   push(aufwandInfo1: AufwandInfo) {
@@ -68,9 +67,9 @@ export class AufwandInfo {
 }
 export class SachkostenInfo {
   zweck: string;
-  kosten: number;
-  constructor(zweck: string, kosten: number) {
+  cost: number;
+  constructor(zweck: string, cost: number) {
     this.zweck = zweck;
-    this.kosten = kosten;
+    this.cost = cost;
   }
 }
