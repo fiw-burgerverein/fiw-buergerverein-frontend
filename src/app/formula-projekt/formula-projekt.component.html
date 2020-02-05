@@ -135,7 +135,7 @@
           <mat-select placeholder="Geplantes Ort" name="ort" required [(ngModel)]="form.ort" #ort="ngModel">
             <mat-option value="Neu-Hohenschönhausen Nord">Neu-Hohenschönhausen Nord</mat-option>
             <mat-option value="Neu-Hohenschönhausen Süd">Neu-Hohenschönhausen Süd</mat-option>
-            <mat-option value=">Wartenberg, Falkenberg und Malchow">Wartenberg, Falkenberg und Malchow</mat-option>
+            <mat-option value="Wartenberg, Falkenberg und Malchow">Wartenberg, Falkenberg und Malchow</mat-option>
           </mat-select>
         </mat-form-field>
         <table class="form-table" cellspacing="0"><tr>
@@ -228,7 +228,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Angaben überprüfen</ng-template>
+      <ng-template matStepLabel>Angaben überprüfen&absenden</ng-template>
       <div *ngIf="isSubmitted; else preview">
         <h2>Sie sind jetzt fertig!</h2>
         <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken und zu unterschreiben.</p>
@@ -267,10 +267,35 @@
             <tr><td>Deren Beschreibung: </td><td>{{form.oeffarbbeschr}}</td></tr>
             <tr><td>Gesamtkosten: </td><td>{{gesamtSumme}}</td></tr>
           </table>
-          <h5>Aufwandsentschädigungen</h5>
+          <h5>Kosten</h5>
+          <p><b>Aufwandsentschädigungen</b></p>
+          <ng-container *ngIf="aufwandKostenExist; else keineAufwandkosten">
+            <table class="preview-table">
+              <ng-container *ngFor="let aufwand of aufwandKostenArray">
+                <tr><th>Posten: </th><th>Betrag: </th></tr>
+                <tr><td>{{aufwand.zweck}}</td><td>{{aufwand.cost}}</td></tr>
+              </ng-container>
+            </table>
+          </ng-container>
+          <div id="keineAufwandkosten">
+            <ng-template #keineAufwandkosten>
+              <p>Es wurden keine Aufwandsentschädigungskosten angegeben.</p>
+            </ng-template>
+          </div>
+      <p><b>Sachkosten</b></p>
+      <ng-container *ngIf="sachKostenExist; else keineSachkosten">
           <table class="preview-table">
-            <tr><td>{{this.aufwandKostenArray[0].zweck}}: </td><td>{{this.aufwandKostenArray[0].cost}}</td></tr>
+            <ng-container *ngFor="let sachkosten of sachKostenArray">
+              <tr><th>Posten: </th><th>Betrag: </th></tr>
+              <tr><td>{{sachkosten.zweck}}</td><td>{{sachkosten.cost}}</td></tr>
+            </ng-container>
           </table>
+        </ng-container>
+          <div id="keineSachkosten">
+            <ng-template #keineSachkosten>
+              <p>Es wurden keine Sachkosten angegeben.</p>
+            </ng-template>
+          </div>
           <div class="example-button-row">
             <button mat-raised-button color="primary" matStepperPrevious type="button">Zurück</button>
             <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Antrag senden</button>

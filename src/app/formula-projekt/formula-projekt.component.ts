@@ -3,9 +3,7 @@ import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
-// import pdfMake from 'pdfmake/build/pdfmake';
-// import pdfFonts from 'pdfmake/build/vfs_fonts';
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import {Result} from '../formService/result.model';
 
 @Component({
   selector: 'app-formula-projekt',
@@ -30,7 +28,7 @@ export class FormulaProjektComponent implements OnInit {
   dataSourceSachkosten = new MatTableDataSource(this.SACHKOSTEN_ELEMENT_DATA);
   private aufwandSumme = 0;
   private sachkostenSumme = 0;
-  gesamtSumme = 0;
+  private gesamtSumme = 0;
 
   form: any = {};
   aufwandKostenArray: AufwandInfo[] = [];
@@ -43,6 +41,9 @@ export class FormulaProjektComponent implements OnInit {
   errorMessage = '';
   // persAngaben: FormGroup;
   // projAngaben: FormGroup;
+  aufwandKostenExist = false;
+  sachKostenExist = false;
+  // result: Result;
 
   addElementAufwand(z: Event) {
     const textareaArray = document.getElementsByClassName('zweck-aufwand');
@@ -50,14 +51,13 @@ export class FormulaProjektComponent implements OnInit {
     const betrag = Number(+(z.currentTarget as HTMLInputElement).value);
     this.dataSourceAufwand.data.push({Posten: zweck, Betrag: betrag});
     this.dataSourceAufwand = new MatTableDataSource(this.AUFWAND_ELEMENT_DATA);
-    // this.aufwandSumme = 0;
     // tslint:disable-next-line:prefer-for-of
     for (const aufwand of this.AUFWAND_ELEMENT_DATA) {
       this.aufwandSumme = this.aufwandSumme + aufwand.Betrag;
     }
     this.gesamtSumme = this.aufwandSumme + this.sachkostenSumme;
     this.aufwandKostenArray.push(new AufwandInfo(zweck, betrag));
-    console.log(this.aufwandKostenArray[0].cost);
+    this.aufwandKostenExist = true;
     return this.aufwandSumme;
   }
   addElementSachkosten(z: Event) {
@@ -66,13 +66,12 @@ export class FormulaProjektComponent implements OnInit {
     const betrag = Number(+(z.currentTarget as HTMLInputElement).value);
     this.dataSourceSachkosten.data.push({Posten: zweck, Betrag: betrag});
     this.dataSourceSachkosten = new MatTableDataSource(this.SACHKOSTEN_ELEMENT_DATA);
-    // this.sachkostenSumme = 0;
     for (const sachkosten of this.SACHKOSTEN_ELEMENT_DATA) {
       this.sachkostenSumme = this.sachkostenSumme + sachkosten.Betrag;
     }
     this.gesamtSumme = this.aufwandSumme + this.sachkostenSumme;
     this.sachKostenArray.push(new SachkostenInfo(zweck, betrag));
-    console.log(this.sachKostenArray);
+    this.sachKostenExist = true;
     return this.sachkostenSumme;
   }
   getError() {
@@ -110,18 +109,20 @@ export class FormulaProjektComponent implements OnInit {
       this.sachKostenArray,
     );
 
-    this.formService.saveForm(this.formInfo).subscribe(
-      data => {
-        console.log(data);
-        this.isSubmitted = true;
-        this.isSubmitFailed = false;
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
-        this.isSubmitFailed = true;
-      }
-    );
+    this.formService.saveForm(this.formInfo)
+      .subscribe(
+        data => {
+          console.log(data);
+          // this.result = JSON.parse(data['body']).value[2];
+          this.isSubmitted = true;
+          this.isSubmitFailed = false;
+        },
+        error => {
+          console.log(error);
+          this.errorMessage = error.error.message;
+          this.isSubmitFailed = true;
+        }
+       );
   }
   getErrorMessage() {
     return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
@@ -134,4 +135,5 @@ export interface Element {
   Posten: string;
   Betrag: number;
 }
+
 

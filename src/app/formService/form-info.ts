@@ -60,10 +60,6 @@ export class AufwandInfo {
     this.zweck = zweck;
     this.cost = cost;
   }
-
-  push(aufwandInfo1: AufwandInfo) {
-    return [];
-  }
 }
 export class SachkostenInfo {
   zweck: string;
