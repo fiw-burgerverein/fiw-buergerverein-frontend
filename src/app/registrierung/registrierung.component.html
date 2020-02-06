@@ -3,7 +3,7 @@
   <h2>Registrierung</h2>
 </mat-toolbar>
 
-<mat-card class="my-card">
+<mat-card class="my-card" *ngIf="!(isActivated || activationFailed)">
   <mat-card-header>
     <mat-card-title></mat-card-title>
   </mat-card-header>
@@ -13,7 +13,7 @@
       <p>Sie haben sich erfolgreich registriert! Folgen Sie den an den von Ihnen eingegebenen E-Mail-Adresse zugeschickten
         Link, im die Registration abzuschliessen.</p>
     </div>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <form name="my-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <ng-template #signupForm>
           <mat-form-field class="full-width">
             <mat-label>E-Mail</mat-label>

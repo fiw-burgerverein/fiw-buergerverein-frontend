@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FormInfo } from './form-info';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+const httpOptions: { headers; observe; responseType } = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  }),
+  observe: 'response' as 'body',
+  responseType: 'json'
 };
+// httpOptions.headers.append('Authorization', 'Bearer')
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +21,7 @@ export class FormService {
 
   constructor(private http: HttpClient) { }
 
-  saveForm(info: FormInfo): Observable<string> {
+  saveForm(info: FormInfo): Observable<HttpEvent<string>> {
     return this.http.post<string>(this.formUrl, info, httpOptions);
   }
 }

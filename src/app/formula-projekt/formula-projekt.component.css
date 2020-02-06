@@ -51,3 +51,44 @@ table {
   text-decoration: none;
   color: white;
 }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: lighter;
+  font-style: normal;
+  font-size: 20px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.preview-table > td {
+  vertical-align: top;
+}
+.preview-table > th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.preview-table > tr:hover {background-color: #f5f5f5;}
+
+/* CSS für dieBeträge*/
+/*.table, th, td {*/
+/*  border: 1px solid grey;*/
+/*}*/
+.mat-label{
+  margin: 100%;
+}
+.mat-table{
+  width: 100%;
+}
+
+.table-responsive, mat-elevation-z8 {
+}
+/*button{ width: 100%}*/
