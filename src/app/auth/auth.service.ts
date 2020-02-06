@@ -11,7 +11,7 @@ import {CheckTokenInfo} from './check-token-info';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  observe: 'response' as 'body'
+/*  observe: 'response' as 'body'*/
 };
 @Injectable({
   providedIn: 'root'
