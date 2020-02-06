@@ -45,6 +45,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
+import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
@@ -62,6 +63,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DatenschutzComponent,
     ImpressumComponent,
     DatenschutzFooterComponent,
+    DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
   ],
