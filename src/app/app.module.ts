@@ -46,6 +46,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
 
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 // I keep the new line
 @NgModule({
@@ -100,7 +101,7 @@ import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
         MatExpansionModule
     ],
 
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 

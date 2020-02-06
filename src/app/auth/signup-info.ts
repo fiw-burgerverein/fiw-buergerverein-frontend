@@ -1,7 +1,7 @@
 export class SignUpInfo {
   email: string;
   emailConfirm: string;
-  role: string[];
+/*  role: string[];*/
   password: string;
   passwordConfirm: string;
 
@@ -9,7 +9,7 @@ export class SignUpInfo {
   constructor(email: string, emailConfirm: string, password: string, passwordConfirm: string) {
     this.email = email;
     this.emailConfirm = emailConfirm;
-    this.role = ['user'];
+/*    this.role = ['user'];*/
     this.password = password;
     this.passwordConfirm = passwordConfirm;
   }

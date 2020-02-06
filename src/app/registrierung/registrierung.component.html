@@ -10,8 +10,8 @@
 
   <mat-card-content>
     <div *ngIf="isSignedUp; else signupForm">
-      <p>Sie haben sich erfolgreich registriert! Folgen Sie den an den von Ihnen eingegebenen E-Mail-Adresse zugeschickten
-        Link, im die Registration abzuschliessen.</p>
+      <p>Sie haben sich erfolgreich registriert! Um Ihren Account freizuschalten, klicken Sie bitte auf den an die von
+        Ihnen angegebene Email-Adresse gesendeten Link</p>
     </div>
     <form name="my-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <ng-template #signupForm>
