@@ -47,7 +47,7 @@ export class FormulaProjektComponent implements OnInit {
     this.formService.saveForm(this.formInfo).subscribe(
       data => {
         console.log(data);
-        // this.isSignedUp = true;
+       // this.isSignedUp = true;
         // this.isSignUpFailed = false;
       },
       error => {

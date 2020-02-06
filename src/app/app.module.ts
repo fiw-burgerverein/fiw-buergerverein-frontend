@@ -38,6 +38,7 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-footer.component';
 
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 // I keep the new line
 @NgModule({
@@ -85,7 +86,7 @@ import { DatenschutzFooterComponent } from './datenschutz-footer/datenschutz-foo
         OverlayModule
     ],
 
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 
