@@ -60,9 +60,9 @@
           <input [formControl]="emailCtrl" matInput placeholder="Geben Sie Ihre E-Mail Adresse an"
                  name="email" [(ngModel)]="form.email" required>
           <mat-error *ngIf="emailCtrl.invalid">{{getErrorMessage()}}</mat-error>
-<!--          <div *ngIf="f.submitted && email.invalid">-->
-<!--            <div *ngIf="email.errors.required">This field is required</div>-->
-<!--          </div>-->
+          <!--          <div *ngIf="f.submitted && email.invalid">-->
+          <!--            <div *ngIf="email.errors.required">This field is required</div>-->
+          <!--          </div>-->
         </mat-form-field>
         <mat-form-field>
           <mat-label>Telefon</mat-label>
@@ -199,7 +199,7 @@
               <ng-container matColumnDef="Posten">
                 <th mat-header-cell *matHeaderCellDef col width="800" > Posten: </th>
                 <td mat-cell *matCellDef="let element">
-                    <input matInput name="zweck" placeholder="Beschreibung:" class="zweck-sachkosten">
+                  <input matInput name="zweck" placeholder="Beschreibung:" class="zweck-sachkosten">
                 </td>
                 <td mat-footer-cell *matFooterCellDef > Summe: </td>
               </ng-container>
@@ -207,7 +207,7 @@
               <ng-container matColumnDef="Betrag">
                 <th mat-header-cell *matHeaderCellDef > Betrag: </th>
                 <td mat-cell *matCellDef="let element"> <input matInput type="number" min="1" name="kosten" id="betrag"
-                    #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
+                                                               #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
                 <td mat-footer-cell *matFooterCellDef >{{sachkostenSumme| currency : "€"}} <br>
                 </td>
               </ng-container>
@@ -244,6 +244,8 @@
           <h3>Überprüfen Sie Ihre Angaben:</h3>
           <h5>Persönliche Angaben</h5>
           <table class="preview-table">
+            <tr *ngIf="isSubmitted"><td>Formular-ID: </td><td>{{formId}}</td></tr>
+            <tr *ngIf="isSubmitted"><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
             <tr><td>Anrede: </td><td>{{form.anrede}}</td></tr>
             <tr><td>Vorname: </td><td> {{form.vorname}} </td></tr>
             <tr><td>Nachname: </td><td>{{form.nachname}}</td></tr>
@@ -256,6 +258,8 @@
           </table>
           <h5>Angaben zum Projekt</h5>
           <table class="preview-table">
+            <tr *ngIf="isSubmitted"><td>Formular-ID: </td><td>{{formId}}</td></tr>
+            <tr *ngIf="isSubmitted"><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
             <tr><td>Projektname: </td><td>{{form.projektname}}</td></tr>
             <tr><td>Beschreibung: </td><td>{{form.beschreibung}}</td></tr>
             <tr><td>Gewünschtes Startdatum: </td><td>{{form.startdatum}}</td></tr>
@@ -282,15 +286,15 @@
               <p>Es wurden keine Aufwandsentschädigungskosten angegeben.</p>
             </ng-template>
           </div>
-      <p><b>Sachkosten</b></p>
-      <ng-container *ngIf="sachKostenExist; else keineSachkosten">
-          <table class="preview-table">
-            <ng-container *ngFor="let sachkosten of sachKostenArray">
-              <tr><th>Posten: </th><th>Betrag: </th></tr>
-              <tr><td>{{sachkosten.zweck}}</td><td>{{sachkosten.cost}}</td></tr>
-            </ng-container>
-          </table>
-        </ng-container>
+          <p><b>Sachkosten</b></p>
+          <ng-container *ngIf="sachKostenExist; else keineSachkosten">
+            <table class="preview-table">
+              <ng-container *ngFor="let sachkosten of sachKostenArray">
+                <tr><th>Posten: </th><th>Betrag: </th></tr>
+                <tr><td>{{sachkosten.zweck}}</td><td>{{sachkosten.cost}}</td></tr>
+              </ng-container>
+            </table>
+          </ng-container>
           <div id="keineSachkosten">
             <ng-template #keineSachkosten>
               <p>Es wurden keine Sachkosten angegeben.</p>

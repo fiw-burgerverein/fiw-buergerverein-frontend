@@ -3,7 +3,7 @@ import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
-import {Result} from '../formService/result.model';
+import {Response} from '../formService/response.model';
 
 @Component({
   selector: 'app-formula-projekt',
@@ -43,7 +43,10 @@ export class FormulaProjektComponent implements OnInit {
   // projAngaben: FormGroup;
   aufwandKostenExist = false;
   sachKostenExist = false;
-  // result: Result;
+
+  response: Response;
+  formId: number;
+  createdAt: string;
 
   addElementAufwand(z: Event) {
     const textareaArray = document.getElementsByClassName('zweck-aufwand');
@@ -112,17 +115,18 @@ export class FormulaProjektComponent implements OnInit {
     this.formService.saveForm(this.formInfo)
       .subscribe(
         data => {
-          console.log(data);
-          // this.result = JSON.parse(data['body']).value[2];
+          this.response = data;
           this.isSubmitted = true;
           this.isSubmitFailed = false;
+          this.formId = this.response.body.result.formId;
+          this.createdAt = this.response.body.result.createdAt;
         },
         error => {
           console.log(error);
           this.errorMessage = error.error.message;
           this.isSubmitFailed = true;
         }
-       );
+      );
   }
   getErrorMessage() {
     return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
@@ -135,5 +139,4 @@ export interface Element {
   Posten: string;
   Betrag: number;
 }
-
 

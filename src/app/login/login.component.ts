@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
         this.reloadPage();
+        // this.router.navigate(['']);  <-- wenn wir zur Startseite weiterleiten wollen
       },
       error => {
         console.log(error);
