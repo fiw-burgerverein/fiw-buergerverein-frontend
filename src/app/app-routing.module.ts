@@ -9,6 +9,8 @@ import {LoginComponent} from './login/login.component';
 import {DatenschutzComponent} from './datenschutz/datenschutz.component';
 import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -19,9 +21,12 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'datenschutz', component: DatenschutzComponent},
   {path: 'impressum', component: ImpressumComponent},
-  {path: 'datenschutz-footer', component: DatenschutzFooterComponent}
-
-
+  {path: 'datenschutz-footer', component: DatenschutzFooterComponent},
+  {path: 'registrieren/accountbestaetigung', component: RegistrierungComponent},
+  {path: 'passwort-vergessen', component: ForgotPasswordComponent},
+  {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent}
+  // {path: 'passwort-vergessen', component: ResetPasswordComponent},
+  // {path: 'passwort-vergessen/passwort-zuruecksetzen', component: ResetPasswordComponent}
 
 ];
 
