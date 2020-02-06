@@ -9,7 +9,7 @@ import {ResetPasswordInfo} from './reset-password-info';
 import {ForgotPasswordInfo} from './forgot-password-info';
 import {CheckTokenInfo} from './check-token-info';
 
-const httpOptions = {
+const httpOptions = { 
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 /*  observe: 'response' as 'body'*/
 };
