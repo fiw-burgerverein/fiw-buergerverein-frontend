@@ -9,27 +9,32 @@ import {ResetPasswordInfo} from './reset-password-info';
 import {ForgotPasswordInfo} from './forgot-password-info';
 import {CheckTokenInfo} from './check-token-info';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  observe: 'response' as 'body'
+const httpOptions = { 
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+/*  observe: 'response' as 'body'*/
 };
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  // private loginUrl = 'http://localhost:8080/api/auth/signin';
-  // private signupUrl = 'http://localhost:8080/api/auth/signup';
-  private signupUrl = 'http://localhost:8080/registrieren';
-  private loginUrl = 'http://localhost:8080/login';
-  private confirmUrl = 'http://localhost:8080/registrieren/accountbestaetigung/?token=';
+
+  private loginUrl = 'http://localhost:8080/api/auth/signin';
+  private signupUrl = 'http://localhost:8080/api/auth/signup';
+
+  private confirmUrl = 'http://localhost:8080/api/auth/accountConfirm?token=';
   private resetUrl = 'http://localhost:8080/login/reset-password';
   private forgotUrl = 'http://localhost:8080/login/forgot-password';
+
+  /*
+  private signupUrl = 'http://localhost:8080/registrieren';
+  private loginUrl = 'http://localhost:8080/login';*/
+  /*  private confirmUrl = 'http://localhost:8080/registrieren/accountbestaetigung/?token=';*/
 
 
   constructor(private http: HttpClient) { }
 
-  attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
+  attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {  /*Jwt Response enthält token, email, authorities*/
     return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
 
@@ -38,7 +43,7 @@ export class AuthService {
   }
 
   confirmAccount(info: ConfirmAccountInfo): Observable<string> {
-    return this.http.get<string>(this.confirmUrl + info.verificationToken, httpOptions);
+    return this.http.post<string>(this.confirmUrl + info.verificationToken, httpOptions);
   }
 
   forgotPassword(info: ForgotPasswordInfo): Observable<string> {

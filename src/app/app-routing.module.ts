@@ -12,6 +12,7 @@ import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-foote
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {UebersichtComponent} from './uebersicht/uebersicht.component';
+import {DetailseiteAntragComponent} from './detailseite-antrag/detailseite-antrag.component';
 
 
 const routes: Routes = [
@@ -27,8 +28,7 @@ const routes: Routes = [
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
   {path: 'uebersicht', component: UebersichtComponent}
-  // {path: 'passwort-vergessen', component: ResetPasswordComponent},
-  // {path: 'passwort-vergessen/passwort-zuruecksetzen', component: ResetPasswordComponent}
+  {path: 'detailseite', component: DetailseiteAntragComponent}
 
 ];
 

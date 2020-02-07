@@ -47,8 +47,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
 import {UebersichtComponent} from './uebersicht/uebersicht.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
-
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 // I keep the new line
 @NgModule({
@@ -64,6 +65,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     DatenschutzComponent,
     ImpressumComponent,
     DatenschutzFooterComponent,
+    DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
     UebersichtComponent,
@@ -105,7 +107,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
         PDFExportModule
     ],
 
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 
