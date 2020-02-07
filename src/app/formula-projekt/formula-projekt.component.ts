@@ -48,6 +48,15 @@ export class FormulaProjektComponent implements OnInit {
   formId: number;
   createdAt: string;
 
+  minStartDate = new Date();
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorEmail() {
+    return this.emailFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+      this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
+        '';
+  }
+
   addElementAufwand(z: Event) {
     const textareaArray = document.getElementsByClassName('zweck-aufwand');
     const zweck = (textareaArray.item(textareaArray.length - 1) as HTMLInputElement).value;
@@ -81,7 +90,11 @@ export class FormulaProjektComponent implements OnInit {
     {return'der Betrag darf nicht mehr als €1000 sein.'; }
   }
 
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService) {
+    // const currentDate = new Date().getDate();
+    // this.minStartDate = new Date(currentDate);
+    // this.minEndDate = new Date(this.minStartDate);
+  }
 
 
   ngOnInit() {

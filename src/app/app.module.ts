@@ -27,7 +27,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { FormulaProjektComponent } from './formula-projekt/formula-projekt.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 import { LoginComponent } from './login/login.component';
@@ -101,7 +101,9 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
         MatExpansionModule
     ],
 
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
+  ],
   bootstrap: [AppComponent]
 })
 

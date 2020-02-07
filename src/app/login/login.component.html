@@ -9,10 +9,10 @@
   </mat-card-header>
 
   <mat-card-content>
-<!--    <div *ngIf="isLoggedIn; else loginForm">-->
+    <div *ngIf="isLoggedIn; else loginForm">
 <!--      Logged in as {{roles}}.-->
 <!--      <button class="btn btn-secondary">Logout</button>-->
-<!--    </div>-->
+    </div>
     <div *ngIf="isLoginFailed">
       <span>{{getErrorMessage()}}</span>
     </div>

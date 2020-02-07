@@ -92,3 +92,9 @@ table {
 .table-responsive, mat-elevation-z8 {
 }
 /*button{ width: 100%}*/
+.unterschrift {
+  text-align: right;
+}
+.info-table {
+  justify-content: right;
+}
