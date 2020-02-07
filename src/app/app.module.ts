@@ -45,6 +45,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
+import {UebersichtComponent} from './uebersicht/uebersicht.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 
 
 // I keep the new line
@@ -63,6 +66,7 @@ import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
     DatenschutzFooterComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -97,7 +101,8 @@ import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
         MatSortModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatExpansionModule
+        MatExpansionModule,
+        PDFExportModule
     ],
 
   providers: [],
