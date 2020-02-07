@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../api.service";
+import {Application} from "../models/application.model";
+
 
 @Component({
   selector: 'app-detailseite-antrag',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detailseite-antrag.component.css']
 })
 export class DetailseiteAntragComponent implements OnInit {
+  application: Application;
 
-  constructor() { }
+
+  constructor(private apiService: ApiService) { }
+
+  public getApplication(id: number) {
+    this.apiService.getApplication(id)
+      .subscribe((data) => {
+        console.log(data);
+        this.application = data;
+      }         );
+  }
 
   ngOnInit() {
+    this.getApplication(3);
   }
 
 }

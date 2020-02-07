@@ -1,11 +1,13 @@
+<div *ngIf="geschaeftsstelle">
+  <div *ngFor="let application of geschaeftsstelle?.geschaeftsstelle">
 <div class="inhalt_gs" >
   <h3>Übersicht über eingegangenen Anträge</h3>
   <hr>
-  <div class="bearbeitung">
+  <div class="bearbeitung" *ngIf="this.isInBearbeitung">
   <h4>In Bearbeitung</h4>
    <table>
      <tr>
-       <td>projectName</td><td>{{geschaeftsstelle.projectName}}</td>
+       <td>projectName</td><td>{{geschaeftsstelle.body.projectName}}</td>
      </tr>
      <r>
        <td>startDate</td><td>{{geschaeftsstelle.startDate}}</td>
@@ -17,15 +19,17 @@
 
   </div>
   <hr>
-  <div class="angenommen">
+  <div class="angenommen" *ngIf="this.isGehnemigt">
     <h4>Angenommen</h4>
     <p>Datum: </p>
     <p>Titel: </p>
   </div>
   <hr>
-  <div class="abgelehnt">
+  <div class="abgelehnt" *ngIf="isAbgelehnt">
     <h4>Abgelehnt</h4>
     <p>Datum: </p>
     <p>Titel: </p>
+  </div>
+</div>
   </div>
 </div>

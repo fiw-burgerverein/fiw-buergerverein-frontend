@@ -9,7 +9,7 @@ import {AllApplications} from './models/allapplications.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private backendUrl = 'http://localhost:8080/user';
+  private backendUrl = 'http://localhost:8080/alleAntraege';
 
   constructor(
     private httpClient: HttpClient) { }
