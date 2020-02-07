@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthLoginInfo} from '../auth/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,29 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+
+  getErrorEmail() {
+    return this.emailFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+      this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
+        '';
+  }
+  getErrorPassword() {
+    return this.passwordFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+        '';
+  }
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,  private router: Router) { }
 
   ngOnInit() {
+
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();  /* gibt ROLE_ROLE_USER zurück*/
     }
   }
+
   onSubmit() {
     console.log(this.form);
 
@@ -43,7 +59,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
         this.reloadPage();
-        // this.router.navigate(['']);  <-- wenn wir zur Startseite weiterleiten wollen
+        this.router.navigate(['#']);
       },
       error => {
         console.log(error);
@@ -55,6 +71,9 @@ export class LoginComponent implements OnInit {
 
   reloadPage() {
     window.location.reload();
+  }
+  getErrorMessage() {
+    return this.errorMessage; // TODO
   }
 
   /*logout() {
