@@ -5,6 +5,7 @@ import {ContentComponent} from './content/content.component';
 import {RegistrierungComponent} from './registrierung/registrierung.component';
 import {FormulaProjektComponent} from './formula-projekt/formula-projekt.component';
 import {LoginComponent} from './login/login.component';
+import {HeaderComponent} from './header/header.component';
 
 import {DatenschutzComponent} from './datenschutz/datenschutz.component';
 import {ImpressumComponent} from './impressum/impressum.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
   {path: 'uebersicht', component: UebersichtComponent},
-  {path: 'detailseite', component: DetailseiteAntragComponent}
+  {path: 'detailseite', component: DetailseiteAntragComponent},
+  {path: 'header', component: HeaderComponent}
 
 ];
 
