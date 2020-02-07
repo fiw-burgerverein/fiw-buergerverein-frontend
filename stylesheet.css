@@ -1,8 +1,9 @@
-@import '~@angular/cdk/overlay-prebuilt.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 *
 {
 	font-family: Source Sans Pro, sans-serif;
-	background-color:F0F0F0;
+
 
 }
 

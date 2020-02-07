@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'registrieren/accountbestaetigung', component: RegistrierungComponent},
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
-  {path: 'uebersicht', component: UebersichtComponent},ng
+  {path: 'uebersicht', component: UebersichtComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent}
 
 ];
