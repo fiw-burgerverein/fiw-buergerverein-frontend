@@ -8,24 +8,44 @@ import {FormService} from '../formService/form.service';
   styleUrls: ['./detailseite-antrag.component.css']
 })
 export class DetailseiteAntragComponent implements OnInit {
-
-  /*changeStateInfo: ChangeStateInfo;*/
   stateInt: number;
+/*  abgelehnt: boolean;*/
   isChanged = false;
-  errorMessage = 'Status konnte nicht geändert werden';
+  errorMessage = '';
 
   constructor(private formService: FormService) { }
 
   ngOnInit() {
   }
 
-  genehmigen() {
+  callChangeState(event) {
+    if (event.target.id === 'btnGenehmigen') {
+      this.stateInt = 1;
+      console.log(this.stateInt);
+    } else if (event.target.id === 'btnAblehnen') {
+      this.stateInt = 2;
+    }
+    this.formService.changeState(this.stateInt).subscribe(
+      data => {
+        console.log(data);
+        this.isChanged = true;
+   /*    navigieren zu?*/
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = 'Status konnte nicht geändert werden';
+        this.isChanged = false;
+      }
+    );
+  }
+
+/*  genehmigen() {
     this.stateInt = 1;
     this.formService.changeState(this.stateInt).subscribe(
       data => {
         console.log(data);
         this.isChanged = true;
-      /*  router navigate*/
+      /!*  router navigate*!/
       },
       error => {
         console.log(error);
@@ -41,7 +61,7 @@ export class DetailseiteAntragComponent implements OnInit {
       data => {
         console.log(data);
         this.isChanged = true;
-        /*  router navigate*/
+        /!*  router navigate*!/
       },
       error => {
         console.log(error);
@@ -49,5 +69,5 @@ export class DetailseiteAntragComponent implements OnInit {
         this.isChanged = false;
       }
     );
-  }
+  }*/
 }
