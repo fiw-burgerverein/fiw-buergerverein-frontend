@@ -44,12 +44,17 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
-import {UebersichtComponent} from './uebersicht/uebersicht.component';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+// import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
+// import {UebersichtComponent} from './uebersicht/uebersicht.component';
+// import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { ApplicationComponent } from './application/application.component';
+import { AllapplicationsComponent } from './allapplications/allapplications.component';
+import { GeschaeftsstelleComponent } from './geschaeftsstelle/geschaeftsstelle.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 
 // I keep the new line
 @NgModule({
@@ -68,7 +73,10 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    UebersichtComponent,
+    // UebersichtComponent,
+    ApplicationComponent,
+    AllapplicationsComponent,
+    GeschaeftsstelleComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [

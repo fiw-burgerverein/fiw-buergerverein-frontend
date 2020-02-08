@@ -3,9 +3,6 @@ import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
-import {Result} from '../formService/result.model';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-formula-projekt',

@@ -1,6 +1,7 @@
-<div *ngIf="application">
-  <div class="detailseite">
+<div *ngIf="applications">
+  <div *ngFor="let application of applications?.applications">
     <h2>{{application.projectName}}</h2>
+
     <table>
       <tr>
         <td>formId</td><td>{{application.formId}}</td>
@@ -52,12 +53,5 @@
       </tr>
     </table>
 
-
-    <div class="buttons">
-      <a (click)="callChangeState($event)" id="btnGenehmigen" mat-raised-button color="primary" >Genehmigen</a>
-
-      <a (click)="callChangeState($event)" id="btnAblehnen" mat-raised-button color="primary" >Ablehnen</a>
-
-    </div>
   </div>
 </div>

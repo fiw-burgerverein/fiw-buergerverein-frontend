@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormService} from '../formService/form.service';
+import {ApiService} from '../api.service';
+import {Application} from '../models/detailseite.model';
 /*import {ChangeStateInfo} from "../auth/change-state-info";*/
 
 @Component({
@@ -8,14 +10,17 @@ import {FormService} from '../formService/form.service';
   styleUrls: ['./detailseite-antrag.component.css']
 })
 export class DetailseiteAntragComponent implements OnInit {
+
+  constructor(private formService: FormService, private apiService: ApiService) { }
   stateInt: number;
 /*  abgelehnt: boolean;*/
   isChanged = false;
   errorMessage = '';
 
-  constructor(private formService: FormService) { }
+  application: Application;
 
   ngOnInit() {
+    this.getApplication(3);
   }
 
   callChangeState(event) {
@@ -37,6 +42,14 @@ export class DetailseiteAntragComponent implements OnInit {
         this.isChanged = false;
       }
     );
+  }
+
+  public getApplication(id: number) {
+    this.apiService.getApplication(id)
+      .subscribe((data) => {
+        console.log(data);
+        this.application = data;
+      }         );
   }
 
 /*  genehmigen() {

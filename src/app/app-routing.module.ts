@@ -12,8 +12,9 @@ import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
-import {UebersichtComponent} from './uebersicht/uebersicht.component';
+// import {UebersichtComponent} from './uebersicht/uebersicht.component';
 import {DetailseiteAntragComponent} from './detailseite-antrag/detailseite-antrag.component';
+import {GeschaeftsstelleComponent} from './geschaeftsstelle/geschaeftsstelle.component';
 
 
 const routes: Routes = [
@@ -28,10 +29,10 @@ const routes: Routes = [
   {path: 'registrieren/accountbestaetigung', component: RegistrierungComponent},
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
-  {path: 'uebersicht', component: UebersichtComponent},
+  // {path: 'uebersicht', component: UebersichtComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent},
-  {path: 'header', component: HeaderComponent}
-
+  {path: 'header', component: HeaderComponent},
+  {path: 'geschaeftsstelle', component: GeschaeftsstelleComponent}
 ];
 
 @NgModule({
