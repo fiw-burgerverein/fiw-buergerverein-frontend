@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
 import {Response} from '../formService/response.model';
 
@@ -50,9 +50,12 @@ export class FormulaProjektComponent implements OnInit {
 
   minStartDate = new Date();
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  // displayedColumnsTest: string[] = ['position', 'name'];
+  // dataSource ;
+  // tableForm: FormGroup;
 
   getErrorEmail() {
-    return this.emailFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+    return this.emailFormControl.hasError('required') ? 'Bitte tragen Sie Ihre E-Mail-Adresse ein.' :
       this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
         '';
   }
@@ -90,15 +93,41 @@ export class FormulaProjektComponent implements OnInit {
     {return'der Betrag darf nicht mehr als €1000 sein.'; }
   }
 
-  constructor(private formService: FormService) {
-    // const currentDate = new Date().getDate();
-    // this.minStartDate = new Date(currentDate);
-    // this.minEndDate = new Date(this.minStartDate);
+  constructor(private formService: FormService, private formBuilder: FormBuilder) {
+    // this.dataSource = [
+    //   {position: 1, name: 'Hydrogen'},
+    //   {position: 2, name: 'Helium'},
+    //   {position: 3, name: 'Lithium'},
+    //   {position: 4, name: 'Beryllium'},
+    //   {position: 5, name: 'Boron'},
+    //   {position: 6, name: 'Carbon'},
+    //   {position: 7, name: 'Nitrogen'},
+    //   {position: 8, name: 'Oxygen'},
+    //   {position: 9, name: 'Fluorine'},
+    //   {position: 10, name: 'Neon'},
+    // ];
   }
 
 
   ngOnInit() {
+    // this.tableForm = this.formBuilder.group({
+    //   users: this.formBuilder.array([])
+    // });
+    // this.setUsersForm();
+    // this.tableForm.get('users').valueChanges.subscribe(users => {console.log('users', users); });
   }
+  // private setUsersForm() {
+  //   const userCtrl = this.tableForm.get('users') as FormArray;
+  //   this.dataSource.forEach((user) => {
+  //     userCtrl.push(this.setUsersFormArray(user));
+  //   });
+  // }
+  // private setUsersFormArray(user) {
+  //   return this.formBuilder.group({
+  //     position: [user.position],
+  //     name: [user.name]
+  //   });
+  // }
 
   onSubmit() {
     console.log(this.form);
@@ -140,11 +169,6 @@ export class FormulaProjektComponent implements OnInit {
           this.isSubmitFailed = true;
         }
       );
-  }
-  getErrorMessage() {
-    return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
-      this.emailCtrl.hasError('email') ? 'Keine gültige E-Mail-Adresse' :
-        '';
   }
 }
 

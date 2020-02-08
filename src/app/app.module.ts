@@ -21,7 +21,6 @@ import { HeaderComponent } from './header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
-import { FormulaComponent } from './formula/formula.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -44,7 +43,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
@@ -55,7 +53,6 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     ContentComponent,
     FooterComponent,
     HeaderComponent,
-    FormulaComponent,
     FormulaProjektComponent,
     RegistrierungComponent,
     LoginComponent,

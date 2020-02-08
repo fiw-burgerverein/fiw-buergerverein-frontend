@@ -1,7 +1,6 @@
-<!--<mad-sidenav-content>-->
 <div class="container">
   <mat-horizontal-stepper linear #stepper>
-    <mat-step><!--<mat-step [stepControl]="formPers">-->
+    <mat-step [stepControl]="formPers"><!--   -->
       <form name="formPers" #formPers="ngForm" novalidate> <!-- (ngSubmit)="f.form.valid&& onSubmit()"  -->
         <ng-template matStepLabel>Persönliche Angaben</ng-template>
         <mat-form-field>
@@ -16,12 +15,12 @@
         <mat-form-field>
           <mat-label>Vorname</mat-label>
           <input matInput placeholder="Vorname" name="vorname" [(ngModel)]="form.vorname" #vorname required>
-          <mat-error *ngIf="vorname.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+          <mat-error *ngIf="vorname.required">Bitte tragen Sie Ihren Vornamen ein.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Nachname</mat-label>
           <input matInput placeholder="Nachname" name="nachname" [(ngModel)]="form.nachname" #nachname required>
-          <mat-error *ngIf="nachname.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+          <mat-error *ngIf="nachname.required">Bitte tragen Sie Ihren Nachnamen ein.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Träger/Einrichtung</mat-label>
@@ -31,19 +30,19 @@
           <td><mat-form-field class="example-full-width">
             <mat-label>Straße</mat-label>
             <input matInput placeholder="Straße" name="strasse" [(ngModel)]="form.strasse" #strasse required>
-            <mat-error *ngIf="strasse.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+            <mat-error *ngIf="strasse.required">Bitte tragen Sie Ihre vollständige Adresse ein.</mat-error>
           </mat-form-field></td>
           <td><mat-form-field class="form-table">
             <mat-label>Hausnummer</mat-label>
             <input matInput placeholder="Hausnummer" name="hausnr" [(ngModel)]="form.hausnr" #hausnr required>
-            <mat-error *ngIf="hausnr.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+            <mat-error *ngIf="hausnr.required">Bitte tragen Sie Ihre vollständige Adresse ein.</mat-error>
           </mat-form-field></td>
           <td><mat-form-field class="form-table">
             <mat-label>Postleitzahl</mat-label>
             <input matInput minlength="5" maxlength="5" placeholder="Postleitzahl" name="plz" [(ngModel)]="form.plz"
                    #plz required>
             <mat-hint align="end">{{plz.value.length}} / 5</mat-hint>
-            <mat-error *ngIf="plz.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+            <mat-error *ngIf="plz.required">Bitte tragen Sie Ihre vollständige Adresse ein.</mat-error>
           </mat-form-field></td>
         </tr></table>
         <mat-form-field>
@@ -57,9 +56,6 @@
           <span matPrefix>+49 &nbsp;</span>
           <input matInput maxlength="11" placeholder="Geben Sie Ihre Telefonnummer an" name="telnr"
                  [(ngModel)]="form.telnr">
-          <!--          <div *ngIf="formPers.submitted && telnr.invalid">-->
-<!--            <div *ngIf="telnr.errors.required">This field is required</div>-->
-<!--          </div>-->
         </mat-form-field>
         <div class="example-button-row" >
           <button mat-raised-button color="primary" matStepperNext type="button">Weiter</button>
@@ -67,22 +63,19 @@
       </form>
     </mat-step>
 
-    <mat-step><!--    <mat-step [stepControl]="formProj">-->
+    <mat-step [stepControl]="formProj"><!--   -->
       <form name="formProj" #formProj="ngForm" novalidate>
         <ng-template matStepLabel>Angaben zu Ihren Projekt</ng-template>
         <mat-form-field>
           <mat-label>Projektname</mat-label>
           <input matInput placeholder="Projektname" name="projektname" maxLength="200" required
                  [(ngModel)]="form.projektname" #projektname>
-          <mat-error *ngIf="projektname.required">Sie müssen dieses Feld ausfüllen.</mat-error>
-          <!--          <div *ngIf="f.submitted && projektname.invalid">-->
-<!--            <div *ngIf="projektname.errors.required">This field is required</div>-->
-<!--          </div>-->
+          <mat-error *ngIf="projektname.required">Bitte geben Sie einen Projektnamen ein.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea matInput placeholder="Beschreibung" name="beschreibung" required [(ngModel)]="form.beschreibung"
                     #beschreibung></textarea>
-          <mat-error *ngIf="beschreibung.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+          <mat-error *ngIf="beschreibung.required">Beschreiben Sie bitte kurz Ihren Projekt.</mat-error>
         </mat-form-field>
         <table class="form-table" cellspacing="0"><tr>
           <td><mat-form-field>
@@ -91,8 +84,7 @@
                    [min]="minStartDate" [(ngModel)]="form.startdatum" #startdatum required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="startdatum.required">Sie müssen dieses Feld ausfüllen.</mat-error>
-<!--            <mat-error *ngIf="startdatum?.hasErrors('matDatepickerMin')"></mat-error>-->
+            <mat-error *ngIf="startdatum.required">Geben Sie bitte ein gültiges Startdatum ein.</mat-error>
           </mat-form-field></td>
           <td><mat-form-field>
             <mat-label>Gewünschtes Enddatum</mat-label>
@@ -101,8 +93,7 @@
 
             <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
             <mat-datepicker #pickers></mat-datepicker>
-            <mat-error *ngIf="enddatum.required">Sie müssen dieses Feld ausfüllen.</mat-error>
-<!--            <mat-error *ngIf="enddatum.errors.('matDatepickerMin')"></mat-error>-->
+            <mat-error *ngIf="enddatum.required">Geben Sie bitte ein gültiges Enddatum ein.</mat-error>
           </mat-form-field></td>
         </tr></table>
         <mat-form-field>
@@ -112,7 +103,7 @@
             <mat-option value="Neu-Hohenschönhausen Süd">Neu-Hohenschönhausen Süd</mat-option>
             <mat-option value="Wartenberg, Falkenberg und Malchow">Wartenberg, Falkenberg und Malchow</mat-option>
           </mat-select>
-          <mat-error *ngIf="ort.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+          <mat-error *ngIf="ort.required">Sie müssen den Ort für Ihren Projekt auswählen.</mat-error>
         </mat-form-field>
         <table class="form-table" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
@@ -123,7 +114,7 @@
             <mat-label>Anzahl Teilnehmer</mat-label>
             <input matInput type="number" min="1" placeholder="Anzahl der Teilnehmer" name="anzteiln" required
                    [(ngModel)]="form.anzteiln" #anzteiln>
-            <mat-error *ngIf="anzteiln.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+            <mat-error *ngIf="anzteiln.required">Der Projekt muss mindestens einen Teilnehmer haben.</mat-error>
           </mat-form-field></td>
         </tr></table>
         <mat-form-field>
@@ -133,12 +124,14 @@
             <mat-option value="Ja">Ja</mat-option>
             <mat-option value="Nein">Nein</mat-option>
           </mat-select>
-          <mat-error *ngIf="oeffarb.required">Sie müssen dieses Feld ausfüllen.</mat-error>
+          <mat-error *ngIf="oeffarb.required">Geben Sie bitte an, ob öffentlichkeitswirksame Arbeiten geplant sind.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea matInput placeholder="Beschreiben Sie diese:" name="oeffarbbeschr"
                     [(ngModel)]="form.oeffarbbeschr" #oeffarbbeschr [required]="form.oeffarb==='Ja'">
           </textarea>
+          <mat-error *ngIf="oeffarbbeschr.required">
+            Beschreiben Sie bitte die geplanten öffentlichkeitswirksamen Arbeiten.</mat-error>
         </mat-form-field>
 
         <div class="kosten">
@@ -147,15 +140,15 @@
             <table mat-table [dataSource]="dataSourceAufwand" name="aufwand" class="mat-table">
               <!-- Posten Column -->
               <ng-container matColumnDef="Posten">
-                <th mat-header-cell *matHeaderCellDef col width="800" > Posten </th>
+                <th mat-header-cell *matHeaderCellDef col width="800"><b> Posten </b></th>
                 <td mat-cell *matCellDef="let element">
                   <input matInput name="zweck" placeholder="Beschreibung:" id="zweckAufwand" class="zweck-aufwand">
                 </td>
-                <td mat-footer-cell *matFooterCellDef > Summe: </td>
+                <td mat-footer-cell *matFooterCellDef > <b>Summe: </b></td>
               </ng-container>
               <!-- Betrag Column -->
               <ng-container matColumnDef="Betrag">
-                <th mat-header-cell *matHeaderCellDef > Betrag </th>
+                <th mat-header-cell *matHeaderCellDef > <b>Betrag</b> </th>
                 <td mat-cell *matCellDef="let element">
                   <input matInput type="number" min="1" name="kosten" id="betragAufwand"
                          #betragAufwand (keyup.enter)="addElementAufwand($event)" placeholder="€ 0,00"></td>
@@ -170,20 +163,37 @@
           <br>
           <mat-label>Sachkosten</mat-label>
           <div class='table-responsive mat-elevation-z8' id="sachkosten">
+<!--            <table mat-table [dataSource]="dataSource" class="mat-table">-->
+<!--              <ng-container matColumnDef="position">-->
+<!--                <th mat-header-cell *matHeaderCellDef> No. </th>-->
+<!--                <td mat-cell *matCellDef="let row let rowIndex = index"  [formGroupName]="rowIndex">-->
+<!--                  <input mat-input type="text" size="2" formControlName="position"> </td>-->
+<!--              </ng-container>-->
+<!--              <ng-container matColumnDef="name">-->
+<!--                <th mat-header-cell *matHeaderCellDef> Name </th>-->
+<!--                <td mat-cell *matCellDef="let row let rowIndex = index"  [formGroupName]="rowIndex">-->
+<!--                  <input type="text" size="7" formControlName="name">-->
+<!--                </td>-->
+<!--              </ng-container>-->
+<!--              &lt;!&ndash; Header and Row Declarations &ndash;&gt;-->
+<!--              <tr mat-header-row *matHeaderRowDef="displayedColumnsTest"></tr>-->
+<!--              <tr mat-row *matRowDef="let row; columns: displayedColumnsTest;"></tr>-->
+<!--            </table>-->
             <table mat-table [dataSource]="dataSourceSachkosten" name="sachkosten" class="mat-table">
               <!-- Posten Column -->
               <ng-container matColumnDef="Posten">
-                <th mat-header-cell *matHeaderCellDef col width="800" > Posten </th>
+                <th mat-header-cell *matHeaderCellDef col width="800" > <b>Posten</b> </th>
                 <td mat-cell *matCellDef="let element">
                   <input matInput name="zweck" placeholder="Beschreibung:" class="zweck-sachkosten">
                 </td>
-                <td mat-footer-cell *matFooterCellDef > Summe: </td>
+                <td mat-footer-cell *matFooterCellDef ><b>Summe:</b>  </td>
               </ng-container>
               <!-- Betrag Column -->
               <ng-container matColumnDef="Betrag">
-                <th mat-header-cell *matHeaderCellDef > Betrag </th>
-                <td mat-cell *matCellDef="let element"> <input matInput type="number" min="1" name="kosten" id="betrag"
-                 #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
+                <th mat-header-cell *matHeaderCellDef > <b>Betrag </b></th>
+                <td mat-cell *matCellDef="let element"><label for="betrag">Betrag</label>
+                  <input matInput type="number" min="1" name="kosten" id="betrag"
+                   #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
                 <td mat-footer-cell *matFooterCellDef >{{sachkostenSumme| currency : "€"}} <br>
                 </td>
               </ng-container>
@@ -194,8 +204,9 @@
           </div>
           <br>
           <h5>Gesamtbetrag: {{gesamtSumme| currency : "€"}}</h5>
-          <mat-error *ngIf="gesamtSumme > 1000 ">{{getError()}}</mat-error>
+          <mat-error *ngIf="gesamtSumme > 1000">{{getError()}}</mat-error>
         </div>
+
         <div class="example-button-row" >
           <button mat-raised-button color="primary" matStepperPrevious type="button">Zurück</button>
           <button mat-raised-button color="primary" matStepperNext type="button">Weiter</button>
@@ -215,11 +226,13 @@
 <!--          </button>-->
 <!--        </div>-->
 <!--      </div>-->
-      <div style="overflow-x:auto;">
-        <ng-template #preview>
-          <div name="pdf" #pdf>
+
+<!--      <div style="overflow-x:auto;">-->
+<!--        <ng-template>-->
+          <div name="pdf" #pdf style="overflow-x:auto;">
             <h3 *ngIf="!isSubmitted">Überprüfen Sie Ihre Angaben:</h3>
   <!--          <kendo-pdf-export>  -->
+            <h3 *ngIf="isSubmitted">Antrag zum Kiezfond Lichtenberg</h3>
             <table *ngIf="isSubmitted" [hidden] class="info-table">
               <tr><td>Formular-ID: </td><td>{{formId}}</td></tr>
               <tr><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
@@ -292,26 +305,16 @@
 
           <div *ngIf="isSubmitted">
             <h2>Sie sind jetzt fertig!</h2>
-            <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken und zu unterschreiben.</p>
+            <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken
+              und zu unterschreiben.</p>
             <div class="example-button-row">
               <button mat-raised-button color="primary" type="submit" >
                 <i class="material-icons">cloud_download</i><span> PDF herunterladen</span>
               </button>
             </div>
           </div>
-        </ng-template>
-      </div>
-      <div *ngIf="isSubmitted; else preview">
-        <h2>Sie sind jetzt fertig!</h2>
-        <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken und zu unterschreiben.</p>
-        <div class="example-button-row">
-          <button mat-raised-button color="primary" type="submit" >
-            <i class="material-icons">cloud_download</i><span> PDF herunterladen</span>
-          </button>
-        </div>
-      </div>
+<!--        </ng-template>-->
+<!--      </div>-->
     </mat-step>
   </mat-horizontal-stepper>
 </div>
-
-<!--</mad-sidenav-content>-->
