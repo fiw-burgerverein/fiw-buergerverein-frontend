@@ -3,6 +3,7 @@ import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import {Result} from '../formService/result.model';
 
 @Component({

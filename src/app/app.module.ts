@@ -48,6 +48,7 @@ import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
 import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { InfoseiteComponent } from './infoseite/infoseite.component';
 
 // I keep the new line
 @NgModule({
@@ -66,6 +67,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    InfoseiteComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -100,7 +102,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
         MatSortModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatExpansionModule,
     ],
 
   providers: [httpInterceptorProviders],
