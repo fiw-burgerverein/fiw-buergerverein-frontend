@@ -19,9 +19,10 @@
     </div>
 
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item disabled>Profil </button>
-      <button mat-menu-item routerLink="login">Einloggen</button>
-      <button mat-menu-item routerLink="registrieren">Registrieren</button>
+      <button *ngIf="!isLoggedIn" mat-menu-item routerLink="login">Login</button>
+      <button *ngIf="!isLoggedIn" mat-menu-item routerLink="registrieren">Registrieren</button>
+      <button *ngIf="isLoggedIn" mat-menu-item disabled>{{userEmail}}</button>
+      <button *ngIf="isLoggedIn" (click)="logout()" mat-menu-item routerLink="">Logout</button>
     </mat-menu>
     <span class="example-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">

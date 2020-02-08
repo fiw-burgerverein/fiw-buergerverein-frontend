@@ -10,8 +10,8 @@
 
   <mat-card-content>
     <div *ngIf="isLoggedIn; else loginForm">
-      Logged in as {{roles}}.
-      <button class="btn btn-secondary" (click)="logout()">Logout</button>
+     <!-- Logged in as {{roles}}.-->
+<!--      <button class="btn btn-secondary" (click)="logout()">Logout</button>-->
     </div>
     <form name="my-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <ng-template #loginForm>
