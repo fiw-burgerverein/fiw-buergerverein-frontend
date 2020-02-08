@@ -4,6 +4,8 @@ import {FormService} from '../formService/form.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
 import {Response} from '../formService/response.model';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-formula-projekt',
@@ -12,7 +14,8 @@ import {Response} from '../formService/response.model';
 })
 
 export class FormulaProjektComponent implements OnInit {
-
+  // @ts-ignore
+  @ViewChild('content') content: ElementRef;
   // @ts-ignore
   @ViewChild('sachkosten') content: ElementRef;
   // @ts-ignore
@@ -170,8 +173,41 @@ export class FormulaProjektComponent implements OnInit {
         }
       );
   }
-}
+    // download() {
+    // const div = document.getElementById('html2Pdf');
+    // const options = {background: 'white', height: div.clientHeight, width: div.clientWidth};
+    // @ts-ignore
+    // html2canvas(div, options).then((canvas) => {
+      // Initialize JSPDF
+      // const doc = new jspdf('p', 'mm', 'a4');
+      // const preview = this.content.nativeElement;
+      // @ts-ignore
+     //  doc.fromHTML(preview.innerHTML, 17, 20, {
+      //  width: 300,
+    //  });
+      // doc.text(30, 80, this.content);
+     // doc.save('Test.pdf');
+ // }
+      // Converting canvas to Image
+     // const imgData = canvas.toDataURL('image/PNG');
+      // Add image Canvas to PDF
+      // doc.addImage(imgData, 'PNG', 20, 20);
 
+     //  const pdfOutput = doc.output();
+      // using ArrayBuffer will allow you to put image inside PDF
+      // const buffer = new ArrayBuffer(pdfOutput.length);
+      // const array = new Uint8Array(buffer);
+      // for (let i = 0; i < pdfOutput.length; i++) {
+      //  array[i] = pdfOutput.charCodeAt(i);
+
+
+      // Name of pdf
+      // const fileName = 'example.pdf';
+
+      // Make file
+     // doc.save(fileName);
+    // })
+}
 export interface Element {
   Posten: string;
   Betrag: number;

@@ -32,13 +32,14 @@ export class LoginComponent implements OnInit {
         '';
   }
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,  private router: Router) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
 
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();  /* gibt ROLE_ROLE_USER zurück*/
+      this.router.navigate(['']);
     }
   }
 
@@ -56,8 +57,9 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveAuthorities(data.authorities);
 
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
+        this.isLoggedIn = true;
+        this.router.navigate(['']);
         this.reloadPage();
         this.router.navigate(['#']);
       },
@@ -76,9 +78,9 @@ export class LoginComponent implements OnInit {
     return this.errorMessage; // TODO
   }
 
-  /*logout() {
-    this.token.signOut();
-    window.location.reload();
+/*  logout() {
+    this.tokenStorage.signOut();
+    this.isLoggedIn = false;
+    this.router.navigate(['/']);
   }*/
-
 }

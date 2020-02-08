@@ -4,11 +4,14 @@ import {ContentComponent} from './content/content.component';
 import {RegistrierungComponent} from './registrierung/registrierung.component';
 import {FormulaProjektComponent} from './formula-projekt/formula-projekt.component';
 import {LoginComponent} from './login/login.component';
+import {HeaderComponent} from './header/header.component';
 import {DatenschutzComponent} from './datenschutz/datenschutz.component';
 import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {UebersichtComponent} from './uebersicht/uebersicht.component';
+import {DetailseiteAntragComponent} from './detailseite-antrag/detailseite-antrag.component';
 
 
 const routes: Routes = [
@@ -21,7 +24,10 @@ const routes: Routes = [
   {path: 'datenschutz-footer', component: DatenschutzFooterComponent},
   {path: 'registrieren/accountbestaetigung', component: RegistrierungComponent},
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
-  {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent}
+  {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
+  {path: 'uebersicht', component: UebersichtComponent},
+  {path: 'detailseite', component: DetailseiteAntragComponent},
+  {path: 'header', component: HeaderComponent}
 ];
 
 @NgModule({

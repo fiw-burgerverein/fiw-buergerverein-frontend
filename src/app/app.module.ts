@@ -43,6 +43,10 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
+import {UebersichtComponent} from './uebersicht/uebersicht.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
@@ -59,8 +63,10 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DatenschutzComponent,
     ImpressumComponent,
     DatenschutzFooterComponent,
+    DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -95,7 +101,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
         MatSortModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatExpansionModule
+        MatExpansionModule,
+        PDFExportModule
     ],
 
   providers: [httpInterceptorProviders,

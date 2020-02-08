@@ -1,4 +1,5 @@
-<div class="container">
+<!--<mad-sidenav-content>-->
+<div class="container"> <!-- id="content" #content-->
   <mat-horizontal-stepper linear #stepper>
     <mat-step [stepControl]="formPers"><!--   -->
       <form name="formPers" #formPers="ngForm" novalidate> <!-- (ngSubmit)="f.form.valid&& onSubmit()"  -->
@@ -231,44 +232,45 @@
 <!--        <ng-template>-->
           <div name="pdf" #pdf style="overflow-x:auto;">
             <h3 *ngIf="!isSubmitted">Überprüfen Sie Ihre Angaben:</h3>
-  <!--          <kendo-pdf-export>  -->
+            <kendo-pdf-export #pdf paperSize="A4" margin="1cm" forcePageBreak=".page-break">
             <h3 *ngIf="isSubmitted">Antrag zum Kiezfond Lichtenberg</h3>
             <table *ngIf="isSubmitted" [hidden] class="info-table">
               <tr><td>Formular-ID: </td><td>{{formId}}</td></tr>
               <tr><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
             </table>
-            <h5>Persönliche Angaben</h5>
-            <table class="preview-table">
-              <tr><td>Anrede: </td><td>{{form.anrede}}</td></tr>
-              <tr><td>Vorname: </td><td> {{form.vorname}} </td></tr>
-              <tr><td>Nachname: </td><td>{{form.nachname}}</td></tr>
-              <tr><td>Träger/Einrichtung: </td><td>{{form.einrichtung}}</td></tr>
-              <tr><td>Straße: </td><td>{{form.strasse}}</td></tr>
-              <tr><td>Hausnummer: </td><td>{{form.hausnr}}</td></tr>
-              <tr><td>Postleitzahl: </td><td>{{form.plz}}</td></tr>
-              <tr><td>E-Mail: </td><td>{{form.email}}</td></tr>
-              <tr><td>Telefon: </td><td>{{form.telnr}}</td></tr>
-            </table>
-            <table *ngIf="isSubmitted" [hidden] class="info-table">
+<!--           <kendo-pdf-export #pdf paperSize="A4" margin="1cm" forcePageBreak=".page-break"> -->
+          <h5>Perseonliche Angaben</h5>
+          <table class="preview-table">
+            <tr><td>Anrede: </td><td>{{form.anrede}}</td></tr>
+            <tr><td>Vorname: </td><td> {{form.vorname}} </td></tr>
+            <tr><td>Nachname: </td><td>{{form.nachname}}</td></tr>
+            <tr><td>Treager/Einrichtung: </td><td>{{form.einrichtung}}</td></tr>
+            <tr><td>Strasse: </td><td>{{form.strasse}}</td></tr>
+            <tr><td>Hausnummer: </td><td>{{form.hausnr}}</td></tr>
+            <tr><td>Postleitzahl: </td><td>{{form.plz}}</td></tr>
+            <tr><td>E-Mail: </td><td>{{form.email}}</td></tr>
+            <tr><td>Telefon: </td><td>{{form.telnr}}</td></tr>
+          </table>
+          <h5 class="page-break">Angaben zum Projekt</h5>
+          <table *ngIf="isSubmitted" [hidden] class="info-table">
               <tr><td>Formular-ID: </td><td>{{formId}}</td></tr>
               <tr><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
             </table>
-            <h5>Angaben zum Projekt</h5>
-            <table class="preview-table">
-              <tr><td>Projektname: </td><td>{{form.projektname}}</td></tr>
-              <tr><td>Beschreibung: </td><td>{{form.beschreibung}}</td></tr>
-              <tr><td>Gewünschtes Startdatum: </td><td>{{form.startdatum}}</td></tr>
-              <tr><td>Gewünschtes Enddatum: </td><td>{{form.enddatum}}</td></tr>
-              <tr><td>Geplantes Ort: </td><td>{{form.ort}}</td></tr>
-              <tr><td>Zielgruppe: </td><td>{{form.zielgruppe}}</td></tr>
-              <tr><td>Anzahl Teilnehmer: </td><td>{{form.anzteiln}}</td></tr>
-              <tr><td>öffentlichkeitswirksame Arbeiten: </td><td>{{form.oeffarb}}</td></tr>
-              <tr><td>Deren Beschreibung: </td><td>{{form.oeffarbbeschr}}</td></tr>
-              <tr><td>Gesamtkosten: </td><td>{{gesamtSumme}}</td></tr>
-            </table>
-            <h5>Kosten</h5>
-            <p><b>Aufwandsentschädigungen</b></p>
-            <ng-container *ngIf="aufwandKostenExist; else keineAufwandkosten">
+          <table class="preview-table">
+            <tr><td>Projektname: </td><td>{{form.projektname}}</td></tr>
+            <tr><td>Beschreibung: </td><td>{{form.beschreibung}}</td></tr>
+            <tr><td>Geweunschtes Startdatum: </td><td>{{form.startdatum}}</td></tr>
+            <tr><td>Geweunschtes Enddatum: </td><td>{{form.enddatum}}</td></tr>
+            <tr><td>Geplantes Ort: </td><td>{{form.ort}}</td></tr>
+            <tr><td>Zielgruppe: </td><td>{{form.zielgruppe}}</td></tr>
+            <tr><td>Anzahl Teilnehmer: </td><td>{{form.anzteiln}}</td></tr>
+            <tr><td>Oeffentlichkeitswirksame Arbeiten: </td><td>{{form.oeffarb}}</td></tr>
+            <tr><td>Deren Beschreibung: </td><td>{{form.oeffarbbeschr}}</td></tr>
+            <tr><td>Gesamtkosten: </td><td>{{gesamtSumme}}</td></tr>
+          </table>
+          <h5>Kosten</h5>
+          <p><b>Aufwandsentscheadigungen</b></p>
+          <ng-container *ngIf="aufwandKostenExist; else keineAufwandkosten">
               <table class="preview-table">
                 <ng-container *ngFor="let aufwand of aufwandKostenArray">
                   <tr><th>Posten </th><th>Betrag </th></tr>
@@ -297,12 +299,20 @@
             </div>
             <span class="unterschrift" *ngIf="isSubmitted">Unterschrift: _________________________</span>
           </div>
+         </kendo-pdf-export >
           <div class="example-button-row" *ngIf="!isSubmitted">
             <button mat-raised-button color="primary" matStepperPrevious type="button">Zurück</button>
             <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Antrag senden</button>
+<!--            <button mat-raised-button color="primary" kendo-button (click)="pdf.saveAs('ProjectAngaben.pdf')">
+              Pdf herunterladen
+            </button>-->
+            <button mat-raised-button color="primary" type="submit" kendo-button (click)="pdf.saveAs('ProjectAngaben.pdf')"> <!--(click)="generatePdf()"-->
+              <i class="material-icons">cloud_download</i>
+              <span> PDF herunterladen</span>
+            </button>
           </div>
 <!--          </kendo-pdf-export> -->
-
+<!-- 
           <div *ngIf="isSubmitted">
             <h2>Sie sind jetzt fertig!</h2>
             <p>Sie haben erfolgreich Ihren Antrag gestellt! Vergessen Sie bitte nicht, ihn auszudrucken
@@ -312,7 +322,7 @@
                 <i class="material-icons">cloud_download</i><span> PDF herunterladen</span>
               </button>
             </div>
-          </div>
+          </div> -->
 <!--        </ng-template>-->
 <!--      </div>-->
     </mat-step>
