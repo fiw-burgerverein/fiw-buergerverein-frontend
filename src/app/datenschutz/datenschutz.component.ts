@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-datenschutz',
@@ -6,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datenschutz.component.css']
 })
 export class DatenschutzComponent implements OnInit {
-
-  constructor() { }
 
   ngOnInit() {
   }

@@ -31,3 +31,6 @@ Extra large devices (large desktops, 1200px and up)
 .example-spacer {
   flex: 1 1 auto;
 }
+.home-elem {
+  font-size: 20px;
+}
