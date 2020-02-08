@@ -3,7 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthLoginInfo} from '../auth/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();  /* gibt ROLE_ROLE_USER zurück*/
+      this.router.navigate(['']);
     }
   }
   onSubmit() {
@@ -42,11 +43,9 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.roles = this.tokenStorage.getAuthorities();
-        //this.reloadPage();
         this.isLoggedIn = true;
-        this.reloadPage();
         this.router.navigate(['']);
-
+        this.reloadPage();
       },
       error => {
         console.log(error);
@@ -60,11 +59,9 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
-  logout() {
+/*  logout() {
     this.tokenStorage.signOut();
     this.isLoggedIn = false;
- /*   this.reloadPage();*/
     this.router.navigate(['/']);
-  }
-
+  }*/
 }
