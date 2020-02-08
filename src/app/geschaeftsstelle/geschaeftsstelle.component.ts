@@ -11,12 +11,12 @@ import { Application} from "../models/application.model";
 
 export class GeschaeftsstelleComponent implements OnInit {
 geschaeftsstelle: Geschaeftsstelle;
-application: Application;
+/*application: Application;
 state: number;
 //public stati = [0, 1, 2];
   isInBearbeitung = false;
   isGehnemigt = false;
-  isAbgelehnt = false;
+  isAbgelehnt = false;*/
 
   constructor(private apiService: ApiService) { }
 
@@ -26,12 +26,12 @@ state: number;
         console.log('getApplicationsList d ' + data);
         console.log(data);
         this.geschaeftsstelle = data;
-        this.state = this.geschaeftsstelle.body.status;
+        /*this.state = this.geschaeftsstelle.body.status;
         switch (this.state) {
           case (this.state = 0): {this.isInBearbeitung = true; break;}
           case (this.state = 1): {this.isGehnemigt = true; break;}
           case (this.state = 2): {this.isAbgelehnt = true; break;}
-        }
+        }*/
         console.log('getApplicationsList a ' + this.geschaeftsstelle);
         console.log(this.geschaeftsstelle);
       }         );
