@@ -9,16 +9,22 @@ export class Application implements Deserializable {
   startdatum: Date;
   enddatum: Date;
   ort: string;
-  // sachkostenSum: number;
-  // aufwandSum: string;
+  zielgruppe: string;
+  anzteiln: number;
+  oeffarb: string;
+  oeffarbbeschr: string;
   gesamtkosten: number;
+  // aufwandSum: string;
+
   anrede: string;
   vorname: string;
   nachname: string;
+  einrichtung: string;
   strasse: string;
   hausnr: number;
   plz: number;
   email: string;
+  telnr: number;
 
   get getStartdatum(): Date {
     return new Date(this.startdatum);

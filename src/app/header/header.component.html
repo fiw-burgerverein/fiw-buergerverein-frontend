@@ -7,7 +7,8 @@
     </a>
     <div fxShow="true" fxHide.lt-md="true"  >
       <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" routerLink="infos-zum-kiezfond" href="#" mat-button>Infos zum Kiezfonds</a>
-      <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'" routerLink="all-applications" href="#">Meine Anträge</a>
+<!--       <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'" routerLink="alle-antraege">Meine Anträge</a> -->
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'" routerLink="all-applications">Meine Anträge</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'" routerLink="geschaeftsstelle">Alle Anträge</a>
       <div *ngIf="!isLoggedIn; then routeLogin;"></div>
       <div *ngIf="isLoggedIn && authority === 'user'; then routeDatenschutz;"></div>
@@ -47,6 +48,7 @@
                  [fixedBottomGap]="400">
       <div fxLayout="column">
         <a (click)="sidenav.toggle()" mat-button>Schließen</a>
+
         <button *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</button>
         <button *ngIf="isLoggedIn && authority==='user'" mat-button routerLink="all-applications">Meine Anträge</button>
         <button *ngIf="isLoggedIn && authority==='gs'" mat-button routerLink="geschaeftsstelle">Alle Anträge</button>

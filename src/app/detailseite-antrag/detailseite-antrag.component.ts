@@ -20,7 +20,7 @@ export class DetailseiteAntragComponent implements OnInit {
   application: Application;
 
   ngOnInit() {
-    this.getApplication(3);
+    this.getApplication(13);
   }
 
   callChangeState(event) {
