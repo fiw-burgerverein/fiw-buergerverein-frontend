@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from './auth/token-storage.service';
 /*import { TokenStorageService } from './auth/token-storage.service';*/
 
 @Component({
@@ -6,6 +7,26 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent /*implements OnInit*/ {
+
   title = 'fiw-buergerverein-frontend';
 }
+/*  private roles: string[];
+  private authority: string;*/
+
+/*  constructor(private tokenStorage: TokenStorageService) { }
+
+  ngOnInit() {
+/!*    if (this.tokenStorage.getToken()) {
+      this.roles = this.tokenStorage.getAuthorities();
+      this.roles.every(role => {
+        if (role === 'ROLE_ROLE_ADMIN') {
+          this.authority = 'admin';
+        } else if (role === 'ROLE_ROLE_GS') {
+          this.authority = 'gs';
+        }
+        this.authority = 'user';
+      });
+    }
+  }*!/
+}*/
