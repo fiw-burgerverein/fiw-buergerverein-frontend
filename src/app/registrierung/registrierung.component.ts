@@ -27,7 +27,8 @@ export class RegistrierungComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   emailConfirmFormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(8),
+  Validators.maxLength(32)]);
   passwordConfirmFormControl = new FormControl('', [Validators.required]);
 
   getErrorEmail() {

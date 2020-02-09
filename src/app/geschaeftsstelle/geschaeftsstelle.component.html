@@ -1,0 +1,59 @@
+<div class="inhalt_gs" >
+  <div *ngIf="geschaeftsstelle">
+    <h3>Übersicht über eingegangenen Anträge</h3>
+    <br>
+    <h4>In Bearbeitung</h4>
+    <div *ngFor="let application of geschaeftsstelle?.applications">
+      <div class="bearbeitung" *ngIf="application.status==='IN_BEARBEITUNG'">
+        <hr>
+        <table>
+         <tr><td><b>{{application.projektname}}</b></td></tr>
+         <tr><td>Startdatum: </td><td>{{application.startdatum}}</td></tr>
+         <tr><td>Ort: </td><td>{{application.ort}}</td></tr>
+       </table>
+        <div class="example-button-row">
+          <a mat-raised-button color="primary" routerLink="detailseite" id="{{application.formId}}">Zum Antrag</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <h4>Angenommen</h4>
+    <div *ngFor="let application of geschaeftsstelle?.applications">
+      <div class="angenommen" *ngIf="application.status==='GENEHMIGT'">
+        <hr>
+        <table>
+          <tr><td><b>{{application.projektname}}</b></td></tr>
+          <tr><td>Startdatum: </td><td>{{application.startdatum}}</td></tr>
+          <tr><td>Ort: </td><td>{{application.ort}}</td></tr>
+        </table>
+        <div class="example-button-row">
+          <a mat-raised-button color="primary" routerLink="detailseite" id="{{application.formId}}">Zum Antrag</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <h4>Abgelehnt</h4>
+    <div *ngFor="let application of geschaeftsstelle?.applications">
+      <div class="abgelehnt" *ngIf="application.status==='ABGELEHNT'">
+        <hr>
+        <table>
+          <tr><td><b>{{application.projektname}}</b></td></tr>
+          <tr><td>Startdatum: </td><td>{{application.startdatum}}</td></tr>
+          <tr><td>Ort: </td><td>{{application.ort}}</td></tr>
+        </table>
+        <div class="example-button-row">
+          <a mat-raised-button color="primary" routerLink="detailseite" id="{{application.formId}}">Zum Antrag</a>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
