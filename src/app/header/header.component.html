@@ -36,7 +36,10 @@
     </div>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
-    <mat-sidenav #sidenav fxLayout="column">
+    <mat-sidenav mode="over" #sidenav role="navigation"
+                 [fixedInViewport]="true"
+                 [fixedTopGap]="65"
+                 [fixedBottomGap]="400">
       <div fxLayout="column">
         <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
         <button mat-button>Infos zum Kiezfonds</button>
