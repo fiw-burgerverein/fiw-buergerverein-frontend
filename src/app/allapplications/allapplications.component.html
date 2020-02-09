@@ -1,57 +1,91 @@
-<div *ngIf="applications">
+<div class="container" *ngIf="applications">
+  <h2>Von Ihnen erstellte Anträge</h2>
   <div *ngFor="let application of applications?.applications">
-    <h2>{{application.projektname}}</h2>
-
-    <table>
-      <tr>
-        <td>formId</td><td>{{application.formId}}</td>
-      </tr>
-      <tr>
-        <td>createdAt</td><td>{{application.createdAt}}</td>
-      </tr>
-      <tr>
-        <td>status</td><td>{{application.status}}</td>
-      </tr>
-      <tr>
-        <td>projectName</td><td>{{application.projektname}}</td>
-      </tr>
-      <tr>
-        <td>startDate</td><td>{{application.startdatum}}</td>
-      </tr>
-      <tr>
-        <td>endDate</td><td>{{application.enddatum}}</td>
-      </tr>
-      <tr>
-        <td>ort</td><td>{{application.ort}}</td>
-      </tr>
-      <tr>
-        <td>Sum</td><td>{{application.gesamtkosten}}</td>
-      </tr>
-<!--      <tr>-->
-<!--        <td>aufwandSum</td><td>{{application.aufwandSum}}</td>-->
-<!--      </tr>-->
-      <tr>
-        <td>anrede</td><td>{{application.anrede}}</td>
-      </tr>
-      <tr>
-        <td>vorname</td><td>{{application.vorname}}</td>
-      </tr>
-      <tr>
-        <td>nachname</td><td>{{application.nachname}}</td>
-      </tr>
-      <tr>
-        <td>strasse</td><td>{{application.strasse}}</td>
-      </tr>
-      <tr>
-        <td>hausNr</td><td>{{application.hausnr}}</td>
-      </tr>
-      <tr>
-        <td>plz</td><td>{{application.plz}}</td>
-      </tr>
-      <tr>
-        <td>email</td><td>{{application.email}}</td>
-      </tr>
+    <h5>{{application.projektname}}</h5>
+    <table class="form-table">
+      <tr><td>Formular-ID: </td><td>{{application.formId}}</td></tr>
+      <tr><td>Erstellt am: </td><td>{{application.createdAt}}</td></tr>
+      <tr><td>Status: </td><td>{{application.status}}</td></tr>
+      <tr><td>Beschreibung: </td><td>{{application.beschreibung}}</td></tr>
+      <tr><td>Gewünschtes Startdatum: </td><td>{{application.startdatum}}</td></tr>
+      <tr><td>Gewünschtes Enddatum: </td><td>{{application.enddatum}}</td></tr>
+      <tr><td>Geplantes Ort: </td><td>{{application.ort}}</td></tr>
+      <tr><td>Zielgruppe: </td><td>{{application.zielgruppe}}</td></tr>
+      <tr><td>Anzahl Teilnehmer: </td><td>{{application.anzteiln}}</td></tr>
+      <tr><td>Öffentlichkeitswirksame Arbeiten: </td><td>{{application.oeffarb}}</td></tr>
+      <tr><td>Deren Beschreibung: </td><td>{{application.oeffarbbeschr}}</td></tr>
+      <tr><td>Gesamtkosten: </td><td>{{application.gesamtkosten}}</td></tr>
+      <tr><td>Anrede: </td><td>{{application.anrede}}</td></tr>
+      <tr><td>Vorname: </td><td> {{application.vorname}} </td></tr>
+      <tr><td>Nachname: </td><td>{{application.nachname}}</td></tr>
+      <tr><td>Träger/Einrichtung: </td><td>{{application.einrichtung}}</td></tr>
+      <tr><td>Straße: </td><td>{{application.strasse}}</td></tr>
+      <tr><td>Hausnummer: </td><td>{{application.hausnr}}</td></tr>
+      <tr><td>Postleitzahl: </td><td>{{application.plz}}</td></tr>
+      <tr><td>E-Mail: </td><td>{{application.email}}</td></tr>
+      <tr><td>Telefon: </td><td>{{application.telnr}}</td></tr>
     </table>
-
+    <hr><br>
   </div>
 </div>
+
+
+
+
+<!--<div *ngIf="applications">-->
+<!--  <div *ngFor="let application of applications?.applications">-->
+<!--    <h2>{{application.projektname}}</h2>-->
+
+<!--    <table>-->
+<!--      <tr>-->
+<!--        <td>formId</td><td>{{application.formId}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>createdAt</td><td>{{application.createdAt}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>status</td><td>{{application.status}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>projectName</td><td>{{application.projektname}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>startDate</td><td>{{application.startdatum}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>endDate</td><td>{{application.enddatum}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>ort</td><td>{{application.ort}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>Sum</td><td>{{application.gesamtkosten}}</td>-->
+<!--      </tr>-->
+<!--&lt;!&ndash;      <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        <td>aufwandSum</td><td>{{application.aufwandSum}}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;      </tr>&ndash;&gt;-->
+<!--      <tr>-->
+<!--        <td>anrede</td><td>{{application.anrede}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>vorname</td><td>{{application.vorname}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>nachname</td><td>{{application.nachname}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>strasse</td><td>{{application.strasse}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>hausNr</td><td>{{application.hausnr}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>plz</td><td>{{application.plz}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>email</td><td>{{application.email}}</td>-->
+<!--      </tr>-->
+<!--    </table>-->
+
+<!--  </div>-->
+<!--</div>-->

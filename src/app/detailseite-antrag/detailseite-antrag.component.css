@@ -1,6 +1,17 @@
+.container {
+  margin-top:10px;
+  margin:6em;
+}
+.container > * {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+
 .buttons > button
 {
-  margin-right: 8px;
+  margin-right: 10px;
   /*  background-color: #4d4a6f;*/
   font-size: 16px;
   color: white;
@@ -12,11 +23,11 @@
   text-decoration: none;
   color: white;
 }
-.detailseite
-{
-  padding-right: 10%;
-  padding-left: 10%;
-}
+/*.detailseite*/
+/*{*/
+/*  padding-right: 10%;*/
+/*  padding-left: 10%;*/
+/*}*/
 .preview-table > td {
   vertical-align: top;
 }
