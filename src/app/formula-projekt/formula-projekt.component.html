@@ -178,7 +178,7 @@
               <!-- Betrag Column -->
               <ng-container matColumnDef="Betrag">
                 <th mat-header-cell *matHeaderCellDef > <b>Betrag </b></th>
-                <td mat-cell *matCellDef="let element"><label for="betrag">Betrag</label>
+                <td mat-cell *matCellDef="let element">
                   <input matInput type="number" min="1" name="kosten" id="betrag"
                          #betragSachkosten (keyup.enter)="addElementSachkosten($event)" placeholder="€ 0,00"></td>
                 <td mat-footer-cell *matFooterCellDef >{{sachkostenSumme| currency : "€"}} <br>
@@ -192,6 +192,7 @@
           <br>
           <h5>Gesamtbetrag: {{gesamtSumme| currency : "€"}}</h5>
           <mat-error *ngIf="gesamtSumme > 1000">{{getError()}}</mat-error>
+          <br>
         </div>
 
         <div class="example-button-row" >
@@ -272,7 +273,7 @@
               <p>Es wurden keine Sachkosten angegeben.</p>
             </ng-template>
           </div>
-          <span class="unterschrift" *ngIf="isSubmitted || !isSubmitted">Unterschrift: _________________________</span>
+          <span class="unterschrift" *ngIf="isSubmitted">Unterschrift: _________________________</span>
         </kendo-pdf-export>
       </div>
       <div class="example-button-row" *ngIf="!isSubmitted">
