@@ -29,7 +29,8 @@ const routes: Routes = [
   // {path: 'detailseite', component: DetailseiteAntragComponent},
   {path: 'infos-zum-kiezfond', component: InfoseiteComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent},
-  {path: 'header', component: HeaderComponent}
+  {path: 'header', component: HeaderComponent},
+  {path: 'reset-password', component: ResetPasswordComponent}
 
 ];
 
