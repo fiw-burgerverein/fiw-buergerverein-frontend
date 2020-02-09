@@ -32,7 +32,8 @@ const routes: Routes = [
   {path: 'header', component: HeaderComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'geschaeftsstelle', component: GeschaeftsstelleComponent},
-  {path: 'alle-antraege', component: AllapplicationsComponent}
+//   {path: 'alle-antraege', component: AllapplicationsComponent}
+  {path: 'all-applications', component: AllapplicationsComponent}
 
 ];
 

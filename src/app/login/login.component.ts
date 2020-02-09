@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.router.navigate(['']);
         this.reloadPage();
-        this.router.navigate(['#']);
+   /*     this.router.navigate(['#']);*/
       },
       error => {
         console.log(error);
