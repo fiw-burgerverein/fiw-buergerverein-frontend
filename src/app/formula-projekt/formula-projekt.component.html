@@ -203,7 +203,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Angaben überprüfen&absenden</ng-template>
+      <ng-template matStepLabel>Angaben überprüfen</ng-template>
       <!--      <div style="overflow-x:auto;">-->
       <!--        <ng-template>-->
       <div name="pdf" #pdfTable style="overflow-x:auto;">
@@ -213,7 +213,7 @@
           <h3 *ngIf="isSubmitted">Antrag zum Kiezfond Lichtenberg</h3>
           <table *ngIf="isSubmitted" [hidden] class="info-table">
             <tr><td>Formular-ID: </td><td>{{formId}}</td></tr>
-            <tr><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
+            <tr><td>Erstellt am: </td><td>{{createdAt}}</td></tr>
           </table>
           <h5>Persönliche Angaben</h5>
           <table class="preview-table">
@@ -230,7 +230,7 @@
           <h5 class="page-break">Angaben zum Projekt</h5>
           <table *ngIf="isSubmitted" [hidden] class="info-table">
             <tr><td>Formular-ID: </td><td>{{formId}}</td></tr>
-            <tr><td>Erstellungsdatum: </td><td>{{createdAt}}</td></tr>
+            <tr><td>Erstellt an: </td><td>{{createdAt}}</td></tr>
           </table>
           <table class="preview-table">
             <tr><td>Projektname: </td><td>{{form.projektname}}</td></tr>

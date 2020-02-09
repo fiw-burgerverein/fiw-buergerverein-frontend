@@ -1,9 +1,39 @@
-.buttons > a
+.buttons > button
 {
-  margin-right: 50px;
+  margin-right: 8px;
+  /*  background-color: #4d4a6f;*/
+  font-size: 16px;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.buttons>button:hover
+{
+  text-decoration: none;
+  color: white;
 }
 .detailseite
 {
   padding-right: 10%;
   padding-left: 10%;
+}
+.preview-table > td {
+  vertical-align: top;
+}
+.preview-table > th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.preview-table > tr:hover {background-color: #f5f5f5;}
+.preview-table{
+  padding: 20px;
+}
+kendo-pdf-export {
+  font-family: "DejaVu Sans", "Arial", sans-serif;
+  font-size: 16px;
+}
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("https://kendo.cdn.telerik.com/2020.1.114/styles/fonts/DejaVu/DejaVuSans.ttf") format("truetype");
 }

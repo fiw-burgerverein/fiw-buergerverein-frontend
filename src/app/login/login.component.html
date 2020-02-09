@@ -1,49 +1,48 @@
-
 <div class="login">
-<h2 style="text-align: center">Login</h2>
+  <h2 style="text-align: center">Login</h2>
 
 
-<mat-card class="my-card">
-  <mat-card-header>
-    <mat-card-title></mat-card-title>
-  </mat-card-header>
+  <mat-card class="my-card" *ngIf="!isLoggedIn">
+    <mat-card-header>
+      <mat-card-title></mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div *ngIf="isLoggedIn; else loginForm">
-<!--      Logged in as {{roles}}.-->
-<!--      <button class="btn btn-secondary">Logout</button>-->
-    </div>
-    <div *ngIf="isLoginFailed">
-      <span>{{getErrorMessage()}}</span>
-    </div>
-    <form name="loginForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      <ng-template #loginForm>
-        <mat-form-field class="full-width">
-          <mat-label>E-Mail</mat-label>
-          <input matInput placeholder="E-Mail" [(ngModel)]="form.email" type="email" name="email"
-                 [formControl]="emailFormControl" required> <!--#email="ngModel"-->
-          <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
-<!--          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">-->
-<!--            <div *ngIf="email.errors.required">Sie müssen dieses Feld ausfüllen.</div>-->
-<!--          </div>-->
-<!--          <div *ngIf="f.submitted && email.invalid">-->
-<!--            <div *ngIf="email.errors.required">Sie müssen dieses Feld ausfüllen.</div>-->
-<!--          </div>-->
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Passwort</mat-label>
-          <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password"
-                 [formControl]="passwordFormControl" required><!--#password="ngModel"-->
-          <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
-        </mat-form-field>
-      </ng-template>
-    </form>
-  </mat-card-content>
+    <mat-card-content>
+      <div *ngIf="isLoggedIn; else loginForm">
+  <!--      Logged in as {{roles}}.-->
+  <!--      <button class="btn btn-secondary">Logout</button>-->
+      </div>
+      <div *ngIf="isLoginFailed">
+        <span>{{getErrorMessage()}}</span>
+      </div>
+      <form name="loginForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <ng-template #loginForm>
+          <mat-form-field class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input matInput placeholder="E-Mail" [(ngModel)]="form.email" type="email" name="email"
+                   [formControl]="emailFormControl" required> <!--#email="ngModel"-->
+            <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
+  <!--          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">-->
+  <!--            <div *ngIf="email.errors.required">Sie müssen dieses Feld ausfüllen.</div>-->
+  <!--          </div>-->
+  <!--          <div *ngIf="f.submitted && email.invalid">-->
+  <!--            <div *ngIf="email.errors.required">Sie müssen dieses Feld ausfüllen.</div>-->
+  <!--          </div>-->
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Passwort</mat-label>
+            <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password"
+                   [formControl]="passwordFormControl" required><!--#password="ngModel"-->
+            <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
+          </mat-form-field>
+        </ng-template>
+      </form>
+    </mat-card-content>
 
-  <mat-card-actions>
-    <button mat-raised-button *ngIf="!isLoggedIn" color="primary" type="submit" (click)="onSubmit()">Einloggen</button>
-    <p *ngIf="!isLoggedIn">Sie sind noch nicht bei uns registriert? <a routerLink="../registrieren">Jetzt registrieren</a></p>
-    <a routerLink="../passwort-vergessen">Passwort vergessen?</a>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-actions>
+      <button mat-raised-button *ngIf="!isLoggedIn" color="primary" type="submit" (click)="onSubmit()">Einloggen</button>
+      <p *ngIf="!isLoggedIn">Sie sind noch nicht bei uns registriert? <a routerLink="../registrieren">Jetzt registrieren</a></p>
+      <a routerLink="../passwort-vergessen">Passwort vergessen?</a>
+    </mat-card-actions>
+  </mat-card>
 </div>

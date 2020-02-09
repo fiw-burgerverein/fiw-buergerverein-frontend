@@ -7,8 +7,8 @@
     </a>
     <div fxShow="true" fxHide.lt-md="true"  >
       <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" routerLink="infos-zum-kiezfond" href="#" mat-button>Infos zum Kiezfonds</a>
-      <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'">Meine Anträge</a>
-      <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'">Alle Anträge</a>
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'" routerLink="alle-antraege">Meine Anträge</a>
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'" routerLink="geschaeftsstelle">Alle Anträge</a>
       <div *ngIf="!isLoggedIn; then routeLogin;"></div>
       <div *ngIf="isLoggedIn && authority === 'user'; then routeDatenschutz;"></div>
 <!--       <a href="#" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</a>
@@ -48,7 +48,7 @@
       <div fxLayout="column">
         <a (click)="sidenav.toggle()" mat-button>Schließen</a>
         <button mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</button>
-        <button mat-button>Meine Anträge</button>
+        <button mat-button routerLink="alle-antraege">Meine Anträge</button>
         <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
         <ng-template #routeDatenschutz>
           <button mat-button routerLink="datenschutz">Antrag stellen</button>
