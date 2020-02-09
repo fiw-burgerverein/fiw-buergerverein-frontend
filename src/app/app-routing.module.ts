@@ -31,7 +31,7 @@ const routes: Routes = [
   // {path: 'passwort-vergessen', component: ResetPasswordComponent},
   // {path: 'passwort-vergessen/passwort-zuruecksetzen', component: ResetPasswordComponent}
   {path: 'detailseite', component: DetailseiteAntragComponent},
-  {path: 'infoseite', component: InfoseiteComponent},
+  {path: 'infos-zum-kiezfond', component: InfoseiteComponent},
 
 
   {path: 'uebersicht', component: UebersichtComponent},
