@@ -6,7 +6,7 @@
       <span class="spacer"></span>
     </a>
     <div fxShow="true" fxHide.lt-md="true"  >
-      <a href="#" mat-button>Infos zum Kiezfonds</a>
+      <a href="#" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</a>
       <a href="#" mat-button *ngIf="isLoggedIn">Meine Anträge</a>
       <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
       <ng-template #routeDatenschutz>
