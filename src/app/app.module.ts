@@ -49,6 +49,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { InfoseiteComponent } from './infoseite/infoseite.component';
 
 // I keep the new line
 @NgModule({
@@ -66,6 +67,9 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+
+    InfoseiteComponent,
+
     UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
@@ -102,7 +106,11 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatExpansionModule,
+
+        MatExpansionModule,
+
         PDFExportModule
+
     ],
 
   providers: [httpInterceptorProviders,
