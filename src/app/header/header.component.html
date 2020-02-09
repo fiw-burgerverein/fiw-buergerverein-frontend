@@ -6,8 +6,9 @@
     <span class="spacer"></span>
 
     <div fxShow="true" fxHide.lt-md="true"  >
-      <a href="#" mat-button>Infos zum Kiezfonds</a>
+      <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" href="#" mat-button>Infos zum Kiezfonds</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'">Meine Anträge</a>
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'">Alle Anträge</a>
       <div *ngIf="!isLoggedIn; then routeLogin;"></div>
       <div *ngIf="isLoggedIn && authority === 'user'; then routeDatenschutz;"></div>
       <ng-template #routeDatenschutz>
