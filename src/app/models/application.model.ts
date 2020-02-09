@@ -4,27 +4,28 @@ export class Application implements Deserializable {
   formId: number;
   createdAt: string;
   status: string;
-  projectName: string;
+  projektname: string;
   beschreibung: string;
-  startDate: Date;
-  endDate: Date;
+  startdatum: Date;
+  enddatum: Date;
   ort: string;
-  sachkostenSum: number;
-  aufwandSum: string;
+  // sachkostenSum: number;
+  // aufwandSum: string;
+  gesamtkosten: number;
   anrede: string;
   vorname: string;
   nachname: string;
   strasse: string;
-  hausNr: number;
+  hausnr: number;
   plz: number;
   email: string;
 
-  get getStartDate(): Date {
-    return new Date(this.startDate);
+  get getStartdatum(): Date {
+    return new Date(this.startdatum);
   }
 
-  get getEndDate(): Date {
-    return new Date(this.endDate);
+  get getEnddatum(): Date {
+    return new Date(this.enddatum);
   }
 
   constructor(data: any) {
