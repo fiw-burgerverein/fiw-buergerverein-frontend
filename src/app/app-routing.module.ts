@@ -10,7 +10,6 @@ import {ImpressumComponent} from './impressum/impressum.component';
 import {DatenschutzFooterComponent} from './datenschutz-footer/datenschutz-footer.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
-import {UebersichtComponent} from './uebersicht/uebersicht.component';
 import {DetailseiteAntragComponent} from './detailseite-antrag/detailseite-antrag.component';
 import {InfoseiteComponent} from './infoseite/infoseite.component';
 
@@ -26,15 +25,9 @@ const routes: Routes = [
   {path: 'registrieren/accountbestaetigung', component: RegistrierungComponent},
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
-
-  {path: 'detailseite', component: DetailseiteAntragComponent},
-  // {path: 'passwort-vergessen', component: ResetPasswordComponent},
-  // {path: 'passwort-vergessen/passwort-zuruecksetzen', component: ResetPasswordComponent}
-  {path: 'detailseite', component: DetailseiteAntragComponent},
+  // {path: 'detailseite', component: DetailseiteAntragComponent},
+  // {path: 'detailseite', component: DetailseiteAntragComponent},
   {path: 'infos-zum-kiezfond', component: InfoseiteComponent},
-
-
-  {path: 'uebersicht', component: UebersichtComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent},
   {path: 'header', component: HeaderComponent}
 

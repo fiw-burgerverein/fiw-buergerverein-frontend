@@ -11,7 +11,7 @@
   <mat-card-content>
     <div *ngIf="isSignedUp; else signupForm">
       <p>Sie haben sich erfolgreich registriert! Um Ihren Account freizuschalten, klicken Sie bitte auf den an die von
-        Ihnen angegebene Email-Adresse gesendeten Link</p>
+        Ihnen angegebene Email-Adresse gesendeten Link.</p>
     </div>
     <div *ngIf="isSignUpFailed">
       <span>{{getErrorMessage()}}</span>

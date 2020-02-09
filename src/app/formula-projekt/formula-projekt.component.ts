@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
-import {Result} from '../formService/result.model';
 import {Response} from '../formService/response.model';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+import { defineFont } from '@progress/kendo-drawing/pdf';
+
+defineFont({
+  Verdana             : '/fonts/verdana.ttf',
+});
 
 
 @Component({
@@ -56,9 +57,6 @@ export class FormulaProjektComponent implements OnInit {
 
   minStartDate = new Date();
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  // displayedColumnsTest: string[] = ['position', 'name'];
-  // dataSource ;
-  // tableForm: FormGroup;
 
   getErrorEmail() {
     return this.emailFormControl.hasError('required') ? 'Bitte tragen Sie Ihre E-Mail-Adresse ein.' :
@@ -99,41 +97,10 @@ export class FormulaProjektComponent implements OnInit {
     {return'der Betrag darf nicht mehr als €1000 sein.'; }
   }
 
-  constructor(private formService: FormService, private formBuilder: FormBuilder) {
-    // this.dataSource = [
-    //   {position: 1, name: 'Hydrogen'},
-    //   {position: 2, name: 'Helium'},
-    //   {position: 3, name: 'Lithium'},
-    //   {position: 4, name: 'Beryllium'},
-    //   {position: 5, name: 'Boron'},
-    //   {position: 6, name: 'Carbon'},
-    //   {position: 7, name: 'Nitrogen'},
-    //   {position: 8, name: 'Oxygen'},
-    //   {position: 9, name: 'Fluorine'},
-    //   {position: 10, name: 'Neon'},
-    // ];
-  }
+  constructor(private formService: FormService) { }
 
 
-  ngOnInit() {
-    // this.tableForm = this.formBuilder.group({
-    //   users: this.formBuilder.array([])
-    // });
-    // this.setUsersForm();
-    // this.tableForm.get('users').valueChanges.subscribe(users => {console.log('users', users); });
-  }
-  // private setUsersForm() {
-  //   const userCtrl = this.tableForm.get('users') as FormArray;
-  //   this.dataSource.forEach((user) => {
-  //     userCtrl.push(this.setUsersFormArray(user));
-  //   });
-  // }
-  // private setUsersFormArray(user) {
-  //   return this.formBuilder.group({
-  //     position: [user.position],
-  //     name: [user.name]
-  //   });
-  // }
+  ngOnInit() { }
 
   onSubmit() {
     console.log(this.form);
@@ -176,40 +143,7 @@ export class FormulaProjektComponent implements OnInit {
         }
       );
   }
-    // download() {
-    // const div = document.getElementById('html2Pdf');
-    // const options = {background: 'white', height: div.clientHeight, width: div.clientWidth};
-    // @ts-ignore
-    // html2canvas(div, options).then((canvas) => {
-      // Initialize JSPDF
-      // const doc = new jspdf('p', 'mm', 'a4');
-      // const preview = this.content.nativeElement;
-      // @ts-ignore
-     //  doc.fromHTML(preview.innerHTML, 17, 20, {
-      //  width: 300,
-    //  });
-      // doc.text(30, 80, this.content);
-     // doc.save('Test.pdf');
- // }
-      // Converting canvas to Image
-     // const imgData = canvas.toDataURL('image/PNG');
-      // Add image Canvas to PDF
-      // doc.addImage(imgData, 'PNG', 20, 20);
 
-     //  const pdfOutput = doc.output();
-      // using ArrayBuffer will allow you to put image inside PDF
-      // const buffer = new ArrayBuffer(pdfOutput.length);
-      // const array = new Uint8Array(buffer);
-      // for (let i = 0; i < pdfOutput.length; i++) {
-      //  array[i] = pdfOutput.charCodeAt(i);
-
-
-      // Name of pdf
-      // const fileName = 'example.pdf';
-
-      // Make file
-     // doc.save(fileName);
-    // })
 }
 export interface Element {
   Posten: string;
