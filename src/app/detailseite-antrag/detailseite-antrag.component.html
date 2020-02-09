@@ -87,8 +87,8 @@
     <div class="buttons">
      <!-- <button (click)="callChangeState($event)" id='btnGenehmigen' mat-raised-button color="primary" >Genehmigen</button>
       <button (click)="callChangeState($event)" id='btnAblehnen' mat-raised-button color="primary" >Ablehnen</button>-->
-      <button (click)="genehmigen()" id='btnGenehmigen' mat-raised-button color="primary" >Genehmigen</button>
-      <button (click)="ablehnen()" id='btnAblehnen' mat-raised-button color="primary" >Ablehnen</button>
+      <button (click)="genehmigen()" id='btnGenehmigen' mat-raised-button color="primary" routerLink="/geschaeftsstelle">Genehmigen</button>
+      <button (click)="ablehnen()" id='btnAblehnen' mat-raised-button color="primary" routerLink="/geschaeftsstelle">Ablehnen</button>
       <button mat-raised-button color="primary" type="submit"
               kendo-button (click)="pdf.saveAs('Antrag_Kiezfond.pdf')">
         <i class="material-icons">cloud_download</i>
