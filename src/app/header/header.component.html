@@ -1,30 +1,33 @@
 <div>
   <mat-toolbar color="primary">
-    <mat-icon class="homeIcon" routerLink="router-outlet">home</mat-icon>
-    <span class="header" routerLink="router-outlet" >Kiezfonds HSH</span>
-
-    <span class="spacer"></span>
-
+    <a href="#" mat-button routerLink="/" class="home-elem">
+      <mat-icon class="homeIcon">home</mat-icon>  <!--routerLink="router-outlet"-->
+      <span class="header">Kiezfonds HSH</span>
+      <span class="spacer"></span>
+    </a>
     <div fxShow="true" fxHide.lt-md="true"  >
       <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" href="#" mat-button>Infos zum Kiezfonds</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'">Meine Anträge</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'">Alle Anträge</a>
       <div *ngIf="!isLoggedIn; then routeLogin;"></div>
       <div *ngIf="isLoggedIn && authority === 'user'; then routeDatenschutz;"></div>
+<!--       <a href="#" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</a>
+      <a href="#" mat-button *ngIf="isLoggedIn">Meine Anträge</a>
+      <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div> -->
       <ng-template #routeDatenschutz>
         <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
       </ng-template>
       <ng-template #routeLogin>
         <a href="#" mat-button routerLink="login">Antrag stellen</a>
       </ng-template>
-
     </div>
 
     <mat-menu #appMenu="matMenu">
-      <button *ngIf="!isLoggedIn" mat-menu-item routerLink="login">Login</button>
-      <button *ngIf="!isLoggedIn" mat-menu-item routerLink="registrieren">Registrieren</button>
-      <button *ngIf="isLoggedIn" mat-menu-item disabled>{{userEmail}}</button>
-      <button *ngIf="isLoggedIn" (click)="logout()" mat-menu-item routerLink="">Logout</button>
+      <!--      <button mat-menu-item disabled>Profil </button>-->
+      <button mat-menu-item routerLink="login" *ngIf="!isLoggedIn">Einloggen</button>
+      <button mat-menu-item routerLink="registrieren" *ngIf="!isLoggedIn">Registrieren</button>
+      <!--      <button mat-menu-item *ngIf="isLoggedIn">{{}}</button>-->
+      <button mat-menu-item routerLink="logout" *ngIf="isLoggedIn">Ausloggen</button>
     </mat-menu>
     <span class="example-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -39,7 +42,10 @@
     </div>-->
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
-    <mat-sidenav #sidenav fxLayout="column">
+    <mat-sidenav mode="over" #sidenav role="navigation"
+                 [fixedInViewport]="true"
+                 [fixedTopGap]="65"
+                 [fixedBottomGap]="400">
       <div fxLayout="column">
         <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
         <button mat-button>Infos zum Kiezfonds</button>
@@ -51,7 +57,7 @@
         <ng-template #routeLogin>
           <button mat-button routerLink="login">Antrag stellen</button>
         </ng-template>
-<!--        <button mat-button routerLink="formula">Antrag stellen</button>-->
+        <!--        <button mat-button routerLink="formula">Antrag stellen</button>-->
       </div>
     </mat-sidenav>
 

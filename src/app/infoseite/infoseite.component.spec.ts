@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormulaComponent } from './formula.component';
+import { InfoseiteComponent } from './infoseite.component';
 
-describe('FormulaComponent', () => {
-  let component: FormulaComponent;
-  let fixture: ComponentFixture<FormulaComponent>;
+describe('InfoseiteComponent', () => {
+  let component: InfoseiteComponent;
+  let fixture: ComponentFixture<InfoseiteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormulaComponent ]
+      declarations: [ InfoseiteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormulaComponent);
+    fixture = TestBed.createComponent(InfoseiteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

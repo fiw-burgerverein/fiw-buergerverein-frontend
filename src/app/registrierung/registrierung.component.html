@@ -1,7 +1,7 @@
 
-<mat-toolbar>
-  <h2>Registrierung</h2>
-</mat-toolbar>
+<div class="reg">
+  <h2 style="text-align: center">Registrierung</h2>
+
 
 <mat-card class="my-card" *ngIf="!(isActivated || activationFailed)">
   <mat-card-header>
@@ -11,27 +11,38 @@
   <mat-card-content>
     <div *ngIf="isSignedUp; else signupForm">
       <p>Sie haben sich erfolgreich registriert! Um Ihren Account freizuschalten, klicken Sie bitte auf den an die von
-        Ihnen angegebene Email-Adresse gesendeten Link</p>
+        Ihnen angegebene Email-Adresse gesendeten Link.</p>
+    </div>
+    <div *ngIf="isSignUpFailed">
+      <span>{{getErrorMessage()}}</span>
     </div>
     <form name="my-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <ng-template #signupForm>
-          <mat-form-field class="full-width">
-            <mat-label>E-Mail</mat-label>
-            <input matInput placeholder="E-Mail" [(ngModel)]="form.email" name="email" required>
-          </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>E-Mail</mat-label>
+          <input matInput placeholder="E-Mail" [(ngModel)]="form.email" type="email" name="email"
+                 [formControl]="emailFormControl" required>
+          <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
+        </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>E-Mail bestätigen</mat-label>
-            <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" name="emailConfirm" required>
+            <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" type="email"
+                   name="emailConfirm" [formControl]="emailConfirmFormControl" required>
+            <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
+
           </mat-form-field>
-          <mat-form-field class="full-width">
+        <mat-form-field class="full-width">
           <mat-label>Passwort</mat-label>
-          <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password" required>
+          <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password"
+                 [formControl]="passwordFormControl" required>
+          <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
         </mat-form-field>
           <mat-form-field class="full-width">
           <mat-label>Passwort bestätigen</mat-label>
           <input matInput placeholder="Passwort bestätigen" [(ngModel)]="form.passwordConfirm" type="password"
-                 name="passwordConfirm" required>
-        </mat-form-field>
+                 name="passwordConfirm" [formControl]="passwordConfirmFormControl" required>
+            <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
+          </mat-form-field>
       </ng-template>
     </form>
   </mat-card-content>
@@ -41,70 +52,5 @@
     <p *ngIf="!isSignedUp">Sie sind bei uns schon registriert? Dann können Sie sich direkt <a routerLink="../login">einloggen</a>.</p>
   </mat-card-actions>
 </mat-card>
+</div>
 
-
-<!--<mat-toolbar>-->
-<!--  <h1>Registrierung</h1>-->
-<!--</mat-toolbar>-->
-<!--<mat-card class="my-card">-->
-<!--  <mat-card-content>-->
-<!--    <div *ngIf="isSignedUp; else signupForm">-->
-<!--      Your registration is successful. Please login!-->
-<!--    </div>-->
-
-
-<!--    <ng-template #signupForm>-->
-<!--      <div class="row col-sm-6" style="max-width:350px;">-->
-<!--        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
-<!--          <div class="form-group">-->
-<!--            <label for="email">Email</label>-->
-<!--            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />-->
-<!--            <div *ngIf="f.submitted && email.invalid">-->
-<!--              <div *ngIf="email.errors.required">Email is required</div>-->
-<!--              <div *ngIf="email.errors.email">Email must be a valid email address</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="emailConfirm">Email Confirmation</label>-->
-<!--            <input type="text" class="form-control" name="emailConfirm" [(ngModel)]="form.emailConfirm" #emailConfirm="ngModel" confirm your email />-->
-<!--            <div *ngIf="f.submitted && emailConfirm.invalid">-->
-<!--              <div *ngIf="emailConfirm.errors.required">Email confirmation is required</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="password">Password</label>-->
-<!--            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"-->
-<!--                   required minlength="8" />-->
-<!--            <div *ngIf="f.submitted && password.invalid">-->
-<!--              <div *ngIf="password.errors.required">Password is required</div>-->
-<!--              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="passwordConfirm">Password Confirmation</label>-->
-<!--            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="form.passwordConfirm" #passwordConfirm="ngModel"-->
-<!--                   required minlength="8" />-->
-<!--            <div *ngIf="f.submitted && passwordConfirm.invalid">-->
-<!--              <div *ngIf="passwordConfirm.errors.required">Password is required</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <button class="btn btn-primary">Register</button>-->
-<!--            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">-->
-<!--              Signup failed!<br/>{{errorMessage}}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--    </ng-template>-->
-<!--  </mat-card-content>-->
-<!--  <mat-card-actions>-->
-<!--    &lt;!&ndash;REGISTER BUTTON HERE&ndash;&gt;-->
-<!--    <p>Sie sind bei uns schon angemeldet? Dann können sie sich direkt einloggen: <a routerLink="login">Login</a>.</p>-->
-<!--   &lt;!&ndash; <button class="registrierungbtn" mat-raised-button color="primary">Registrieren</button>&ndash;&gt;-->
-
-<!--  </mat-card-actions>-->
-<!--  <div  class="einloggen">-->
-
-<!--  </div>-->
-<!--</mat-card>-->

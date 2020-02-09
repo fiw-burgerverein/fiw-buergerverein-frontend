@@ -3,12 +3,12 @@ import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FormInfo } from './form-info';
 
-const httpOptions: { headers; observe; responseType } = {
+const httpOptions: { headers; observe } = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
   }),
   observe: 'response' as 'body',
-  responseType: 'json'
+  // responseType: 'json'
 };
 // httpOptions.headers.append('Authorization', 'Bearer')
 @Injectable({

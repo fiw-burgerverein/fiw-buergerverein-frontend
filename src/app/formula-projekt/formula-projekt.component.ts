@@ -1,11 +1,18 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
-import {Result} from '../formService/result.model';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import {Response} from '../formService/response.model';
+// import { defineFont } from '@progress/kendo-drawing/pdf';
+// import * as jspdf from 'jspdf';
+// import html2canvas from 'html2canvas';
+
+// defineFont({
+//   Verdana             : '/fonts/verdana.ttf',
+// });
+
 
 @Component({
   selector: 'app-formula-projekt',
@@ -46,7 +53,19 @@ export class FormulaProjektComponent implements OnInit {
   // projAngaben: FormGroup;
   aufwandKostenExist = false;
   sachKostenExist = false;
-  // result: Result;
+
+  response: Response;
+  formId: number;
+  createdAt: string;
+
+  minStartDate = new Date();
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorEmail() {
+    return this.emailFormControl.hasError('required') ? 'Bitte tragen Sie Ihre E-Mail-Adresse ein.' :
+      this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
+        '';
+  }
 
   addElementAufwand(z: Event) {
     const textareaArray = document.getElementsByClassName('zweck-aufwand');
@@ -84,8 +103,7 @@ export class FormulaProjektComponent implements OnInit {
   constructor(private formService: FormService) { }
 
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onSubmit() {
     console.log(this.form);
@@ -115,61 +133,23 @@ export class FormulaProjektComponent implements OnInit {
     this.formService.saveForm(this.formInfo)
       .subscribe(
         data => {
-          console.log(data);
-          // this.result = JSON.parse(data['body']).value[2];
+          this.response = data;
           this.isSubmitted = true;
           this.isSubmitFailed = false;
+          this.formId = this.response.body.result.formId;
+          this.createdAt = this.response.body.result.createdAt;
         },
         error => {
           console.log(error);
           this.errorMessage = error.error.message;
           this.isSubmitFailed = true;
         }
-       );
+      );
   }
-  getErrorMessage() {
-    return this.emailCtrl.hasError('required') ? 'Sie müssen eine gültige E-Mail-Adresse eingeben' :
-      this.emailCtrl.hasError('email') ? 'Keine gültige E-Mail-Adresse' :
-        '';
-  }
-    // download() {
-    // const div = document.getElementById('html2Pdf');
-    // const options = {background: 'white', height: div.clientHeight, width: div.clientWidth};
-    // @ts-ignore
-    // html2canvas(div, options).then((canvas) => {
-      // Initialize JSPDF
-      // const doc = new jspdf('p', 'mm', 'a4');
-      // const preview = this.content.nativeElement;
-      // @ts-ignore
-     //  doc.fromHTML(preview.innerHTML, 17, 20, {
-      //  width: 300,
-    //  });
-      // doc.text(30, 80, this.content);
-     // doc.save('Test.pdf');
- // }
-      // Converting canvas to Image
-     // const imgData = canvas.toDataURL('image/PNG');
-      // Add image Canvas to PDF
-      // doc.addImage(imgData, 'PNG', 20, 20);
 
-     //  const pdfOutput = doc.output();
-      // using ArrayBuffer will allow you to put image inside PDF
-      // const buffer = new ArrayBuffer(pdfOutput.length);
-      // const array = new Uint8Array(buffer);
-      // for (let i = 0; i < pdfOutput.length; i++) {
-      //  array[i] = pdfOutput.charCodeAt(i);
-
-
-      // Name of pdf
-      // const fileName = 'example.pdf';
-
-      // Make file
-     // doc.save(fileName);
-    // })
 }
 export interface Element {
   Posten: string;
   Betrag: number;
 }
-
 
