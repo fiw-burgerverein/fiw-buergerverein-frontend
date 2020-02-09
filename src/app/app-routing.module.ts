@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'passwort-vergessen', component: ForgotPasswordComponent},
   {path: 'passwort-zuruecksetzen', component: ResetPasswordComponent},
   {path: 'infos-zum-kiezfond', component: InfoseiteComponent},
-  {path: 'detailseite', component: DetailseiteAntragComponent},
+  {path: 'detailseite/:formId', component: DetailseiteAntragComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'geschaeftsstelle', component: GeschaeftsstelleComponent},
