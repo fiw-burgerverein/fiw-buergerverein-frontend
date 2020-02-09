@@ -12,8 +12,8 @@ export class AllapplicationsComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
-  public getAllApplications() {
-    this.apiService.getAllApplications()
+  public getAllApplicationsForUser() {
+    this.apiService.getAllApplicationsForUser()
       .subscribe((data) => {
         console.log('getAllApplications d ' + data);
         console.log(data);
@@ -24,7 +24,7 @@ export class AllapplicationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllApplications();
+    this.getAllApplicationsForUser();
   }
 
 }

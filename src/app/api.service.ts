@@ -23,6 +23,14 @@ export class ApiService {
           catchError(() => throwError('Antrag nicht gefunden id=' + id))));
   }
 
+  public getAllApplicationsForUser(): Observable<AllApplications>  {
+    const url = 'http://localhost:8080/user/alleAntraegeUserin';
+    return this.httpClient
+      .get<AllApplications>(url, {responseType: 'json'})
+      .pipe(
+        map(data => new AllApplications(data),
+          catchError(() => throwError('keine Anträge verfügbar'))));
+  }
   public getAllApplications(): Observable<AllApplications>  {
     const url = 'http://localhost:8080/alleAntraege/';
     return this.httpClient
