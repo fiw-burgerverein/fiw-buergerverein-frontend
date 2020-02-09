@@ -4,6 +4,7 @@ import {ApiService} from '../api.service';
 import {Application} from '../models/detailseite.model';
 /*import {ChangeStateInfo} from "../auth/change-state-info";*/
 import { ActivatedRoute } from '@angular/router';
+import {StateInfo} from '../formService/state-Info';
 
 @Component({
   selector: 'app-detailseite-antrag',
@@ -13,11 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailseiteAntragComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private formService: FormService, private apiService: ApiService) { }
-  stateInt: number;
+  intState: number;
 /*  abgelehnt: boolean;*/
   isChanged = false;
   errorMessage = '';
   formIdString: string;
+  private stateInfo: StateInfo;
 
   application: Application;
 
@@ -57,8 +59,13 @@ export class DetailseiteAntragComponent implements OnInit {
   }
 
   genehmigen() {
-    this.stateInt = 1;
-    this.formService.changeState(this.stateInt).subscribe(
+    this.formIdString = this.route.snapshot.paramMap.get('formId');
+    const formId = +this.formIdString;
+    this.intState = 1;
+    this.stateInfo = new StateInfo(
+      this.intState, formId
+    );
+    this.formService.changeState(this.stateInfo).subscribe(
       data => {
         console.log(data);
         this.isChanged = true;
@@ -73,8 +80,14 @@ export class DetailseiteAntragComponent implements OnInit {
   }
 
   ablehnen() {
-    this.stateInt = 2;
-    this.formService.changeState(this.stateInt).subscribe(
+    this.formIdString = this.route.snapshot.paramMap.get('formId');
+    const formId = +this.formIdString;
+    this.intState = 2;
+    this.stateInfo = new StateInfo(
+      this.intState, formId
+    );
+   /* this.stateInt = 2;*/
+    this.formService.changeState(this.stateInfo).subscribe(
       data => {
         console.log(data);
         this.isChanged = true;
