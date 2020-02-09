@@ -6,7 +6,7 @@
       <span class="spacer"></span>
     </a>
     <div fxShow="true" fxHide.lt-md="true"  >
-      <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" href="#" mat-button>Infos zum Kiezfonds</a>
+      <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" routerLink="infos-zum-kiezfond" href="#" mat-button>Infos zum Kiezfonds</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'">Meine Anträge</a>
       <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'">Alle Anträge</a>
       <div *ngIf="!isLoggedIn; then routeLogin;"></div>
@@ -35,11 +35,11 @@
     </button>
 
 <!--    Auskommentiert, da nicht in Benutzung:-->
-<!--    <div fxShow="true" fxHide.gt-sm="true">
+    <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button>
         <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </button>
-    </div>-->
+    </div>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
     <mat-sidenav mode="over" #sidenav role="navigation"
@@ -47,8 +47,8 @@
                  [fixedTopGap]="65"
                  [fixedBottomGap]="400">
       <div fxLayout="column">
-        <a (click)="sidenav.toggle()" href="#" mat-button>Schließen</a>
-        <button mat-button>Infos zum Kiezfonds</button>
+        <a (click)="sidenav.toggle()" mat-button>Schließen</a>
+        <button mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</button>
         <button mat-button>Meine Anträge</button>
         <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
         <ng-template #routeDatenschutz>
