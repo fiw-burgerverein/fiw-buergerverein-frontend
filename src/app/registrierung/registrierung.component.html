@@ -10,7 +10,7 @@
 
   <mat-card-content>
     <div *ngIf="isSignedUp; else signupForm">
-      <p>Sie haben sich erfolgreich registriert! Um Ihren Account freizuschalten, klicken Sie bitte auf den an die von
+      <p>Fast fertig! Um Ihren Account freizuschalten, klicken Sie bitte auf den an die von
         Ihnen angegebene Email-Adresse gesendeten Link.</p>
     </div>
     <div *ngIf="isSignUpFailed">
@@ -24,24 +24,23 @@
                  [formControl]="emailFormControl" required>
           <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
         </mat-form-field>
-          <mat-form-field class="full-width">
-            <mat-label>E-Mail bestätigen</mat-label>
-            <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" type="email"
-                   name="emailConfirm" [formControl]="emailConfirmFormControl" required>
-            <mat-error *ngIf="emailFormControl.invalid">{{getErrorEmail()}}</mat-error>
-
-          </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>E-Mail bestätigen</mat-label>
+          <input matInput placeholder="E-Mail bestätigen" [(ngModel)]="form.emailConfirm" type="email"
+                 name="emailConfirm" [formControl]="emailConfirmFormControl" required>
+          <mat-error *ngIf="emailConfirmFormControl.invalid">{{getErrorEmail()}}</mat-error>
+        </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Passwort</mat-label>
-          <input matInput placeholder="Passwort" [(ngModel)]="form.password" type="password" name="password"
-                 [formControl]="passwordFormControl" required>
-          <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
+          <input matInput minlength="8" maxlength="32" placeholder="Passwort" [(ngModel)]="form.password"
+                 type="password" name="password" [formControl]="passwordFormControl" required>
+          <mat-error *ngIf="passwordFormControl.invalid">{{getErrorPassword()}}</mat-error>
         </mat-form-field>
           <mat-form-field class="full-width">
           <mat-label>Passwort bestätigen</mat-label>
           <input matInput placeholder="Passwort bestätigen" [(ngModel)]="form.passwordConfirm" type="password"
                  name="passwordConfirm" [formControl]="passwordConfirmFormControl" required>
-            <mat-error *ngIf="emailFormControl.invalid">{{getErrorPassword()}}</mat-error>
+            <mat-error *ngIf="passwordConfirmFormControl.invalid">{{getErrorPassword()}}</mat-error>
           </mat-form-field>
       </ng-template>
     </form>

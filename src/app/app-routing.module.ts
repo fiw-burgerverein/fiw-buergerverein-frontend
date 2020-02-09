@@ -12,6 +12,7 @@ import {ForgotPasswordComponent} from './forgot-password/forgot-password.compone
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {DetailseiteAntragComponent} from './detailseite-antrag/detailseite-antrag.component';
 import {InfoseiteComponent} from './infoseite/infoseite.component';
+import {GeschaeftsstelleComponent} from './geschaeftsstelle/geschaeftsstelle.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'infos-zum-kiezfond', component: InfoseiteComponent},
   {path: 'detailseite', component: DetailseiteAntragComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'reset-password', component: ResetPasswordComponent}
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'geschaeftsstelle', component: GeschaeftsstelleComponent}
 
 ];
 

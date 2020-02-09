@@ -50,6 +50,9 @@ import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-ant
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { InfoseiteComponent } from './infoseite/infoseite.component';
+import { ApplicationComponent } from './application/application.component';
+import { AllapplicationsComponent } from './allapplications/allapplications.component';
+import { GeschaeftsstelleComponent } from './geschaeftsstelle/geschaeftsstelle.component';
 
 // I keep the new line
 @NgModule({
@@ -68,6 +71,9 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
     ResetPasswordComponent,
     ForgotPasswordComponent,
     InfoseiteComponent,
+    ApplicationComponent,
+    AllapplicationsComponent,
+    GeschaeftsstelleComponent,
     // UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
