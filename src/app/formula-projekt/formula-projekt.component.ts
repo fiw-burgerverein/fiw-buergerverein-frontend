@@ -3,12 +3,15 @@ import {AufwandInfo, FormInfo, SachkostenInfo} from '../formService/form-info';
 import {FormService} from '../formService/form.service';
 import {FormControl, Validators} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import {Response} from '../formService/response.model';
-import { defineFont } from '@progress/kendo-drawing/pdf';
+// import { defineFont } from '@progress/kendo-drawing/pdf';
+// import * as jspdf from 'jspdf';
+// import html2canvas from 'html2canvas';
 
-defineFont({
-  Verdana             : '/fonts/verdana.ttf',
-});
+// defineFont({
+//   Verdana             : '/fonts/verdana.ttf',
+// });
 
 
 @Component({
