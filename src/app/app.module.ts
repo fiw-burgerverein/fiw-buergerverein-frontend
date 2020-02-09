@@ -44,7 +44,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
-import {UebersichtComponent} from './uebersicht/uebersicht.component';
+// import {UebersichtComponent} from './uebersicht/uebersicht.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
@@ -67,10 +67,8 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
     DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-
     InfoseiteComponent,
-
-    UebersichtComponent,
+    // UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -106,9 +104,7 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatExpansionModule,
-
-        MatExpansionModule,
-
+        // MatExpansionModule,
         PDFExportModule
 
     ],
