@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthLoginInfo} from '../auth/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,30 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+
+  getErrorEmail() {
+    return this.emailFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+      this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
+        '';
+  }
+  getErrorPassword() {
+    return this.passwordFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+        '';
+  }
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
+
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();  /* gibt ROLE_ROLE_USER zurück*/
+      this.router.navigate(['']);
     }
   }
+
   onSubmit() {
     console.log(this.form);
 
@@ -40,9 +57,11 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveAuthorities(data.authorities);
 
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
+        this.isLoggedIn = true;
+        this.router.navigate(['']);
         this.reloadPage();
+        this.router.navigate(['#']);
       },
       error => {
         console.log(error);
@@ -55,10 +74,13 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
-
-  logout() {
-    this.tokenStorage.signOut();
-    window.location.reload();
+  getErrorMessage() {
+    return this.errorMessage; // TODO
   }
 
+/*  logout() {
+    this.tokenStorage.signOut();
+    this.isLoggedIn = false;
+    this.router.navigate(['/']);
+  }*/
 }

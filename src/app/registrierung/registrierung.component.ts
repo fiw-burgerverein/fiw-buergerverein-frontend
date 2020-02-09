@@ -3,6 +3,7 @@ import {SignUpInfo} from '../auth/signup-info';
 import {AuthService} from '../auth/auth.service';
 import {ConfirmAccountInfo} from '../auth/confirm-account-info';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroupDirective, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./registrierung.component.css']
 })
 export class RegistrierungComponent implements OnInit {
+
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
   form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
@@ -22,7 +25,20 @@ export class RegistrierungComponent implements OnInit {
   isActivated = false;
   activationFailed = false;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  emailConfirmFormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+  passwordConfirmFormControl = new FormControl('', [Validators.required]);
+
+  getErrorEmail() {
+    return this.emailFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+      this.emailFormControl.hasError('email') ? 'Bitte tragen Sie ein gültiges E-Mail ein.' :
+        '';
+  }
+  getErrorPassword() {
+    return this.passwordFormControl.hasError('required') ? 'Sie müssen dieses Feld ausfüllen.' :
+      '';
+  }
 
   ngOnInit() {
     // console.log(this.router.url)
@@ -73,7 +89,15 @@ export class RegistrierungComponent implements OnInit {
     );
   }
 
+  onInput(value) {
+    if (this.form.hasError('confirmedDoesNotMatch')) { // or some other test of the value
+      this.form.get('passwordConfirm').setErrors([{confirmedDoesNotMatch: true}]);
+    } else {
+      this.form.get('passwordConfirm').setErrors(null);
+    }
+  }
+
   getErrorMessage() {
-    return 'Error'; // TODO
+    return this.errorMessage; // TODO
   }
 }

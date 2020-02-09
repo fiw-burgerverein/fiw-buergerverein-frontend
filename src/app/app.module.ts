@@ -21,13 +21,12 @@ import { HeaderComponent } from './header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
-import { FormulaComponent } from './formula/formula.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { FormulaProjektComponent } from './formula-projekt/formula-projekt.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 import { LoginComponent } from './login/login.component';
@@ -45,6 +44,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkColumnDef, CdkTableModule} from '@angular/cdk/table';
+import {UebersichtComponent} from './uebersicht/uebersicht.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { DetailseiteAntragComponent } from './detailseite-antrag/detailseite-antrag.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
@@ -57,7 +58,6 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
     ContentComponent,
     FooterComponent,
     HeaderComponent,
-    FormulaComponent,
     FormulaProjektComponent,
     RegistrierungComponent,
     LoginComponent,
@@ -67,7 +67,10 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
     DetailseiteAntragComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+
     InfoseiteComponent,
+
+    UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -103,10 +106,16 @@ import { InfoseiteComponent } from './infoseite/infoseite.component';
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatExpansionModule,
+
         MatExpansionModule,
+
+        PDFExportModule
+
     ],
 
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
+  ],
   bootstrap: [AppComponent]
 })
 
