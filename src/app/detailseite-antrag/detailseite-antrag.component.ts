@@ -3,6 +3,7 @@ import {FormService} from '../formService/form.service';
 import {ApiService} from '../api.service';
 import {Application} from '../models/detailseite.model';
 /*import {ChangeStateInfo} from "../auth/change-state-info";*/
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detailseite-antrag',
@@ -11,19 +12,22 @@ import {Application} from '../models/detailseite.model';
 })
 export class DetailseiteAntragComponent implements OnInit {
 
-  constructor(private formService: FormService, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private formService: FormService, private apiService: ApiService) { }
   stateInt: number;
 /*  abgelehnt: boolean;*/
   isChanged = false;
   errorMessage = '';
+  formIdString: string;
 
   application: Application;
 
   ngOnInit() {
-    this.getApplication(13);
+    this.formIdString = this.route.snapshot.paramMap.get('formId');
+    const formId = +this.formIdString;
+    this.getApplication(formId);
   }
 
-  callChangeState(event) {
+/*  callChangeState(event) {
     if (event.target.id === 'btnGenehmigen') {
       this.stateInt = 1;
       console.log(this.stateInt);
@@ -34,7 +38,7 @@ export class DetailseiteAntragComponent implements OnInit {
       data => {
         console.log(data);
         this.isChanged = true;
-   /*    navigieren zu?*/
+
       },
       error => {
         console.log(error);
@@ -42,7 +46,7 @@ export class DetailseiteAntragComponent implements OnInit {
         this.isChanged = false;
       }
     );
-  }
+  }*/
 
   public getApplication(id: number) {
     this.apiService.getApplication(id)
@@ -52,13 +56,13 @@ export class DetailseiteAntragComponent implements OnInit {
       }         );
   }
 
-/*  genehmigen() {
+  genehmigen() {
     this.stateInt = 1;
     this.formService.changeState(this.stateInt).subscribe(
       data => {
         console.log(data);
         this.isChanged = true;
-      /!*  router navigate*!/
+      /*  router navigate*/
       },
       error => {
         console.log(error);
@@ -74,7 +78,7 @@ export class DetailseiteAntragComponent implements OnInit {
       data => {
         console.log(data);
         this.isChanged = true;
-        /!*  router navigate*!/
+        /*  router navigate*/
       },
       error => {
         console.log(error);
@@ -82,5 +86,5 @@ export class DetailseiteAntragComponent implements OnInit {
         this.isChanged = false;
       }
     );
-  }*/
+  }
 }

@@ -12,8 +12,9 @@
          <tr><td>Ort: </td><td>{{application.ort}}</td></tr>
        </table>
         <div class="example-button-row">
-          <a mat-raised-button color="primary" routerLink="../detailseite"
-             (click)="apiService.getApplication(application.formId)" id="{{application.formId}}">Zum Antrag</a>
+          <a mat-raised-button color="primary" [routerLink]="['/detailseite',application.formId]">Zum Antrag</a>
+          <!--<a mat-raised-button color="primary" routerLink="../detailseite"
+             (click)="apiService.getApplication(application.formId)" id="{{application.formId}}">Zum Antrag</a>-->
         </div>
       </div>
     </div>
@@ -31,8 +32,8 @@
           <tr><td>Ort: </td><td>{{application.ort}}</td></tr>
         </table>
         <div class="example-button-row">
-          <a mat-raised-button color="primary" routerLink="../detailseite"
-             (click)="apiService.getApplication(application.formId)" id="{{application.formId}}">Zum Antrag</a>
+          <a mat-raised-button color="primary" [routerLink]="['/detailseite',application.formId]">Zum Antrag</a>
+          <!--routerLink="../detailseite" (click)="apiService.getApplication(application.formId)" id="{{application.formId}}">Zum Antrag</a>-->
         </div>
       </div>
     </div>
