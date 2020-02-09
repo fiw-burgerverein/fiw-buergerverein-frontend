@@ -5,8 +5,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {MatTableDataSource} from '@angular/material';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import {Response} from '../formService/response.model';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+// import * as jspdf from 'jspdf';
+// import html2canvas from 'html2canvas';
 
 
 @Component({

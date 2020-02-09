@@ -26,12 +26,15 @@
           <mat-label>Träger/Einrichtung</mat-label>
           <input matInput placeholder="Träger/Einrichtung" name="einrichtung" [(ngModel)]="form.einrichtung">
         </mat-form-field>
-        <table class="form-table" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
+
+
+          <mat-form-field class="example-full-width">
             <mat-label>Straße</mat-label>
             <input matInput placeholder="Straße" name="strasse" [(ngModel)]="form.strasse" #strasse required>
             <mat-error *ngIf="strasse.required">Bitte tragen Sie Ihre vollständige Adresse ein.</mat-error>
-          </mat-form-field></td>
+          </mat-form-field>
+        <table class="form-table" cellspacing="0">
+          <tr>
           <td><mat-form-field class="form-table">
             <mat-label>Hausnummer</mat-label>
             <input matInput placeholder="Hausnummer" name="hausnr" [(ngModel)]="form.hausnr" #hausnr required>
