@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FormInfo } from './form-info';
-/*import {ChangeStateInfo} from '../auth/change-state-info';*/
 
 const httpOptions: { headers; observe } = {
   headers: new HttpHeaders({

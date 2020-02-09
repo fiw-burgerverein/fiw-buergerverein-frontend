@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
   userEmail: any;
   isLoggedIn = false;
   roles: string[] = [];
+  authority: string;
+
 
   constructor(private tokenStorage: TokenStorageService, private router: Router) { }
 
@@ -19,6 +21,15 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
       this.userEmail = this.tokenStorage.getEmail();
+      this.roles.every(role => {
+        if (role === 'ROLE_ROLE_ADMIN') {
+          this.authority = 'admin';
+        } else if (role === 'ROLE_ROLE_GS') {
+          this.authority = 'gs';
+        } else if (role === 'ROLE_ROLE_USER') {
+          this.authority = 'user';
+        }
+      });
     }
   }
 

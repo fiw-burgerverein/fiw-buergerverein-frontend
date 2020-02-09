@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormService} from '../formService/form.service';
-/*import {ChangeStateInfo} from "../auth/change-state-info";*/
 
 @Component({
   selector: 'app-detailseite-antrag',
@@ -15,15 +14,17 @@ export class DetailseiteAntragComponent implements OnInit {
 
   constructor(private formService: FormService) { }
 
-  ngOnInit() {
+  ngOnInit() {  /* hier get methode für einen Antrag holen, davor authorities nochmal checken*/
   }
 
   callChangeState(event) {
+    console.log(event.target);
     if (event.target.id === 'btnGenehmigen') {
       this.stateInt = 1;
       console.log(this.stateInt);
     } else if (event.target.id === 'btnAblehnen') {
       this.stateInt = 2;
+      console.log(this.stateInt);
     }
     this.formService.changeState(this.stateInt).subscribe(
       data => {

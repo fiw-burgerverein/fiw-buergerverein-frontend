@@ -6,9 +6,14 @@
       <span class="spacer"></span>
     </a>
     <div fxShow="true" fxHide.lt-md="true"  >
-      <a href="#" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</a>
+      <a *ngIf="!isLoggedIn || (isLoggedIn && authority==='user')" href="#" mat-button>Infos zum Kiezfonds</a>
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='user'">Meine Anträge</a>
+      <a href="#" mat-button *ngIf="isLoggedIn && authority==='gs'">Alle Anträge</a>
+      <div *ngIf="!isLoggedIn; then routeLogin;"></div>
+      <div *ngIf="isLoggedIn && authority === 'user'; then routeDatenschutz;"></div>
+<!--       <a href="#" mat-button routerLink="infos-zum-kiezfond">Infos zum Kiezfonds</a>
       <a href="#" mat-button *ngIf="isLoggedIn">Meine Anträge</a>
-      <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div>
+      <div *ngIf="isLoggedIn; then routeDatenschutz else routeLogin"></div> -->
       <ng-template #routeDatenschutz>
         <a href="#" mat-button routerLink="datenschutz">Antrag stellen</a>
       </ng-template>
@@ -29,11 +34,12 @@
       <mat-icon class="personIcon">person</mat-icon>
     </button>
 
-    <div fxShow="true" fxHide.gt-sm="true">
+<!--    Auskommentiert, da nicht in Benutzung:-->
+<!--    <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button>
         <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </button>
-    </div>
+    </div>-->
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
     <mat-sidenav mode="over" #sidenav role="navigation"
