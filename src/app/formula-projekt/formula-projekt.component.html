@@ -59,6 +59,7 @@
           <span matPrefix>+49 &nbsp;</span>
           <input matInput maxlength="11" placeholder="Geben Sie Ihre Telefonnummer an" name="telnr"
                  [(ngModel)]="form.telnr">
+          <mat-hint>Bitte die Telefonnummer ohne Leerzeichen eingeben.</mat-hint>
         </mat-form-field>
         <div class="example-button-row" >
           <button mat-raised-button color="primary" matStepperNext type="button">Weiter</button>
