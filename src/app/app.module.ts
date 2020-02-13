@@ -74,7 +74,6 @@ import { GeschaeftsstelleComponent } from './geschaeftsstelle/geschaeftsstelle.c
     ApplicationComponent,
     AllapplicationsComponent,
     GeschaeftsstelleComponent,
-    // UebersichtComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [
